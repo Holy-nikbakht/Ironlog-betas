@@ -9474,7 +9474,7 @@ function giveCoachFeedback(helpful) {
 
 // ─── مربی هوشمند واقعی (Gemini) — پرسش آزاد از مربی ───
 // ⚠️ کلید مستقیم اینجاست چون این نسخه فقط برای تست با چند کاربر آشناست، نه انتشار عمومی.
-const GEMINI_API_KEY = 'AQ.Ab8RN6LKa6ygCHtYJnhtCV3c3p_s7ZJL3i7g0VeZdre31s-M4w'; // ⚠️ این فرمت شبیه کلید معمول Gemini نیست — اگه کار نکرد، دوباره از AI Studio چک کن
+const GEMINI_API_KEY = 'AQ.Ab8RN6LxFEQRW-Kmo6MqaZGFJheH_qg5I56UNCOUNPJJQAw_xQ';
 const GEMINI_MODEL = 'gemini-2.0-flash';
 
 async function askCoachAI(userText) {
@@ -9502,6 +9502,7 @@ async function askCoachAI(userText) {
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'جوابی دریافت نشد.';
     if (box) box.textContent = text;
   } catch (e) {
+    console.error('Gemini API error:', e);
     if (box) box.innerHTML = '<span style="color:#f87171;">مشکلی پیش اومد — دوباره امتحان کن.</span>';
   } finally {
     if (btn) btn.disabled = false;

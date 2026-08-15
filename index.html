@@ -368,6 +368,14 @@ body.log-only-mode::before{
 .exercise-record{font-size:11px;color:var(--text3);margin-top:3px;}
 .exercise-record strong{color:var(--accent);}
 .exercise-suggestion{font-size:11px;color:var(--green);background:var(--green-soft);border-radius:6px;padding:2px 8px;margin-top:3px;display:inline-block;}
+.adj-card-actions{display:flex;gap:6px;margin-top:6px;}
+.adj-btn{flex:1;font-size:11px;font-family:inherit;font-weight:700;padding:6px 8px;border-radius:7px;border:none;cursor:pointer;transition:var(--transition);}
+.adj-btn.accept{background:var(--accent);color:#fff;}
+.adj-btn.reject{background:var(--bg3);color:var(--text2);border:1px solid var(--border);}
+.adj-btn:active{transform:scale(0.96);}
+.adj-btn:disabled{opacity:0.5;cursor:default;}
+.smart-item.actionable{flex-direction:column;align-items:stretch;}
+.smart-item.actionable .smart-item-top{display:flex;gap:8px;align-items:flex-start;}
 .exercise-actions{display:flex;gap:5px;flex-shrink:0;}
 
 /* ═══ SETS ═══ */
@@ -400,6 +408,25 @@ body.log-only-mode::before{
 .drop-toggle.active{background:rgba(234,179,8,0.2);color:var(--yellow);border-color:rgba(234,179,8,0.5);}
 .drop-toggle.ghost-hint{border:1.5px dashed rgba(234,179,8,0.55);color:rgba(234,179,8,0.75);background:rgba(234,179,8,0.045);}
 .drop-toggle.ghost-hint::after{content:'';position:absolute;top:-3px;left:-3px;width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 2px var(--bg2,var(--bg));animation:dsGhostPulse 1.8s ease-in-out infinite;}
+.note-ask-btn{display:inline-flex;align-items:center;gap:5px;margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid rgba(99,140,255,0.22);background:rgba(99,140,255,0.08);color:var(--text2);font-size:11.5px;font-family:inherit;cursor:pointer;transition:var(--transition);}
+.note-ask-btn svg{width:13px;height:13px;flex-shrink:0;}
+.note-ask-btn:active{transform:scale(0.94);}
+.quick-ask-context{font-size:11px;color:var(--text3);background:var(--bg4);border-radius:10px;padding:8px 10px;margin-top:12px;line-height:1.7;}
+.quick-ask-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.quick-ask-chip{font-size:11.5px;padding:7px 11px;border-radius:20px;border:1px solid var(--border2);background:var(--glass2);color:var(--text2);cursor:pointer;transition:var(--transition);}
+.quick-ask-chip:active{transform:scale(0.95);}
+.quick-ask-inputrow{display:flex;gap:8px;margin-top:12px;align-items:center;}
+.quick-ask-answer{margin-top:12px;font-size:12.5px;color:var(--text2);line-height:1.85;min-height:0;}
+.quick-ask-answer:empty{display:none;}
+.session-ai-card{background:var(--glass2);border:1px solid var(--border2);border-radius:14px;padding:14px 16px;}
+.session-ai-card-title{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--accent);margin-bottom:8px;}
+.session-ai-card-body{font-size:12.5px;line-height:1.9;color:var(--text2);}
+.drop-intervention-card{border-color:rgba(234,179,8,0.35);background:rgba(234,179,8,0.06);}
+.session-ai-loading{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);}
+.session-ai-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:sessionAiPulse 1.1s ease-in-out infinite;}
+.session-ai-dot:nth-child(2){animation-delay:0.15s;}
+.session-ai-dot:nth-child(3){animation-delay:0.3s;}
+@keyframes sessionAiPulse{0%,80%,100%{opacity:0.25;transform:scale(0.8);}40%{opacity:1;transform:scale(1);}}
 @keyframes dsGhostPulse{0%,100%{opacity:.55;transform:scale(0.9);}50%{opacity:1;transform:scale(1.1);}}
 .add-set-btn{width:100%;padding:9px;background:var(--glass);border:1px dashed var(--border2);border-radius:var(--radius-sm);color:var(--accent);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:center;gap:6px;}
 .add-set-btn:active{background:var(--accent-soft);}
@@ -540,14 +567,14 @@ body.log-only-mode::before{
 .theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;}
 .bgmode-title{padding:0 16px;font-size:11px;font-weight:800;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;}
 .bgmode-seg{display:flex;gap:8px;padding:10px 16px 4px;}
-.bgmode-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;border-radius:var(--radius-md);border:1.5px solid var(--border);background:var(--glass);cursor:pointer;transition:var(--transition);color:var(--text2);}
-.bgmode-btn.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);box-shadow:0 0 0 1px var(--accent-glow);}
-.bgmode-btn:active{transform:scale(0.96);}
+.bgmode-btn,.coachmode-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;border-radius:var(--radius-md);border:1.5px solid var(--border);background:var(--glass);cursor:pointer;transition:var(--transition);color:var(--text2);}
+.bgmode-btn.active,.coachmode-btn.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);box-shadow:0 0 0 1px var(--accent-glow);}
+.bgmode-btn:active,.coachmode-btn:active{transform:scale(0.96);}
 .bgmode-btn-icon{width:20px;height:20px;}
 .bgmode-btn-icon svg{width:100%;height:100%;}
 .bgmode-btn-label{font-size:11.5px;font-weight:700;}
 .bgmode-btn-sub{font-size:9.5px;color:var(--text3);text-align:center;line-height:1.3;}
-.bgmode-btn.active .bgmode-btn-sub{color:var(--accent);opacity:0.75;}
+.bgmode-btn.active .bgmode-btn-sub,.coachmode-btn.active .bgmode-btn-sub{color:var(--accent);opacity:0.75;}
 .theme-btn{aspect-ratio:1;border-radius:12px;border:2px solid var(--border);cursor:pointer;transition:var(--transition);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:8px;}
 .theme-btn.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-glow);}
 .theme-btn-label{font-size:11px;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.5);}
@@ -739,8 +766,25 @@ body.log-only-mode::before{
 .rpe-btn{width:52px;height:52px;border-radius:12px;border:2px solid var(--border);background:var(--glass);color:var(--text);font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:var(--transition);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
 .rpe-btn small{font-size:8px;color:var(--text3);font-weight:400;line-height:1;}
 .rpe-btn.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);}
-.note-field{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:13px;padding:10px 14px;width:100%;outline:none;resize:none;transition:var(--transition);min-height:60px;}
+.note-field{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:13px;padding:10px 14px;width:100%;outline:none;resize:none;transition:var(--transition);min-height:44px;}
 .note-field:focus{border-color:var(--accent);}
+.ex-notes-thread{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;}
+.ex-note-item{border-radius:10px;padding:8px 11px;font-size:12.5px;line-height:1.7;max-width:92%;}
+.ex-note-item.user{background:var(--bg3);border:1px solid var(--border);align-self:flex-start;color:var(--text2);}
+.ex-note-item.coach{background:rgba(99,140,255,0.10);border:1px solid rgba(99,140,255,0.22);align-self:flex-start;color:var(--text);}
+.ex-note-item .ex-note-meta{font-size:10px;color:var(--text3);margin-bottom:3px;display:flex;align-items:center;gap:4px;}
+.ex-note-item .ex-note-meta svg{width:11px;height:11px;flex-shrink:0;}
+.ex-note-reminder{font-size:11.5px;color:var(--text2);background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.22);border-radius:8px;padding:7px 10px;margin-bottom:8px;line-height:1.7;display:flex;gap:6px;align-items:flex-start;}
+.ex-note-reminder svg{width:13px;height:13px;flex-shrink:0;margin-top:2px;color:#eab308;}
+.ex-note-inputrow{display:flex;gap:6px;align-items:flex-end;}
+.ex-note-inputrow .note-field{min-height:40px;}
+.ex-note-send-btn{background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);padding:0 14px;height:40px;font-size:12.5px;font-family:inherit;font-weight:700;cursor:pointer;flex-shrink:0;transition:var(--transition);}
+.ex-note-send-btn:active{transform:scale(0.95);}
+.ex-note-send-btn:disabled{opacity:0.5;cursor:default;}
+.ex-note-coach-ask-btn{display:inline-flex;align-items:center;gap:5px;margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid rgba(99,140,255,0.22);background:rgba(99,140,255,0.08);color:var(--text2);font-size:11.5px;font-family:inherit;cursor:pointer;transition:var(--transition);}
+.ex-note-coach-ask-btn svg{width:13px;height:13px;flex-shrink:0;}
+.ex-note-coach-ask-btn:disabled{opacity:0.5;cursor:default;}
+.ex-note-coach-ask-btn.loading svg{animation:spin 1s linear infinite;}
 .section-card{margin:0 16px 12px;background:var(--glass-card);border:1px solid var(--glass-border);border-radius:var(--radius);overflow:hidden;backdrop-filter:blur(10px);box-shadow:var(--shadow-sm);}
 .back-btn{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--accent);cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;padding:0;transition:var(--transition);}
 .back-btn:active{opacity:0.7;}
@@ -786,6 +830,9 @@ body.log-only-mode::before{
 .coach-ai-input:focus{outline:none;border-color:var(--accent);}
 .coach-ai-send-btn{width:34px;height:34px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .coach-ai-answer{margin-top:8px;font-size:11.5px;color:var(--text2);line-height:1.8;min-height:0;}
+.ai-remaining-note{margin-top:6px;font-size:10.5px;color:var(--text3);text-align:center;}
+.ai-remaining-note:empty{display:none;}
+.ai-remaining-note.warn{color:#eab308;}
 @keyframes coachIn{from{opacity:0;transform:translateY(-10px) scale(0.96);}to{opacity:1;transform:translateY(0) scale(1);}}
 
 /* ═══ SET INLINE COACH TIP (ری‌اکشن سریع بعد از هر ست) ═══ */
@@ -832,7 +879,7 @@ body.log-only-mode::before{
 /* ═══ v3 — فیدبک فشردن سراسری (دکمه، کارت، آیتم ناوبری) ═══ */
 .btn, .btn-primary, .btn-ghost, .day-card, .session-card, .nav-btn, .settings-action .toggle,
 .exercise-card, .stat-card, .badge-item, .coach-level-btn, .set-check,
-.filter-chip, .ex-chip, .theme-btn, .timer-preset-btn, .add-set-btn, .bgmode-btn {
+.filter-chip, .ex-chip, .theme-btn, .timer-preset-btn, .add-set-btn, .bgmode-btn, .coachmode-btn {
   transition: transform 0.16s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.16s ease, background-color 0.16s ease, opacity 0.16s ease;
 }
 .btn:active, .btn-primary:active, .btn-ghost:active, .day-card:active, .session-card:active,
@@ -1168,7 +1215,192 @@ body.tour-active{overflow:hidden;}
 .tour-btn-skip:active{opacity:0.6;}
 .tour-btn-next{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;box-shadow:0 6px 18px var(--accent-glow);}
 .tour-btn-next:active{transform:scale(0.95);}
+.tour-btn:focus-visible,.page-help-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+#tour-card:focus{outline:none;}
+/* روی موبایل، پایین کارت رو با یه فاصله‌ی امن از لبه‌ی صفحه (نوار جستجو/جیب سیستم) نگه دار */
+#tour-card{max-height:calc(100vh - 32px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
 @media (max-width:420px){#tour-card{max-width:calc(100vw - 32px);}}
+/* گوشی به حالت افقی (لندسکیپ) با ارتفاع کم: کارت جمع‌وجورتر بشه که با کیبورد/لبه‌ها تداخل نکنه */
+@media (max-height:420px) and (orientation:landscape){
+  #tour-card{padding:12px 14px;max-width:340px;}
+}
+/* صفحه‌های خیلی کوچیک/کوتاه: کارت به‌جای دنبال‌کردن هدف، پایین صفحه ثابت بشه تا هیچوقت از دید خارج نشه */
+@media (max-width:340px), (max-height:520px){
+  #tour-card.tour-card-bottom-pin{left:12px !important;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));top:auto !important;max-width:none;width:calc(100vw - 24px);}
+}
+@media (prefers-reduced-motion:reduce){
+  #tour-spot{transition:none;}
+  #tour-card{transition:none;}
+  #tour-overlay{transition:opacity .01ms;}
+}
+
+/* ═══════════════════════════════════════════════════
+   ریسپانسیو — گوشی‌های خیلی باریک (۳۶۰px و کمتر)
+   هدف اصلی: ردیف ست‌ها (۷ عنصر با عرض ثابت تو یک خط)،
+   پدینگ‌های صفحه‌ها و مودال‌ها، و فونت‌های بزرگ که رو
+   عرض کم راحت overflow می‌کنن.
+   ═══════════════════════════════════════════════════ */
+@media (max-width:360px){
+  /* --- ردیف ست: تنگ‌ترین نقطه‌ی کل اپ --- */
+  .set-row{gap:3px;}
+  .set-num{width:18px;height:18px;font-size:9px;}
+  .drop-toggle{width:24px;height:24px;font-size:8px;}
+  .note-ask-btn{padding:5px 9px;font-size:11px;}
+  .set-check{width:26px;height:26px;}
+  .set-delete{width:20px;height:20px;font-size:12px;}
+  .set-input{font-size:14px;padding:6px 1px;}
+  .set-input-label{font-size:8px;}
+
+  /* --- صفحه‌ها و هدر --- */
+  .page-header{margin:8px 8px 12px;padding:13px 14px 11px;}
+  .page-header h1{font-size:17px;}
+  .day-card{padding:12px;}
+  .day-icon{width:38px;height:38px;font-size:19px;}
+  .exercise-header{padding:12px 12px 8px;}
+  .session-body{padding:10px 10px;}
+  .stats-grid{gap:8px;padding:14px 14px 0;}
+  .calendar-grid{gap:3px;padding:10px 10px;}
+
+  /* --- مودال‌ها --- */
+  .modal-sheet{padding:16px 14px calc(32px + env(safe-area-inset-bottom,0px));border-radius:22px 22px 0 0;}
+
+  /* --- فوکوس‌مود --- */
+  .focus-header{padding:12px 14px 10px;}
+  .focus-body{padding:18px 14px;gap:14px;}
+  .focus-exercise-name{font-size:19px;}
+  .focus-input{font-size:24px;padding:14px 8px;}
+  .focus-rest-display{font-size:50px;}
+  .focus-inputs{gap:10px;}
+
+  /* --- خوش‌آمدگویی و آمار --- */
+  .welcome-app-name{font-size:23px;}
+  .welcome-logo-icon{width:64px;height:64px;}
+  .streak-num{font-size:30px;}
+  .streak-fire{width:26px;height:26px;}
+}
+
+/* ═══════════════════════════════════════════════════
+   ریسپانسیو — لندسکیپ گوشی (ارتفاع کم)
+   چند بخش کلیدی (welcome-screen، focus-mode) از قبل
+   overflow:hidden با چیدمانِ وسط‌چین ثابت داشتن؛ یعنی رو
+   لندسکیپِ کوتاه محتوا می‌تونست بدون هیچ راه اسکرولی از
+   دید خارج/قطع بشه. این بخش هم فضا رو جمع‌تر می‌کنه هم
+   اسکرول رو به‌عنوان راه فرار امن فعال می‌کنه.
+   ═══════════════════════════════════════════════════ */
+@media (max-height:480px) and (orientation:landscape){
+  /* --- فوکوس‌مود: از چیدمان وسط‌چین ثابت به چیدمان قابل‌اسکرول --- */
+  #focus-mode-overlay{overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .focus-header{padding:8px 16px;position:sticky;top:0;z-index:2;background:var(--glass-bg);}
+  .focus-body{justify-content:flex-start;padding:12px 20px 20px;gap:10px;}
+  .focus-exercise-name{font-size:18px;}
+  .focus-set-counter{margin:0;}
+  .focus-input{font-size:22px;padding:10px 8px;}
+  .focus-rest-display{font-size:38px;}
+  .focus-rest-label{margin-top:0;}
+  .focus-done-btn{padding:12px;}
+  .focus-nav{padding:10px 20px 14px;}
+
+  /* --- خوش‌آمدگویی: هم‌قابل‌اسکرول هم جمع‌تر --- */
+  #welcome-screen{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 24px;justify-content:flex-start;}
+  .welcome-logo-icon{width:52px;height:52px;margin-bottom:10px;}
+  .welcome-app-name{font-size:21px;}
+  .welcome-app-sub{margin-top:2px;}
+  .welcome-features{gap:8px;margin-bottom:16px;}
+  .welcome-feature-row{padding:8px 12px;}
+  .welcome-cta-btn{padding:12px;}
+
+  /* --- مودال‌ها: کمتر بلندشون کن که با کیبورد/لبه‌ی صفحه تداخل نکنن --- */
+  .modal-sheet{max-height:94vh;padding-top:14px;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));}
+  .modal-handle{margin-bottom:12px;}
+
+  /* --- هدر صفحه و ناوبری پایین: کمی جمع‌تر برای پس‌گرفتن ارتفاع --- */
+  .page-header{padding:10px 18px 8px;margin:6px 12px 10px;}
+  :root{--nav-h:56px;}
+
+  /* --- تایمر استراحت --- */
+  #rest-modal .timer-display{font-size:32px;}
+}
+
+/* ═══════════════════════════════════════════════════
+   فاز ۲ — چت اختصاصی مربی: UI پایه
+   ═══════════════════════════════════════════════════ */
+#page-coach-chat.active{display:flex;flex-direction:column;overflow:hidden;padding-bottom:0;}
+#app.coach-chat-open .bottom-nav{display:none;}
+.chat-scroll-area{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 16px 14px;display:flex;flex-direction:column;position:relative;min-height:0;}
+.chat-date-sep{display:flex;align-items:center;justify-content:center;margin:16px 0 12px;position:relative;}
+.chat-date-sep span{background:var(--glass2);color:var(--text3);font-size:11px;font-weight:700;padding:4px 12px;border-radius:var(--radius-chip);border:1px solid var(--border);position:relative;z-index:1;}
+.chat-date-sep::before{content:'';position:absolute;top:50%;right:0;left:0;height:1px;background:var(--border);z-index:0;}
+.chat-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:10px;max-width:100%;}
+.chat-row.user{flex-direction:row-reverse;}
+.chat-avatar{flex:none;width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,var(--accent),var(--accent2));box-shadow:0 4px 12px -3px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,0.25);}
+.chat-avatar svg{width:16px;height:16px;color:#fff;}
+.chat-row.user .chat-avatar{visibility:hidden;width:0;}
+.chat-bubble{max-width:78%;padding:10px 14px;border-radius:var(--radius-md);font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;position:relative;box-shadow:var(--shadow-sm);}
+.chat-row.coach .chat-bubble{background:var(--glass-card);border:1px solid var(--glass-border);color:var(--text);border-bottom-left-radius:4px;}
+.chat-row.user .chat-bubble{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-bottom-right-radius:4px;}
+.chat-bubble-time{display:block;margin-top:4px;font-size:9.5px;opacity:0.62;font-variant-numeric:tabular-nums;}
+.chat-row.user .chat-bubble-time{text-align:left;}
+.chat-empty-state{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 24px;color:var(--text3);gap:10px;min-height:280px;}
+.chat-empty-icon{width:58px;height:58px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);margin-bottom:4px;}
+.chat-empty-icon svg{width:28px;height:28px;color:var(--accent);}
+.chat-empty-title{font-size:14px;font-weight:800;color:var(--text2);}
+.chat-empty-sub{font-size:12px;color:var(--text3);max-width:240px;line-height:1.8;}
+.chat-scroll-btn{position:absolute;left:16px;bottom:14px;width:38px;height:38px;border-radius:50%;background:var(--glass-bg);backdrop-filter:blur(10px);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px -6px rgba(0,0,0,0.5);cursor:pointer;opacity:0;pointer-events:none;transform:translateY(6px) scale(0.9);transition:var(--transition);z-index:5;}
+.chat-scroll-btn.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);}
+.chat-scroll-btn svg{width:16px;height:16px;color:var(--accent);transform:rotate(90deg);}
+
+/* ═══════════════════════════════════════════════════
+   فاز ۳ / قسمت ۱ — انیمیشن ورود پیام‌ها (fade+slide)
+   ═══════════════════════════════════════════════════ */
+@keyframes chatRowIn{
+  from{opacity:0;transform:translateY(10px) scale(0.98);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+.chat-row.chat-row-enter{animation:chatRowIn 0.36s cubic-bezier(0.22,1,0.36,1) both;}
+@media (prefers-reduced-motion: reduce){
+  .chat-row.chat-row-enter{animation:none;}
+}
+
+/* ═══════════════════════════════════════════════════
+   فاز ۳ / قسمت ۲ — سه‌نقطه‌ی تایپینگ متحرک
+   ═══════════════════════════════════════════════════ */
+.chat-typing-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:10px;}
+.chat-typing-bubble{background:var(--glass-card);border:1px solid var(--glass-border);border-radius:var(--radius-md);border-bottom-left-radius:4px;padding:12px 16px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:4px;}
+.chat-typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);opacity:0.5;animation:chatTypingBounce 1.1s ease-in-out infinite;}
+.chat-typing-dot:nth-child(2){animation-delay:0.15s;}
+.chat-typing-dot:nth-child(3){animation-delay:0.3s;}
+@keyframes chatTypingBounce{
+  0%,60%,100%{transform:translateY(0);opacity:0.4;}
+  30%{transform:translateY(-4px);opacity:1;}
+}
+
+/* ═══════════════════════════════════════════════════
+   فاز ۳ / قسمت ۴ — پالس نوری ملایم دور آواتار حین تایپ
+   ═══════════════════════════════════════════════════ */
+.chat-avatar.chat-avatar-pulse{animation:chatAvatarPulse 1.5s ease-in-out infinite;}
+@keyframes chatAvatarPulse{
+  0%,100%{box-shadow:0 4px 12px -3px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,0.25),0 0 0 0 var(--accent-glow);}
+  50%{box-shadow:0 4px 12px -3px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,0.25),0 0 0 6px transparent,0 0 14px 3px var(--accent-glow);}
+}
+@media (prefers-reduced-motion: reduce){
+  .chat-avatar.chat-avatar-pulse{animation:none;}
+}
+
+/* ═══════════════════════════════════════════════════
+   نوار ورودی پیام صفحه‌ی چت (زیرساخت لازم برای تست فاز ۳)
+   ═══════════════════════════════════════════════════ */
+.chat-input-bar{flex:none;display:flex;align-items:flex-end;gap:8px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--bg2);}
+.chat-chips-row{flex:none;display:flex;gap:7px;padding:0 16px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.chat-chips-row::-webkit-scrollbar{display:none;}
+.chat-chips-row:empty{display:none;}
+.chat-chip{flex:none;white-space:nowrap;font-size:11.5px;font-weight:600;padding:7px 13px;border-radius:20px;border:1px solid var(--border2);background:var(--glass2);color:var(--text2);cursor:pointer;transition:var(--transition);}
+.chat-chip:active{transform:scale(0.95);background:var(--accent-soft);color:var(--accent);}
+.chat-input-bar textarea{flex:1;resize:none;max-height:100px;min-height:38px;border-radius:var(--radius-md);border:1px solid var(--border2);background:var(--bg4);color:var(--text);font-family:inherit;font-size:13.5px;padding:9px 14px;line-height:1.5;}
+.chat-input-bar textarea:focus{outline:none;border-color:var(--accent);}
+.chat-input-send-btn{flex:none;width:38px;height:38px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px -3px var(--accent-glow);transition:var(--transition);}
+.chat-input-send-btn:active{transform:scale(0.92);}
+.chat-input-send-btn:disabled{opacity:0.5;cursor:default;}
+.chat-input-send-btn svg{width:17px;height:17px;transform:rotate(-90deg);}
 </style>
 </head>
 <body>
@@ -1244,12 +1476,12 @@ body.tour-active{overflow:hidden;}
 </div>
 
 <!-- ═══ TOUR OVERLAY (شِیر بین همه‌ی تورها) ═══ -->
-<div id="tour-overlay" aria-live="polite">
+<div id="tour-overlay">
   <div id="tour-dim"></div>
   <div id="tour-spot"></div>
-  <div id="tour-card" role="dialog" aria-modal="true">
+  <div id="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-card-title" aria-describedby="tour-card-desc" tabindex="-1">
     <div id="tour-card-title"></div>
-    <div id="tour-card-desc"></div>
+    <div id="tour-card-desc" aria-live="polite"></div>
     <div id="tour-card-foot">
       <span id="tour-card-progress"></span>
       <div id="tour-card-actions">
@@ -1357,6 +1589,8 @@ body.tour-active{overflow:hidden;}
   <div class="stats-grid" id="stats-cards" data-tour="stats-cards"></div>
 
   <div id="weekly-summary-card" data-tour="stats-weeklysummary"></div>
+
+  <div id="coach-weekly-narrative"></div>
 
   <div class="sec-title">نقشه تداوم</div>
   <div class="card" style="margin:0 16px 12px;padding:14px;" data-tour="stats-heatmap">
@@ -1532,6 +1766,63 @@ body.tour-active{overflow:hidden;}
           <div class="settings-icon" id="si-coach-push"></div>
           <div class="settings-info"><div class="settings-label">اعلان یادآوری غیبت</div><div class="settings-sub">وقتی چند روز نیومدی، حتی اگه اپ رو باز نکرده باشی، سعی می‌کنه یادآوری بفرسته (بسته به مرورگر/گوشی)</div></div>
           <div class="settings-action"><div class="toggle" id="toggle-coach-push" onclick="toggleCoachPush(this)"></div></div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-icon" id="si-coach-ailimit"></div>
+          <div class="settings-info"><div class="settings-label">سقف روزانه‌ی مربی AI</div><div class="settings-sub">حداکثر تعداد درخواست‌های هوشمند در روز — برای جلوگیری از مصرف بی‌رویه</div></div>
+          <div class="settings-action"><input type="number" class="input-field" id="ai-daily-limit-input" value="20" min="1" max="200" style="width:70px;text-align:center;" onchange="saveAIDailyLimit()"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-acc" data-acc="ai-profile" data-tour="settings-ai-profile">
+    <button type="button" class="settings-acc-head" onclick="toggleSettingsAcc(this)" aria-expanded="false">
+      <div class="settings-acc-head-l">
+        <div class="settings-acc-ico" id="acc-ico-ai-profile"></div>
+        <div>
+          <div class="settings-acc-title">پروفایل مربی AI</div>
+          <div class="settings-acc-sub">اهداف، نکات ایمنی و شخصی‌سازی</div>
+        </div>
+      </div>
+      <svg class="settings-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="settings-acc-body">
+      <div class="settings-section">
+        <div class="settings-row" style="flex-direction:column;align-items:stretch;gap:8px;">
+          <div class="settings-info"><div class="settings-label">حالت مربی</div><div class="settings-sub">آفلاین: قالبی، سریع و رایگان، بدون اینترنت. AI: پاسخ‌های واقعی و شخصی‌سازی‌شده بر اساس همین اطلاعات پایین همین صفحه</div></div>
+          <div style="display:flex;gap:8px;">
+            <button class="coachmode-btn" data-coachmode="offline" onclick="selectCoachMode('offline',this)">
+              <span class="bgmode-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></svg></span>
+              <span class="bgmode-btn-label">آفلاین</span>
+              <span class="bgmode-btn-sub">سریع و قالبی</span>
+            </button>
+            <button class="coachmode-btn" data-coachmode="ai" onclick="selectCoachMode('ai',this)">
+              <span class="bgmode-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z"/></svg></span>
+              <span class="bgmode-btn-label">هوشمند AI</span>
+              <span class="bgmode-btn-sub">شخصی‌سازی‌شده</span>
+            </button>
+          </div>
+          <div style="font-size:10.5px;color:var(--text3);line-height:1.7;">تو حالت AI می‌تونی سؤال آزاد هم از مربی بپرسی؛ نیاز به اینترنت داره و اگه وصل نشه، خودکار به آفلاین برمی‌گرده.</div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-icon" id="si-ai-goals"></div>
+          <div class="settings-info"><div class="settings-label">اهداف تمرینی</div><div class="settings-sub" id="ai-profile-goals-sub">هنوز چیزی ثبت نشده</div></div>
+          <div class="settings-action"><button class="btn btn-ghost btn-sm" onclick="editUserProfileGoals()">تغییر</button></div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-icon" id="si-ai-injuries"></div>
+          <div class="settings-info"><div class="settings-label">نکات ایمنی / مصدومیت</div><div class="settings-sub" id="ai-profile-injuries-sub">هنوز چیزی ثبت نشده</div></div>
+          <div class="settings-action"><button class="btn btn-ghost btn-sm" onclick="editUserProfileInjuries()">تغییر</button></div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-icon" id="si-ai-tone"></div>
+          <div class="settings-info"><div class="settings-label">لحن ترجیحی</div><div class="settings-sub" id="ai-profile-tone-sub">پیش‌فرض</div></div>
+          <div class="settings-action"><button class="btn btn-ghost btn-sm" onclick="editUserProfileTone()">تغییر</button></div>
+        </div>
+        <div class="settings-row" style="flex-direction:column;align-items:stretch;gap:6px;">
+          <div class="settings-info"><div class="settings-label">تحلیل مربی از الگوی تمرینت</div></div>
+          <div id="ai-profile-summary-box" style="font-size:12px;line-height:1.8;padding:2px 0;"></div>
         </div>
       </div>
     </div>
@@ -1750,6 +2041,16 @@ body.tour-active{overflow:hidden;}
 
   <div id="coach-page-intro-wrap"></div>
 
+  <div class="card coach-feature-card" id="coach-chat-entry-card" onclick="openCoachChatPage()" style="cursor:pointer;">
+    <div class="coach-feature-placeholder">
+      <div class="coach-feature-icon" style="display:flex;align-items:center;justify-content:center;color:var(--accent);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 12.2c0-4.6 3.9-8.3 8.7-8.3s8.7 3.7 8.7 8.3-3.9 8.3-8.7 8.3c-1.1 0-2.2-.2-3.1-.55L4 21.5l1.2-3.6a7.9 7.9 0 01-1.7-5.7z" stroke-linejoin="round"/></svg></div>
+      <div class="coach-feature-text">
+        <div class="coach-feature-title" style="color:var(--text);">چت با مربی</div>
+        <div class="coach-feature-sub">هر سؤالی درباره‌ی تمرین‌هات داری، اینجا بپرس.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="sec-title">تحلیل کندی و خستگی</div>
   <div class="card coach-feature-card" id="coach-slowdown-card" data-tour="coach-slowdown">
     <div class="coach-feature-placeholder">
@@ -1841,6 +2142,35 @@ body.tour-active{overflow:hidden;}
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ═══ صفحه‌ی چت اختصاصی مربی ═══ -->
+<div class="page" id="page-coach-chat">
+  <div class="page-header">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="page-help-btn" id="coach-chat-back-btn" onclick="closeCoachChatPage()" title="بازگشت">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div>
+        <h1>چت با مربی</h1>
+        <p>هر سؤالی داری بپرس</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="coach-chat-body" style="display:flex;flex-direction:column;flex:1;min-height:0;position:relative;">
+    <div class="chat-scroll-area" id="coach-chat-scroll">
+      <!-- پیام‌ها اینجا رندر می‌شن -->
+    </div>
+    <button class="chat-scroll-btn" id="coach-chat-scroll-btn" onclick="scrollCoachChatToBottom(true)" title="برو به آخر"></button>
+  </div>
+  <div class="chat-chips-row" id="coach-chat-chips-row"></div>
+  <div class="chat-input-bar">
+    <textarea id="coach-chat-input" rows="1" placeholder="سؤالت رو بنویس…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendCoachChatMessage();}" oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px';"></textarea>
+    <button class="chat-input-send-btn" id="coach-chat-send-btn" onclick="sendCoachChatMessage()" title="ارسال">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
   </div>
 </div>
 
@@ -1941,6 +2271,27 @@ body.tour-active{overflow:hidden;}
       <button class="btn btn-ghost" style="flex:1;" onclick="closeInputModal()">انصراف</button>
       <button class="btn btn-primary" style="flex:2;" onclick="confirmInputModal()">تأیید</button>
     </div>
+  </div>
+</div>
+
+<!-- مودال سؤال سریع از مربی حین ست‌زدن (فاز ۴) -->
+<div class="modal-overlay" id="quick-ask-modal" role="dialog" aria-modal="true" aria-label="سؤال سریع از مربی">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title"><span class="modal-title-icon">${ICONS.chat}</span>سؤال سریع از مربی</div>
+    <div class="quick-ask-context" id="quick-ask-context"></div>
+    <div class="quick-ask-chips" id="quick-ask-chips">
+      <button class="quick-ask-chip" onclick="sendQuickAskChip('درد دارم، ادامه بدم؟')">درد دارم، ادامه بدم؟</button>
+      <button class="quick-ask-chip" onclick="sendQuickAskChip('فرم درست این حرکت چیه؟')">فرم درست این حرکت چیه؟</button>
+      <button class="quick-ask-chip" onclick="sendQuickAskChip('چرا امروز ضعیف‌ترم؟')">چرا امروز ضعیف‌ترم؟</button>
+    </div>
+    <div class="quick-ask-inputrow">
+      <input type="text" id="quick-ask-input" class="coach-ai-input" placeholder="یا سؤال خودت رو تایپ کن…" onkeydown="if(event.key==='Enter')submitQuickAsk()">
+      <button class="coach-ai-send-btn" id="quick-ask-send-btn" onclick="submitQuickAsk()">${icon('flame',15)}</button>
+    </div>
+    <div class="quick-ask-answer" id="quick-ask-answer"></div>
+    <div class="ai-remaining-note" id="quick-ask-remaining"></div>
+    <button class="btn btn-ghost" style="width:100%;margin-top:14px;" onclick="closeQuickAsk()">بستن</button>
   </div>
 </div>
 
@@ -2101,6 +2452,8 @@ body.tour-active{overflow:hidden;}
     <div class="modal-title"><span class="modal-title-icon" style="color:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6.5"/><polyline points="8.21 13.9 7 22 12 19 17 22 15.79 13.9"/></svg></span>تمرین تمام شد!</div>
     <div class="modal-sub" id="summary-sub"></div>
     <div id="summary-content" style="margin:16px 0;"></div>
+    <div id="ai-session-analysis" style="display:none;margin-bottom:16px;"></div>
+    <div id="ai-drop-intervention" style="display:none;margin-bottom:16px;"></div>
     <div id="weight-reminder" style="display:none;margin-bottom:16px;">
       <div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:12px;text-align:center;">
         <div style="width:26px;height:26px;margin:0 auto 6px;color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8h14M6 8l-2.5 5.5a3 3 0 006 0L7 8M18 8l-2.5 5.5a3 3 0 006 0L19 8M9 21h6"/></svg></div>
@@ -2129,7 +2482,10 @@ body.tour-active{overflow:hidden;}
       <canvas id="story-canvas" class="story-preview-canvas" width="1080" height="1920" style="display:none;"></canvas>
       <img id="story-img" class="story-preview-canvas" alt="استوری تمرین">
     </div>
-    <div id="story-coach-quote" style="text-align:center;font-size:12px;color:var(--text2);padding:0 16px 10px;font-weight:600;line-height:1.7;"></div>
+    <div id="story-coach-quote" style="text-align:center;font-size:12px;color:var(--text2);padding:0 16px 6px;font-weight:600;line-height:1.7;"></div>
+    <div style="text-align:center;padding-bottom:8px;">
+      <button class="ex-note-coach-ask-btn" id="story-caption-regen-btn" onclick="regenerateStoryCaption()" style="display:inline-flex;">${ICONS.refresh||ICONS.bulb} یه جمله دیگه</button>
+    </div>
     <div class="story-actions">
       <button class="btn btn-ghost" onclick="closeModal('story-modal')">بستن</button>
       <button class="btn btn-primary" onclick="downloadStoryImage()">
@@ -2354,7 +2710,7 @@ body.tour-active{overflow:hidden;}
 // ═══════════════════════════════════════════════════
 //  CONSTANTS
 // ═══════════════════════════════════════════════════
-const DATA_VERSION  = 6;
+const DATA_VERSION  = 8;
 // ═══ اطلاعات تماس/برندینگ — این دو مقدار رو با اطلاعات واقعی خودتون جایگزین کنید ═══
 const FEEDBACK_TELEGRAM = 'https://t.me/holy_nikbakht'; // آیدی تلگرام برای دریافت گزارش مشکل/پیشنهاد
 const APP_SHARE_URL  = 'https://holy-nikbakht.github.io/ironlogPRO/'; // آدرس گیت‌هاب‌پیجز اپ
@@ -2399,6 +2755,7 @@ const ICONS = {
   alert:     ic('<path d="M10.6 3.9L1.9 18.3a1.9 1.9 0 001.65 2.9h16.9a1.9 1.9 0 001.65-2.9L13.4 3.9a1.9 1.9 0 00-2.8 0z"/><path d="M12 9v4.2M12 16.6h.01"/>'),
   gem:       icd('<path d="M6.1 3.5h11.8l3.8 5.7-9.7 11.3L2.3 9.2z"/>','<path d="M2.3 9.2h19.4M8.2 3.5l3.8 5.7-3.8 11.3M15.8 3.5L12 9.2l3.8 11.3M6.1 3.5h11.8l3.8 5.7-9.7 11.3L2.3 9.2z"/>'),
   bulb:      icd('<path d="M12 2.3a6.8 6.8 0 00-3.9 12.35V16.7c0 .55.44 1 .98 1h5.84c.54 0 .98-.45.98-1v-2.05A6.8 6.8 0 0012 2.3z"/>','<path d="M9.3 18h5.4M10.3 21.3h3.4M12 2.3a6.8 6.8 0 00-3.9 12.35V16.7c0 .55.44 1 .98 1h5.84c.54 0 .98-.45.98-1v-2.05A6.8 6.8 0 0012 2.3z"/>'),
+  chat:      ic('<path d="M3.5 12.2c0-4.6 3.9-8.3 8.7-8.3s8.7 3.7 8.7 8.3-3.9 8.3-8.7 8.3c-1.1 0-2.2-.2-3.1-.55L4 21.5l1.2-3.6a7.9 7.9 0 01-1.7-5.7z" stroke-linejoin="round"/>'),
   trendUp:   ic('<path d="M22.5 6.3L13.3 15.6 8.2 10.5 1.5 17.2"/><path d="M16.7 6.3h5.8v5.8"/>'),
   trendDown: ic('<path d="M22.5 17.7L13.3 8.4 8.2 13.5 1.5 6.8"/><path d="M16.7 17.7h5.8v-5.8"/>'),
   arrowRight:ic('<path d="M4.5 12h15M12.3 5l6.7 7-6.7 7"/>'),
@@ -2422,15 +2779,21 @@ const ICONS = {
 // ═══════════════════════════════════════════════════
 let appData = {
   version:DATA_VERSION,days:[],history:[],weights:[],readinessLog:[],
-  settings:{vibrate:true,soundEnabled:true,autoTimer:true,askRPE:false,theme:'default',appName:'IronLog',keepAliveAudio:false,coachEnabled:true,coachIntensity:'hard',coachName:'',logOnlyMode:false},
+  settings:{vibrate:true,soundEnabled:true,autoTimer:true,askRPE:false,theme:'default',appName:'IronLog',keepAliveAudio:false,coachEnabled:true,coachIntensity:'hard',coachName:'',logOnlyMode:false,coachMode:'offline',aiDailyLimit:20},
   restTimes:{heavy:180,medium:120,light:90},
-  monthlyGoal:12, trainingDaysPerWeek:4, prLog:{}
+  monthlyGoal:12, trainingDaysPerWeek:4, prLog:{},
+  aiRequestsToday:0, aiRequestsResetDate:null,
+  coachChatHistory:[] // آرایه‌ی پیام‌های چت اختصاصی مربی: {role:'user'|'coach', text, ts}
 };
 
 let currentDayId         = null;
 let currentSession       = {};
 let sessionStartTime     = null;
 let ghostActive           = {}; // exId -> true/false — نمایش سایه‌وار اعداد جلسه قبل به‌جای جایگذاری واقعی
+// فاز ۲ (نقشه‌راه هوش مصنوعی) — شمارنده‌ی ست‌های تکمیل‌شده در جلسه‌ی جاری، برای محدود کردن
+// فرکانس فراخوانی AI حین تمرین (نه هر ست، هر ۲-۳ ست یک‌بار) — با شروع/پایان هر جلسه ریست می‌شه.
+let _midWorkoutAICallCount = 0;
+const MID_WORKOUT_AI_EVERY_N_SETS = 3;
 let sessionTimerInterval = null;
 
 // ─── تایمر مودال ───
@@ -2501,6 +2864,19 @@ function migrateData(d) {
     });
     d.version = 6;
   }
+  if (d.version < 7) {
+    // فاز ۷: شمارنده‌ی روزانه‌ی درخواست‌های AI و سقف قابل‌تنظیم
+    d.settings = d.settings || {};
+    d.settings.aiDailyLimit = d.settings.aiDailyLimit ?? 20;
+    d.aiRequestsToday = typeof d.aiRequestsToday === 'number' ? d.aiRequestsToday : 0;
+    d.aiRequestsResetDate = d.aiRequestsResetDate ?? null;
+    d.version = 7;
+  }
+  if (d.version < 8) {
+    // چت اختصاصی مربی: تاریخچه‌ی پیام‌ها
+    if (!Array.isArray(d.coachChatHistory)) d.coachChatHistory = [];
+    d.version = 8;
+  }
   return d;
 }
 
@@ -2514,15 +2890,19 @@ function loadData() {
       parsed = migrateData(parsed);
       appData = Object.assign({}, appData, parsed);
       appData.settings = Object.assign(
-        {vibrate:true,soundEnabled:true,autoTimer:true,askRPE:false,theme:'default',appName:'IronLog',keepAliveAudio:false,coachEnabled:true,coachIntensity:'hard',coachName:'',logOnlyMode:false},
+        {vibrate:true,soundEnabled:true,autoTimer:true,askRPE:false,theme:'default',appName:'IronLog',keepAliveAudio:false,coachEnabled:true,coachIntensity:'hard',coachName:'',logOnlyMode:false,coachMode:'offline',aiDailyLimit:20},
         parsed.settings || {}
       );
       if (!appData.days) appData.days = [];
+      if (typeof appData.aiRequestsToday !== 'number') appData.aiRequestsToday = 0;
+      if (typeof appData.aiRequestsResetDate === 'undefined') appData.aiRequestsResetDate = null;
       if (appData.settings.theme === 'forge') appData.settings.theme = 'default'; // تم آهنگر حذف شده
       if (appData.settings.theme === 'ocean') appData.settings.theme = 'steel'; // تم اقیانوس حذف شده
       if (!appData.readinessLog) appData.readinessLog = [];
       if (!Array.isArray(appData.history)) appData.history = [];
       if (!Array.isArray(appData.weights)) appData.weights = [];
+      if (!Array.isArray(appData.coachChatHistory)) appData.coachChatHistory = [];
+      ensureUserProfile(); // فاز ۱: تضمین وجود پروفایل هوشمند برای کاربرهای قدیمی و جدید
       // sanitize شناسه‌های ناامن از داده‌های قدیمی/خراب
       appData.days.forEach(day => {
         if (!day || typeof day !== 'object') return;
@@ -2541,6 +2921,7 @@ function loadData() {
       }
     } else {
       appData.days = [];
+      ensureUserProfile();
     }
   } catch(e) { appData.days = []; }
 }
@@ -2595,6 +2976,20 @@ function selectBgMode(mode, btn) {
   document.querySelectorAll('.bgmode-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   showToast(mode === 'adaptive' ? 'پس‌زمینه تطبیقی شد' : 'پس‌زمینه شخصی‌سازی شد', 'info');
+}
+// ─── فاز ۳ — سوییچ حالت مربی (آفلاین/AI)، از صفحه‌ی تنظیمات ───
+function selectCoachMode(mode, btn) {
+  const m = mode === 'ai' ? 'ai' : 'offline';
+  appData.settings.coachMode = m;
+  saveData();
+  document.querySelectorAll('.coachmode-btn').forEach(b => b.classList.toggle('active', b.dataset.coachmode === m));
+  invalidateCoachCache();
+  renderCoachBanner();
+  showToast(m === 'ai' ? 'مربی AI فعال شد' : 'مربی آفلاین فعال شد', 'info');
+}
+function syncCoachModeButtons() {
+  const m = appData.settings.coachMode === 'ai' ? 'ai' : 'offline';
+  document.querySelectorAll('.coachmode-btn').forEach(b => b.classList.toggle('active', b.dataset.coachmode === m));
 }
 function applyAppName(name) {
   const n = name || 'IronLog';
@@ -2724,6 +3119,379 @@ var switchPage = function(page) {
   if (page==='stats')    renderStats();
   if (page==='settings') renderSettings();
   if (page==='coach')    renderCoach();
+}
+
+// ─── صفحه‌ی چت اختصاصی مربی (بیرون از تب‌های نوار پایین) ───
+let _pageBeforeCoachChat = null;
+function openCoachChatPage() {
+  const curr = document.querySelector('.page.active');
+  _pageBeforeCoachChat = curr ? curr.id.replace('page-', '') : 'coach';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-coach-chat').classList.add('active');
+  document.getElementById('app')?.classList.add('coach-chat-open');
+  applyCoachPageIcons();
+  _coachChatLastRenderedCount = -1; // اولین رندر هر بار که صفحه باز می‌شه، بدون انیمیشن ورود کل تاریخچه
+  renderCoachChat();
+  renderCoachChatChips();
+}
+function closeCoachChatPage() {
+  clearInterval(_coachChatTypewriterInterval);
+  _coachChatTypewriterInterval = null;
+  document.getElementById('app')?.classList.remove('coach-chat-open');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const backTo = _pageBeforeCoachChat || 'coach';
+  const backEl = document.getElementById('page-' + backTo) || document.getElementById('page-coach');
+  backEl.classList.add('active');
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۲ — UI پایه‌ی صفحه‌ی چت (رندر پیام‌ها، آواتار، اسکرول هوشمند، empty state، جداکننده‌ی تاریخ)
+// ═══════════════════════════════════════════════════
+
+// ─── برچسب تاریخ شمسی برای جداکننده‌ی روز (بدون ساعت) ───
+function chatDayLabel(ts) {
+  const d = new Date(ts);
+  if (isNaN(d)) return '';
+  const j = toJalali(d.getFullYear(), d.getMonth() + 1, d.getDate());
+  const today = new Date();
+  const jt = toJalali(today.getFullYear(), today.getMonth() + 1, today.getDate());
+  if (j.y === jt.y && j.m === jt.m && j.d === jt.d) return 'امروز';
+  const yesterday = new Date(today.getTime() - 86400000);
+  const jy2 = toJalali(yesterday.getFullYear(), yesterday.getMonth() + 1, yesterday.getDate());
+  if (j.y === jy2.y && j.m === jy2.m && j.d === jy2.d) return 'دیروز';
+  return `${toFarsiNum(j.d)} ${JALALI_MONTH_NAMES[j.m - 1]}${j.y !== jt.y ? ' ' + toFarsiNum(j.y) : ''}`;
+}
+
+// ─── برچسب ساعت:دقیقه برای زیر هر بابل ───
+function chatTimeLabel(ts) {
+  const d = new Date(ts);
+  if (isNaN(d)) return '';
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mm = String(d.getMinutes()).padStart(2, '0');
+  return toFarsiNum(hh) + ':' + toFarsiNum(mm);
+}
+
+// ─── تشخیص اینکه آیا کاربر همین الان پایینِ لیست پیام‌هاست (برای تصمیم auto-scroll) ───
+function isChatScrolledToBottom(el, threshold) {
+  if (!el) return true;
+  return (el.scrollHeight - el.scrollTop - el.clientHeight) <= (threshold || 60);
+}
+
+function scrollCoachChatToBottom(smooth) {
+  const el = document.getElementById('coach-chat-scroll');
+  if (!el) return;
+  el.scrollTo({ top: el.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
+}
+
+function updateChatScrollBtnVisibility() {
+  const el = document.getElementById('coach-chat-scroll');
+  const btn = document.getElementById('coach-chat-scroll-btn');
+  if (!el || !btn) return;
+  const atBottom = isChatScrolledToBottom(el, 80);
+  btn.classList.toggle('show', !atBottom && el.scrollHeight > el.clientHeight + 40);
+}
+
+let _coachChatScrollBound = false;
+function bindCoachChatScrollListener() {
+  if (_coachChatScrollBound) return;
+  const el = document.getElementById('coach-chat-scroll');
+  if (!el) return;
+  el.addEventListener('scroll', updateChatScrollBtnVisibility, { passive: true });
+  _coachChatScrollBound = true;
+}
+
+// ─── رندر کامل لیست پیام‌ها؛ اگه AI مربی خاموشه یا هنوز پیامی نیست، empty state نشون می‌ده ───
+// نکته: تعداد پیام‌هایی که آخرین بار رندر شدن رو نگه می‌داریم تا فقط پیام‌های *جدید* انیمیشن
+// ورود بگیرن، نه کل تاریخچه هر بار که renderCoachChat صدا زده می‌شه (مثلاً بعد از هر اسکرول‌چک).
+let _coachChatLastRenderedCount = -1;
+function renderCoachChat(opts) {
+  const scrollEl = document.getElementById('coach-chat-scroll');
+  if (!scrollEl) return;
+  bindCoachChatScrollListener();
+
+  const forceNoAnim = opts && opts.noAnim;
+  const typewriterTs = (opts && opts.typewriterTs) || null;
+  const wasAtBottom = isChatScrolledToBottom(scrollEl, 80);
+  const history = Array.isArray(appData.coachChatHistory) ? appData.coachChatHistory : [];
+  const coachOff = !appData.settings.coachEnabled || appData.settings.coachMode === 'offline';
+
+  if (coachOff) {
+    scrollEl.innerHTML = `
+      <div class="chat-empty-state">
+        <div class="chat-empty-icon">${ICONS.dumbbell}</div>
+        <div class="chat-empty-title">مربی AI فعلاً خاموشه</div>
+        <div class="chat-empty-sub">برای گفتگو با مربی، اول از تنظیمات یا صفحه‌ی مربی، حالت AI رو فعال کن.</div>
+      </div>`;
+    document.getElementById('coach-chat-scroll-btn')?.classList.remove('show');
+    _coachChatLastRenderedCount = -1;
+    return;
+  }
+
+  if (!history.length) {
+    // فاز ۴ / قسمت ۸ — به‌جای empty state خشک، یه پیام خوش‌آمد واقعی از مربی نشون می‌دیم که
+    // به وضعیت اخیر تمرین کاربر اشاره می‌کنه؛ این پیام محلی و آنی ساخته می‌شه (بدون فراخوانی AI)
+    // و توی تاریخچه ذخیره نمی‌شه، پس هر بار که صفحه باز بشه دوباره تازه محاسبه می‌شه.
+    const welcomeText = buildCoachChatWelcomeMessage();
+    scrollEl.innerHTML = `
+      <div class="chat-row coach chat-row-enter">
+        <div class="chat-avatar">${ICONS.dumbbell}</div>
+        <div class="chat-bubble"><span class="chat-bubble-text">${escHtml(welcomeText)}</span></div>
+      </div>`;
+    document.getElementById('coach-chat-scroll-btn')?.classList.remove('show');
+    _coachChatLastRenderedCount = 0;
+    return;
+  }
+
+  // اگه از قبل چیزی رندر شده و فقط پیام‌های جدید اضافه شدن (نه ری‌ست کامل مثل باز شدن صفحه)،
+  // فقط ردیف‌های جدید رو انیمیشن بده. در غیر این صورت (اولین رندر صفحه) کل تاریخچه بدون انیمیشن میاد.
+  const isIncremental = !forceNoAnim && _coachChatLastRenderedCount >= 0 && history.length > _coachChatLastRenderedCount;
+  const newFromIndex = isIncremental ? _coachChatLastRenderedCount : Infinity;
+
+  let html = '';
+  let lastDayKey = null;
+  history.forEach((msg, i) => {
+    const d = new Date(msg.ts);
+    const dayKey = isNaN(d) ? 'na' : `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    if (dayKey !== lastDayKey) {
+      html += `<div class="chat-date-sep"><span>${escHtml(chatDayLabel(msg.ts))}</span></div>`;
+      lastDayKey = dayKey;
+    }
+    const isUser = msg.role === 'user';
+    const enterClass = i >= newFromIndex ? ' chat-row-enter' : '';
+    // فاز ۳ / قسمت ۳ — اگه این پیام قراره با افکت تایپ حرف‌به‌حرف نشون داده بشه، ابتدا متنش خالی رندر می‌شه
+    const isTypewriterTarget = !isUser && typewriterTs != null && msg.ts === typewriterTs;
+    const bubbleText = isTypewriterTarget ? '' : escHtml(msg.text || '');
+    html += `
+      <div class="chat-row ${isUser ? 'user' : 'coach'}${enterClass}">
+        <div class="chat-avatar">${ICONS.dumbbell}</div>
+        <div class="chat-bubble"><span class="chat-bubble-text" data-ts="${msg.ts}">${bubbleText}</span><span class="chat-bubble-time">${chatTimeLabel(msg.ts)}</span></div>
+      </div>`;
+  });
+  scrollEl.innerHTML = html;
+  _coachChatLastRenderedCount = history.length;
+
+  // اسکرول خودکار فقط اگه کاربر از قبل پایین لیست بوده (وسط خوندن پیام‌های قدیمی مزاحمش نشیم)
+  if (wasAtBottom) {
+    scrollCoachChatToBottom(false);
+  }
+  updateChatScrollBtnVisibility();
+
+  if (typewriterTs != null) {
+    const targetMsg = history.find(m => m.role === 'coach' && m.ts === typewriterTs);
+    if (targetMsg) startCoachChatTypewriter(typewriterTs, targetMsg.text || '');
+  }
+}
+
+// ─── فاز ۳ / قسمت ۲ — نشانگر «در حال تایپ» با سه‌نقطه‌ی متحرک ───
+function showCoachChatTyping() {
+  const scrollEl = document.getElementById('coach-chat-scroll');
+  if (!scrollEl) return;
+  hideCoachChatTyping();
+  const wasAtBottom = isChatScrolledToBottom(scrollEl, 80);
+  const row = document.createElement('div');
+  row.className = 'chat-typing-row';
+  row.id = 'coach-chat-typing-row';
+  row.innerHTML = `
+    <div class="chat-avatar chat-avatar-pulse">${ICONS.dumbbell}</div>
+    <div class="chat-typing-bubble">
+      <span class="chat-typing-dot"></span><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span>
+    </div>`;
+  scrollEl.appendChild(row);
+  if (wasAtBottom) scrollCoachChatToBottom(true);
+  updateChatScrollBtnVisibility();
+}
+function hideCoachChatTyping() {
+  document.getElementById('coach-chat-typing-row')?.remove();
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۴ / قسمت ۵ — چیپ‌های پیشنهادی context-aware
+// ═══════════════════════════════════════════════════
+// به‌جای یه لیست ثابت، بر اساس داده‌های واقعی همین امروز (رکورد تازه، آمادگی پایین، حرکت دردناک
+// که امروز کار شده) پیشنهاد می‌سازیم. اگه هیچ سیگنال خاصی نبود، چند سؤال پرکاربرد عمومی جایگزین می‌شه.
+function getCoachChatSuggestedChips() {
+  const chips = [];
+  const todayKey = new Date().toDateString();
+
+  // ۱) رکورد تازه‌ی امروز — چه هنوز جلسه باز باشه (currentSession) چه همین الان جلسه رو بسته باشه
+  let hasPRToday = false;
+  Object.values(currentSession || {}).forEach(s => {
+    (s.sets || []).forEach(st => { if (st && st._pr) hasPRToday = true; });
+    (s.supersetSets || []).forEach(st => { if (st && st._pr) hasPRToday = true; });
+  });
+  if (!hasPRToday && appData.history.length) {
+    const lastSession = appData.history[appData.history.length - 1];
+    if (lastSession && new Date(lastSession.date).toDateString() === todayKey) {
+      Object.values(lastSession.exercises || {}).forEach(exData => {
+        (exData.sets || []).forEach(st => { if (st && st._pr) hasPRToday = true; });
+      });
+    }
+  }
+  if (hasPRToday) chips.push('امروز رکورد زدم، حالا چیکار کنم؟');
+
+  // ۲) چک‌این آمادگی امروز پایین بوده (خستگی/خواب بد/انگیزه کم)
+  if (appData.readinessLog && appData.readinessLog.length) {
+    const lastR = appData.readinessLog[appData.readinessLog.length - 1];
+    if (lastR && new Date(lastR.date).toDateString() === todayKey && lastR.score <= 40) {
+      chips.push('امروز خیلی خسته‌ام، تمرین رو چطور تنظیم کنم؟');
+    }
+  }
+
+  // ۳) حرکتی که پرچم درد داره و امروز توش ست ثبت شده
+  let hasPainToday = false;
+  Object.entries(currentSession || {}).forEach(([exId, s]) => {
+    const baseId = String(exId).endsWith(':ss') ? String(exId).slice(0, -3) : exId;
+    const ex = appData.days.flatMap(d => d.exercises).find(e => e.id === baseId);
+    if (ex && ex.pain && (s.sets || []).some(st => st && st.done)) hasPainToday = true;
+  });
+  if (hasPainToday) chips.push('حرکتی که درد داره رو چیکار کنم؟');
+
+  // پرکردن باقی جاها با سؤالات عمومی پرکاربرد (تا سقف ۳ چیپ)
+  const defaults = ['چطور سوپرست ثبت کنم؟', 'برنامه‌ی امروزم چیه؟', 'رکوردهام رو کجا ببینم؟', 'فرم درست این حرکت چیه؟'];
+  for (const d of defaults) {
+    if (chips.length >= 3) break;
+    if (!chips.includes(d)) chips.push(d);
+  }
+  return chips.slice(0, 3);
+}
+
+function renderCoachChatChips() {
+  const row = document.getElementById('coach-chat-chips-row');
+  if (!row) return;
+  const coachOff = !appData.settings.coachEnabled || appData.settings.coachMode === 'offline';
+  if (coachOff) { row.innerHTML = ''; return; }
+  const chips = getCoachChatSuggestedChips();
+  row.innerHTML = chips.map(c => `<button class="chat-chip" onclick="sendCoachChatChip('${c.replace(/'/g, "\\'")}')">${escHtml(c)}</button>`).join('');
+}
+
+// با تپ روی چیپ، متن مستقیم به‌عنوان پیام کاربر ارسال می‌شه (بدون نیاز به تایپ)
+function sendCoachChatChip(text) {
+  const input = document.getElementById('coach-chat-input');
+  if (input) input.value = text;
+  sendCoachChatMessage();
+}
+
+// ─── فاز ۳ / قسمت ۳ — افکت تایپ حرف‌به‌حرف برای جواب مربی ───
+let _coachChatTypewriterInterval = null;
+function startCoachChatTypewriter(ts, fullText) {
+  clearInterval(_coachChatTypewriterInterval);
+  const el = document.querySelector(`.chat-bubble-text[data-ts="${ts}"]`);
+  if (!el) return;
+  const avatarEl = el.closest('.chat-row')?.querySelector('.chat-avatar');
+  avatarEl?.classList.add('chat-avatar-pulse');
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !fullText) {
+    el.textContent = fullText;
+    avatarEl?.classList.remove('chat-avatar-pulse');
+    return;
+  }
+
+  const scrollEl = document.getElementById('coach-chat-scroll');
+  // برای جواب‌های طولانی سرعت رو زیاد می‌کنیم تا کل انیمیشن بیش از حد طول نکشه
+  const totalDurationMs = Math.min(2200, Math.max(500, fullText.length * 18));
+  const stepMs = Math.max(8, totalDurationMs / fullText.length);
+  let i = 0;
+
+  _coachChatTypewriterInterval = setInterval(() => {
+    // چند حرف در هر تیک برای متن‌های طولانی، تا روی موبایل سنگین نشه
+    const charsPerTick = fullText.length > 240 ? 3 : 1;
+    i += charsPerTick;
+    if (i >= fullText.length) {
+      el.textContent = fullText;
+      clearInterval(_coachChatTypewriterInterval);
+      _coachChatTypewriterInterval = null;
+      avatarEl?.classList.remove('chat-avatar-pulse');
+      return;
+    }
+    el.textContent = fullText.slice(0, i);
+    const wasAtBottom = isChatScrolledToBottom(scrollEl, 100);
+    if (wasAtBottom) scrollCoachChatToBottom(false);
+  }, stepMs);
+}
+
+// ─── ارسال پیام از نوار ورودی صفحه‌ی چت اختصاصی ───
+// فاز ۴ / قسمت ۷ — لحن سیستم‌پرامپت رو دقیقاً بر اساس سطح سخت‌گیری مربی (ملایم/سخت‌گیر/بی‌رحم)
+// و اسم کاربر (در صورت وجود) در تنظیمات می‌سازه، تا لحن چت با لحن بقیه‌ی بخش‌های مربی هماهنگ باشه.
+function buildCoachChatTonePrompt() {
+  const lvl = (appData.settings && appData.settings.coachIntensity) || 'hard';
+  const name = getCoachUserName();
+
+  const toneByLevel = {
+    chill: 'لحنت آروم، دلگرم‌کننده و صبورانه‌ست. مثل یه مربی باتجربه و مهربون که فشار الکی نمی‌ذاره، ' +
+      'به رشد تدریجی و ریکاوری اهمیت میده و هیچ‌وقت با کاربر تند یا سرزنش‌گر صحبت نمی‌کنه.',
+    hard: 'لحنت مستقیم، جدی و بی‌حاشیه‌ست. مثل یه مربی حرفه‌ای که انتظار نظم و تلاش واقعی داره، ' +
+      'صادقانه نظر می‌ده حتی اگه کاربر خوشش نیاد، ولی هیچ‌وقت توهین‌آمیز یا تحقیرکننده نیست.',
+    beast: 'لحنت خشن، بی‌تعارف و پرانرژیه؛ مثل یه مربی سرسخت که بهانه قبول نمی‌کنه و کاربر رو به حداکثر تلاش ' +
+      'تحریک می‌کنه. با این حال هیچ‌وقت واقعاً توهین یا تحقیر نمی‌کنی — سخت‌گیری‌ت انگیزشیه نه آزاردهنده.',
+  };
+
+  let prompt =
+    'تو مربی هوشمند اپ IronLog هستی. به فارسی و مختصر جواب بده (معمولاً ۳-۴ جمله، مگر واقعاً لازم باشه). ' +
+    (toneByLevel[lvl] || toneByLevel.hard);
+
+  if (name) {
+    prompt += ` کاربر رو با اسم «${name}» صدا بزن (طبیعی و نه در هر جمله، در حد یکی دو بار توی جواب).`;
+  }
+
+  prompt +=
+    ' اگه کاربر درباره‌ی درد یا آسیب سؤال کرد، هرگز تشخیص پزشکی نده؛ در صورت درد شدید یا غیرعادی ' +
+    'صریحاً توصیه کن تمرین رو متوقف کنه و به پزشک یا فیزیوتراپ مراجعه کنه — این قانون مستقل از لحنه و همیشه رعایت می‌شه.';
+
+  return prompt;
+}
+
+async function sendCoachChatMessage() {
+  const input = document.getElementById('coach-chat-input');
+  const sendBtn = document.getElementById('coach-chat-send-btn');
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+
+  const chipsRow = document.getElementById('coach-chat-chips-row');
+  if (chipsRow) chipsRow.innerHTML = '';
+
+  if (!canMakeAIRequest()) {
+    if (!Array.isArray(appData.coachChatHistory)) appData.coachChatHistory = [];
+    appData.coachChatHistory.push({ role: 'user', text, ts: Date.now() });
+    appData.coachChatHistory.push({ role: 'coach', text: AI_LIMIT_REACHED_MSG, ts: Date.now() });
+    saveData();
+    input.value = ''; input.style.height = 'auto';
+    renderCoachChat();
+    return;
+  }
+
+  input.value = '';
+  input.style.height = 'auto';
+  if (sendBtn) sendBtn.disabled = true;
+
+  if (!Array.isArray(appData.coachChatHistory)) appData.coachChatHistory = [];
+  // چند پیام آخر مکالمه (قبل از پیام تازه‌ی کاربر) به‌عنوان حافظه‌ی کوتاه‌مدت جدا می‌شه
+  const COACH_CHAT_MEMORY_TURNS = 6; // یعنی حدود ۳ رفت‌وبرگشت آخر
+  const recentHistory = appData.coachChatHistory.slice(-COACH_CHAT_MEMORY_TURNS);
+  appData.coachChatHistory.push({ role: 'user', text, ts: Date.now() });
+  saveData();
+  renderCoachChat();
+  showCoachChatTyping();
+
+  let newCoachTs = null;
+  try {
+    const baseSystemPrompt = buildCoachChatTonePrompt();
+    const systemPrompt = buildFullSystemPrompt(baseSystemPrompt);
+    const replyText = await callAIRaw(text, systemPrompt, null, recentHistory);
+    recordAIRequestUsed();
+    newCoachTs = Date.now();
+    appData.coachChatHistory.push({ role: 'coach', text: replyText || 'جوابی دریافت نشد.', ts: newCoachTs });
+  } catch (e) {
+    console.error('coach chat error:', e);
+    newCoachTs = Date.now();
+    appData.coachChatHistory.push({ role: 'coach', text: 'خطا: ' + (e.message || 'مشکلی پیش اومد'), ts: newCoachTs });
+  } finally {
+    hideCoachChatTyping();
+    saveData();
+    renderCoachChat({ typewriterTs: newCoachTs });
+    if (sendBtn) sendBtn.disabled = false;
+  }
 }
 
 // ═══════════════════════════════════════════════════
@@ -2959,13 +3727,14 @@ function showExerciseView() {
       const ssCount = ex.sets || 3;
       currentSession[ex.id] = {
         sets: Array.from({length:ssCount}, ()=>({weight:'',reps:'',dropSet:false,done:false,rir:''})),
-        note:'', rpe:null,
+        note:'', notes:[], rpe:null,
         // اگه سوپرست داره، ست‌های حرکت دوم رو هم مقداردهی کن
         supersetSets: ex.superset
           ? Array.from({length:ssCount}, ()=>({weight:'',reps:'',done:false,rir:''}))
           : undefined
       };
     }
+    migrateExerciseNoteToNotes(currentSession[ex.id]);
   });
 
   if (!sessionStartTime) { sessionStartTime = Date.now(); startSessionTimer(); }
@@ -2996,6 +3765,167 @@ function stopSessionTimer() {
   sessionStartTime = null;
   const el = document.getElementById('workout-session-timer');
   if (el) el.style.display = 'none';
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۱ (نقشه‌راه هوش مصنوعی) — یادداشت زنده‌ی هر حرکت
+// ═══════════════════════════════════════════════════
+// ساختار قدیمی: exData.note (یک رشته‌ی ساده)
+// ساختار جدید:  exData.notes (آرایه‌ای از {date, author:'user'|'coach', text})
+// هر دو فیلد فعلاً هم‌زمان نگه داشته می‌شن (note همیشه خالی/قدیمی می‌مونه، notes
+// منبع اصلی جدیده) تا هیچ کد قدیمی‌ای که هنوز به exData.note ارجاع می‌ده
+// (مثلاً گزارش متنی جلسه) نشکنه؛ آن نقاط در فازهای بعدی به notes منتقل می‌شن.
+
+// اگه session.note قدیمی (رشته‌ی غیرخالی) وجود داشت و هنوز notes خالیه،
+// به‌عنوان اولین آیتم آرایه (author='user') منتقلش کن. Idempotent است —
+// اجرای دوباره‌ش روی داده‌ای که قبلاً migrate شده کاری نمی‌کنه.
+function migrateExerciseNoteToNotes(exData) {
+  if (!exData) return;
+  if (!Array.isArray(exData.notes)) exData.notes = [];
+  if (exData.notes.length === 0 && exData.note && String(exData.note).trim()) {
+    exData.notes.push({ date: new Date().toISOString(), author: 'user', text: String(exData.note).trim() });
+  }
+}
+
+// آخرین N یادداشت یک حرکت خاص را از کل appData.history جمع می‌کند (قدیم→جدید)،
+// برای نمایش ریسه در جلسه‌ی جاری و برای contextData ارسالی به callCoachAI.
+function getPastExerciseNotes(exId, limit) {
+  limit = limit || 3;
+  const collected = [];
+  for (let i = appData.history.length - 1; i >= 0 && collected.length < limit; i--) {
+    const exData = appData.history[i].exercises?.[exId];
+    if (!exData) continue;
+    migrateExerciseNoteToNotes(exData);
+    if (exData.notes && exData.notes.length) {
+      for (let j = exData.notes.length - 1; j >= 0 && collected.length < limit; j--) {
+        collected.push(exData.notes[j]);
+      }
+    }
+  }
+  return collected.reverse();
+}
+
+// کاربر یک یادداشت جدید برای یک حرکت (در جلسه‌ی جاری) ثبت می‌کند.
+function addExerciseNote(exId) {
+  const sid = safeId(exId) || exId;
+  const input = document.getElementById('ex-note-input-' + sid);
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+  const exData = currentSession[exId];
+  if (!exData) return;
+  if (!Array.isArray(exData.notes)) exData.notes = [];
+  exData.notes.push({ date: new Date().toISOString(), author: 'user', text });
+  exData.note = ''; // فیلد قدیمی دیگه استفاده نمی‌شه، خالی نگهش می‌داریم
+  input.value = '';
+  saveSessionBackup();
+  renderExerciseNotesArea(exId);
+}
+
+// از callCoachAI (فاز ۰) برای واکنش مربی به آخرین یادداشت کاربر استفاده می‌کند.
+// اختیاری و با دکمه — نه خودکار روی هر یادداشت — تا هزینه‌ی API کنترل‌شده بماند.
+async function requestCoachReplyToNote(exId) {
+  const sid = safeId(exId) || exId;
+  const btn = document.getElementById('ex-note-coach-btn-' + sid);
+  const exData = currentSession[exId];
+  if (!exData || !Array.isArray(exData.notes) || !exData.notes.length) return;
+  const lastNote = [...exData.notes].reverse().find(n => n.author === 'user');
+  if (!lastNote) return;
+
+  if (btn) { btn.disabled = true; btn.classList.add('loading'); }
+  const day = appData.days.find(d => d.id === currentDayId);
+  const ex = day?.exercises.find(e => e.id === exId);
+  const exName = ex?.name || exData._name || 'این حرکت';
+  const lastRecord = getLastRecord(exId);
+
+  const contextData = {
+    'نام حرکت': exName,
+    'یادداشت تازه‌ی کاربر': lastNote.text,
+    'رکورد اخیر همین حرکت': lastRecord ? `${lastRecord.weight}kg × ${lastRecord.reps}` : 'ندارد',
+  };
+
+  const reply = await callCoachAI('exercise_note', contextData);
+  if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
+
+  if (reply) {
+    exData.notes.push({ date: new Date().toISOString(), author: 'coach', text: reply });
+    saveSessionBackup();
+  }
+  renderExerciseNotesArea(exId);
+}
+
+// یادآوری غیرمزاحم بالای فیلد ورودی — وقتی یادداشت‌های قبلی وجود دارن ولی
+// در جلسه‌ی جاری هنوز چیزی ثبت نشده. فقط وقتی نشون داده می‌شه که یکی از
+// یادداشت‌های قبلی به‌نظر مرتبط با درد/آسیب باشه (چک ساده‌ی کلیدواژه‌ای، بدون
+// فراخوانی AI، تا این بخش رایگان و فوری بمونه).
+const EX_NOTE_PAIN_KEYWORDS = ['درد','آسیب','مصدوم','ناراحت','گرفتگی','کشیدگی','مچ','زانو','کمر','شونه'];
+function findRelevantPastNoteForReminder(exId) {
+  const past = getPastExerciseNotes(exId, 6);
+  for (let i = past.length - 1; i >= 0; i--) {
+    const n = past[i];
+    if (n.author === 'user' && EX_NOTE_PAIN_KEYWORDS.some(k => n.text.includes(k))) return n;
+  }
+  return null;
+}
+
+function escHtmlSafe(s) { return escHtml(s == null ? '' : String(s)); }
+
+function relativeNoteDate(iso) {
+  try {
+    const d = new Date(iso);
+    const days = Math.floor((Date.now() - d.getTime()) / 86400000);
+    if (days <= 0) return 'امروز';
+    if (days === 1) return 'دیروز';
+    if (days < 7) return `${toFarsiNum(days)} روز پیش`;
+    return d.toLocaleDateString('fa-IR');
+  } catch (e) { return ''; }
+}
+
+// کل بخش یادداشت‌های زیر یک حرکت (ریسه + یادآوری + ورودی) را می‌سازد و در
+// جای خودش (#ex-notes-area-<sid>) درون کارت حرکت رندر می‌کند.
+function renderExerciseNotesArea(exId) {
+  const sid = safeId(exId) || exId;
+  const area = document.getElementById('ex-notes-area-' + sid);
+  if (!area) return;
+  const exData = currentSession[exId];
+  if (!exData) return;
+  migrateExerciseNoteToNotes(exData);
+
+  const recentThisSession = (exData.notes || []).slice(-4);
+  const hasAnyPast = getPastExerciseNotes(exId, 1).length > 0 || recentThisSession.length > 0;
+  const hasNewThisSession = recentThisSession.length > 0;
+
+  let reminderHtml = '';
+  if (!hasNewThisSession) {
+    const relevant = findRelevantPastNoteForReminder(exId);
+    if (relevant) {
+      reminderHtml = `<div class="ex-note-reminder">${ICONS.alert || ''}<span>دفعه‌ی قبل نوشته بودی: «${escHtmlSafe(relevant.text)}» — امروز حواست به همین باشه.</span></div>`;
+    }
+  }
+
+  const threadHtml = recentThisSession.length
+    ? '<div class="ex-notes-thread">' + recentThisSession.map(n => `
+        <div class="ex-note-item ${n.author === 'coach' ? 'coach' : 'user'}">
+          <div class="ex-note-meta">${n.author === 'coach' ? (ICONS.chat || '') + 'مربی' : 'خودت'} · ${relativeNoteDate(n.date)}</div>
+          <div>${escHtmlSafe(n.text)}</div>
+        </div>`).join('') + '</div>'
+    : '';
+
+  const lastIsUnansweredUser = recentThisSession.length && recentThisSession[recentThisSession.length - 1].author === 'user';
+  const coachAskBtnHtml = lastIsUnansweredUser
+    ? `<button class="ex-note-coach-ask-btn" id="ex-note-coach-btn-${sid}" onclick="requestCoachReplyToNote('${sid}')">${ICONS.chat || ''} نظر مربی</button>`
+    : '';
+
+  area.innerHTML = `
+    ${reminderHtml}
+    ${threadHtml}
+    <div class="ex-note-inputrow">
+      <textarea class="note-field" id="ex-note-input-${sid}" placeholder="یادداشت..." rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();addExerciseNote('${sid}');}"></textarea>
+      <button class="ex-note-send-btn" onclick="addExerciseNote('${sid}')">ثبت</button>
+    </div>
+    ${coachAskBtnHtml}
+  `;
 }
 
 // ═══════════════════════════════════════════════════
@@ -3044,7 +3974,7 @@ function renderExercises() {
           ${titleHTML}
           <div class="exercise-meta">${ex.reps?escHtml(String(ex.reps))+' تکرار':''} ${ex.category==='heavy'?'• سنگین':ex.category==='medium'?'• متوسط':'• سبک'}${(ex.muscles&&ex.muscles.length)?` <span style="color:${muscleColor(ex.muscles[0])};">• ${escHtml(ex.muscles.join('، '))}</span>`:(ex.muscle?` <span style="color:${muscleColor(ex.muscle)};">• ${escHtml(ex.muscle)}</span>`:'')}</div>
           ${lastRecord?`<div class="exercise-record">آخرین: <strong>${lastRecord.weight}kg × ${lastRecord.reps}</strong></div>`:''}
-          ${suggestion?`<div class="exercise-suggestion"><span style="width:11px;height:11px;display:inline-flex;vertical-align:-2px;">${ICONS.bulb}</span> پیشنهاد: ${suggestion}kg</div>`:''}
+          ${ex.acceptedAdjustment ? renderAcceptedAdjustmentBadge(ex.acceptedAdjustment) : (suggestion?`<div class="exercise-suggestion"><span style="width:11px;height:11px;display:inline-flex;vertical-align:-2px;">${ICONS.bulb}</span> پیشنهاد: ${suggestion}kg</div>`:'')}
           ${session.rpe?`<div style="font-size:11px;color:var(--text3);margin-top:3px;">RPE: ${session.rpe}/10 — ${RPE_LABELS[session.rpe]||''}</div>`:''}
         </div>
         <div class="exercise-actions">
@@ -3069,12 +3999,13 @@ function renderExercises() {
         </button>
       </div>
       <div style="padding:0 10px 12px;">
-        <textarea class="note-field" placeholder="یادداشت..." rows="2"
-          onchange="updateNote('${sid}',this.value)">${escHtml(session.note||'')}</textarea>
+        <div id="ex-notes-area-${sid}"></div>
+        <button class="note-ask-btn" onclick="openQuickAsk('${sid}')" title="سؤال از مربی درباره‌ی این حرکت">${ICONS.chat} سؤال از مربی</button>
       </div>`;
     list.appendChild(card);
     renderSetsInContainer(ex);
     updateExProgress(ex.id);
+    renderExerciseNotesArea(ex.id);
   });
 }
 
@@ -3355,7 +4286,6 @@ function onSetInput(inputEl, exId, idx, field) {
 // ═══════════════════════════════════════════════════
 //  SET OPERATIONS
 // ═══════════════════════════════════════════════════
-function updateNote(exId, val) { currentSession[exId].note = val; saveSessionBackup(); }
 
 function toggleDropSet(exId, idx) {
   currentSession[exId].sets[idx].dropSet = !currentSession[exId].sets[idx].dropSet;
@@ -3434,6 +4364,10 @@ function toggleSetDone(exId, idx) {
     // FIX باگ ۴: ست‌های اصلی هم PR flash و haptic کامل نشان دهند (مثل سوپرست و مد تمرکز)
     const isPR = wNum>0 && rNum>0 && checkNewPRReturn(exId, wNum, rNum);
     if (isPR) { set._pr = true; checkNewPR(exId, wNum, rNum); }
+    checkLongRestBeforeThisSet(exId, idx); // فاز ۲: قبل از ثبت زمان جدید، فاصله از ست قبلی رو بررسی کن
+    // فاز ۵: هدف/دیلود پذیرفته‌شده برای این حرکت مصرف شد — دیگه لازم نیست بج نشون داده بشه
+    const exDefForAdj = getExDefById(exId);
+    if (exDefForAdj?.acceptedAdjustment) delete exDefForAdj.acceptedAdjustment;
     setTimeout(()=> showSetTip(exId, wNum, rNum, isPR), 200);
   } else {
     const lastDoneIdx = currentSession[exId].sets.reduce((last, s, i) => s.done ? i : last, -1);
@@ -3811,12 +4745,18 @@ function finishDay() {
   stopAllTimers();stopSessionTimer();releaseWakeLock();clearSessionBackup();
   // اول state را پاک کن تا کارت‌ها پیشرفت کهنه نشان ندهند
   currentDayId=null;currentSession={};prevSessionSetsCache={};
-  showSummaryModal(finishedDayName,totalSets,totalVol,duration,sessionSnapshot);
+  _midWorkoutAICallCount = 0; // فاز ۲: شمارنده‌ی فرکانس AI حین تمرین برای جلسه‌ی بعدی از صفر شروع بشه
+  showSummaryModal(finishedDayName,totalSets,totalVol,duration,sessionSnapshot,historyEntry.id);
   checkBackupReminder();
+  maybeUpdateUserProfile(); // فاز ۱: در پس‌زمینه، خودش تصمیم می‌گیره خلاصه‌ی AI رو آپدیت کنه یا نه
 }
 
-function showSummaryModal(dayName,totalSets,totalVol,duration,sessionSnap) {
+function showSummaryModal(dayName,totalSets,totalVol,duration,sessionSnap,historyEntryId) {
   document.getElementById('summary-sub').textContent=dayName;
+  const aiBox = document.getElementById('ai-session-analysis');
+  if (aiBox) { aiBox.style.display='none'; aiBox.innerHTML=''; }
+  const dropBox = document.getElementById('ai-drop-intervention');
+  if (dropBox) { dropBox.style.display='none'; dropBox.innerHTML=''; }
   // آخرین جلسه همین روز (نه هر جلسه قبلی)
   const lastEntry = appData.history[appData.history.length-1];
   const sameDayPrev = [...appData.history].reverse().find((s,i)=>{
@@ -3870,6 +4810,12 @@ function showSummaryModal(dayName,totalSets,totalVol,duration,sessionSnap) {
   showDaySelector();
   setTimeout(()=>{animateSummaryCounts();},400);
   setTimeout(()=>celebrate(),200);
+  // فاز ۵: تحلیل هوشمند پایان تمرین — غیربلاک‌کننده، بعد از باز شدن مودال شروع می‌شه
+  if (historyEntryId != null) {
+    generateSessionAnalysisAI(historyEntryId, sessionSnap, totalSets, totalVol, duration, prevVol, prCount);
+    // فاز ۶: تشخیص افت معنادار (کد-محور) + مداخله‌ی هوشمند AI با cooldown — کاملاً مستقل از تحلیل بالا
+    checkDropInterventionAI(historyEntryId);
+  }
 }
 function closeSummaryModal(){closeModal('summary-modal');}
 function goToWeight(){closeModal('summary-modal');switchPage('stats');}
@@ -4447,6 +5393,107 @@ function renderWeeklySummary() {
       </div>
       <div class="wsum-note">${notes}</div>
     </div>`;
+  renderCoachWeeklyNarrative({sessions, vol, streak});
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۴ (نقشه‌راه هوش مصنوعی) — خلاصه هفتگی روایتی + پیش‌بینی رکورد
+// ═══════════════════════════════════════════════════
+
+// بهترین e1RM ثبت‌شده در تمام تاریخچه‌ی یک حرکت (نه فقط جلسه‌ی آخر) — «رکورد» واقعی.
+function getAllTimeBestE1RM(exId) {
+  let best = 0;
+  appData.history.forEach(s => {
+    const exData = s.exercises?.[exId];
+    if (!exData?.sets) return;
+    const v = bestE1RMInSession(exData);
+    if (v > best) best = v;
+  });
+  return best;
+}
+
+// حرکتی که بیشترین شیب مثبت e1RM رو در ۵ جلسه‌ی اخیرش داره پیدا می‌کنه — از همون
+// موتور رگرسیون موجود (analyzePerformance/linearRegressionSlope) استفاده می‌کنه،
+// منطق تشخیص روند رو دوباره نمی‌سازه.
+function findBestTrendingExercise() {
+  let best = null;
+  appData.days.forEach(day => {
+    day.exercises.forEach(ex => {
+      if (ex.pain) return;
+      const series = getExerciseE1RMSeries(ex.id, 5);
+      const valid = series.filter(p => p.y > 0);
+      if (valid.length < 3) return;
+      const slope = linearRegressionSlope(valid);
+      const meanY = valid.reduce((a,p)=>a+p.y,0)/valid.length;
+      const relSlope = meanY > 0 ? slope/meanY : 0;
+      if (relSlope > 0 && (!best || relSlope > best.relSlope)) {
+        best = { exId: ex.id, name: ex.name, relSlope, slope, currentE1RM: valid[valid.length-1].y, recordE1RM: getAllTimeBestE1RM(ex.id) };
+      }
+    });
+  });
+  return best;
+}
+
+// تخمین سرانگشتی «چند جلسه تا رکورد بعدی» — بر اساس شیب e1RM فعلی و اینکه رکورد
+// فعلی (بهترین e1RM تمام‌دوران) چقدر بالاتر از سطح e1RM فعلیه. تخمین تقریبیه،
+// نه قطعی — به همین خاطر همیشه با عبارت «تقریباً»/«حدوداً» نمایش داده می‌شه.
+function estimateSessionsToNextRecord(trending) {
+  if (!trending || trending.slope <= 0 || !trending.recordE1RM) return null;
+  const gap = trending.recordE1RM - trending.currentE1RM;
+  if (gap <= 0) return 1; // همین الان هم به رکورد نزدیک/برابره — یعنی جلسه‌ی بعدی می‌تونه رکورد باشه
+  const sessionsNeeded = Math.ceil(gap / trending.slope);
+  if (sessionsNeeded < 1 || sessionsNeeded > 20) return null; // تخمین غیرمنطقی، نشون نده
+  return sessionsNeeded;
+}
+
+// جلسات این هفته که رکورد شخصی جدید ثبت شده (برای context روایت هفتگی)
+function countPRsThisWeek() {
+  const weekMs = 7*24*3600*1000, now = Date.now();
+  let count = 0;
+  appData.history.forEach(s => {
+    if (now - new Date(s.date).getTime() > weekMs) return;
+    Object.values(s.exercises||{}).forEach(ex => { if (ex.sets?.some(x=>x._pr)) count++; });
+  });
+  return count;
+}
+
+async function renderCoachWeeklyNarrative(weekStats) {
+  const container = document.getElementById('coach-weekly-narrative');
+  if (!container) return;
+  if (weekStats.sessions === 0) { container.innerHTML = ''; return; }
+
+  const trending = findBestTrendingExercise();
+  const sessionsToRecord = estimateSessionsToNextRecord(trending);
+  const prCount = countPRsThisWeek();
+  // از موتور سیگنال موجود (فاز ۰ می‌گه: تشخیص رو بازسازی نکن، فقط تفسیرش رو با AI بنویس)
+  const signals = analyzeCoachSignals();
+  const fatigueSignal = signals.find(s => s.type === 'deload' || s.type === 'acwrHigh');
+
+  // fallback آفلاین فوری — عددی و بدون روایت AI
+  const offlineParts = [
+    `این هفته ${toFarsiNum(weekStats.sessions)} جلسه با ${(weekStats.vol/1000).toFixed(1)} تن حجم کل ثبت شده.`,
+    prCount > 0 ? `${toFarsiNum(prCount)} رکورد شخصی جدید هم بینشون بود.` : '',
+    trending && sessionsToRecord ? `روند ${trending.name} صعودیه — با همین ریتم تقریباً ${toFarsiNum(sessionsToRecord)} جلسه‌ی دیگه تا رکورد بعدی فاصله داری.` : '',
+  ].filter(Boolean).join(' ');
+  container.innerHTML = `
+    <div class="sec-title">خلاصه مربی</div>
+    <div class="card" style="margin:0 16px 12px;padding:14px;" id="coach-weekly-narrative-body">
+      <div style="font-size:12.5px;line-height:1.8;color:var(--text2);">${escHtml(offlineParts)}</div>
+    </div>`;
+
+  if (getCoachMode() !== 'ai') return;
+  const contextData = {
+    'تعداد جلسه این هفته': weekStats.sessions,
+    'حجم کل هفته (کیلوگرم)': Math.round(weekStats.vol),
+    'رکورد جدید این هفته': prCount,
+    'حرکت با بیشترین روند صعودی': trending ? trending.name : undefined,
+    'تخمین جلسه تا رکورد بعدی همان حرکت': sessionsToRecord || undefined,
+    'سیگنال خستگی/ریسک تشخیص‌داده‌شده': fatigueSignal ? fatigueSignal.type : undefined,
+  };
+  const narrative = await callCoachAI('progress_summary', contextData);
+  const body = document.getElementById('coach-weekly-narrative-body');
+  if (!narrative || !body) return;
+  body.innerHTML = `<div style="font-size:12.5px;line-height:1.8;">${escHtml(narrative)}</div>`;
 }
 
 function renderHeatmap() {
@@ -4925,6 +5972,7 @@ function applySettingsAccIcons() {
     'acc-ico-appearance': ICONS.palette,
     'acc-ico-general': ICONS.barchart,
     'acc-ico-coach': ICONS.flame,
+    'acc-ico-ai-profile': ICONS.bulb,
     'acc-ico-rest': ICONS.clock,
     'acc-ico-goals': ICONS.target,
     'acc-ico-days': ICONS.calendar || ICONS.clipboard,
@@ -4946,6 +5994,8 @@ function renderSettings() {
   st('toggle-coach', s.coachEnabled !== false);
   st('toggle-coach-push', !!s.coachPushEnabled);
   updateCoachSnoozeSettingsUI();
+  syncCoachModeButtons(); // فاز ۳: نمایش حالت انتخاب‌شده‌ی مربی (آفلاین/AI)
+  renderAIProfileSettings(); // فاز ۱: نمایش اهداف/نکات ایمنی/لحن/خلاصه‌ی مربی AI
   // coach intensity
   document.querySelectorAll('.coach-level-btn').forEach(b=>{
     b.classList.toggle('active', b.dataset.lvl === (s.coachIntensity||'hard'));
@@ -4955,6 +6005,7 @@ function renderSettings() {
   if(m)m.value=appData.restTimes.medium||120;
   if(l)l.value=appData.restTimes.light||90;
   const gi=document.getElementById('monthly-goal-input');if(gi)gi.value=appData.monthlyGoal||12;
+  const ail=document.getElementById('ai-daily-limit-input');if(ail)ail.value=getAIDailyLimit();
   const fi=document.getElementById('training-freq-input');if(fi)fi.value=appData.trainingDaysPerWeek||4;
   const sub=document.getElementById('app-name-sub');if(sub)sub.textContent=s.appName||'IronLog';
   const sampleBanner = (appData.settings.sampleProgramActive && appData.days.length)
@@ -5140,6 +6191,13 @@ function saveTrainingFrequency() {
   const val=parseInt(nv);
   if(!val||val<1||val>7){showToast('عدد باید بین ۱ تا ۷ باشد','error');return;}
   appData.trainingDaysPerWeek=val;saveData();showToast('ذخیره شد','success');
+}
+function saveAIDailyLimit() {
+  const el=document.getElementById('ai-daily-limit-input');
+  const nv=toEnDigits(el.value||''); if(nv!==el.value) el.value=nv;
+  const val=parseInt(nv);
+  if(!val||val<1||val>200){showToast('سقف باید بین ۱ تا ۲۰۰ باشد','error');return;}
+  appData.settings.aiDailyLimit=val;saveData();showToast('ذخیره شد','success');
 }
 function editDayName(dayId) {
   const day=appData.days.find(d=>d.id===dayId);if(!day)return;
@@ -5442,7 +6500,7 @@ function importData(input) {
         if(!ok)return;
         const mig=migrateData(parsed);
         // جایگزینی کامل — نه merge با state قبلی
-        const defaultSettings = {vibrate:true,soundEnabled:true,autoTimer:true,askRPE:false,theme:'default',appName:'IronLog',keepAliveAudio:false,coachEnabled:true,coachIntensity:'hard',coachName:'',logOnlyMode:false,bgMode:'mesh'};
+        const defaultSettings = {vibrate:true,soundEnabled:true,autoTimer:true,askRPE:false,theme:'default',appName:'IronLog',keepAliveAudio:false,coachEnabled:true,coachIntensity:'hard',coachName:'',logOnlyMode:false,bgMode:'mesh',coachMode:'offline',aiDailyLimit:20};
         appData = {
           version: mig.version || DATA_VERSION,
           days: Array.isArray(mig.days) ? mig.days : [],
@@ -5453,7 +6511,10 @@ function importData(input) {
           restTimes: Object.assign({heavy:180,medium:120,light:90}, mig.restTimes || {}),
           monthlyGoal: mig.monthlyGoal ?? 12,
           trainingDaysPerWeek: mig.trainingDaysPerWeek ?? 4,
-          prLog: {}
+          prLog: {},
+          aiRequestsToday: typeof mig.aiRequestsToday === 'number' ? mig.aiRequestsToday : 0,
+          aiRequestsResetDate: mig.aiRequestsResetDate || null,
+          coachChatHistory: Array.isArray(mig.coachChatHistory) ? mig.coachChatHistory : []
         };
         // sanitize IDs after import
         appData.days.forEach(day => {
@@ -5628,10 +6689,13 @@ const TOURS = {
 };
 
 const TourEngine = (() => {
-  let steps = [], idx = 0, rafId = null, active = false, currentTarget = null;
+  let steps = [], idx = 0, rafId = null, active = false, currentTarget = null, opener = null;
+  let trackedScrollEls = [], resizeObs = null;
   const overlay = () => document.getElementById('tour-overlay');
   const spot = () => document.getElementById('tour-spot');
   const card = () => document.getElementById('tour-card');
+  const reduceMotion = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTinyViewport = () => window.innerWidth <= 340 || window.innerHeight <= 520;
 
   function findTarget(name){
     const el = document.querySelector(`[data-tour="${name}"]`);
@@ -5644,8 +6708,14 @@ const TourEngine = (() => {
     return el;
   }
 
-  function trackLoop(){
-    if (!active) return;
+  // قبلاً اینجا یه حلقه‌ی requestAnimationFrame بی‌وقفه بود که هر فریم (۶۰ بار در ثانیه)
+  // getBoundingClientRect می‌زد، حتی وقتی هدف اصلاً تکون نمی‌خورد — روی گوشی‌های ضعیف‌تر
+  // این یعنی مصرف باتری و CPU الکی در تمام مدتی که تور بازه. چیزی که واقعاً باعث جابه‌جایی
+  // هدف می‌شه فقط اسکرول (صفحه یا یه container داخلی)، تغییر اندازه‌ی پنجره/چرخش گوشی، یا
+  // تغییر اندازه‌ی خودِ المان (مثلاً بعد از لود شدن محتوا) هست — پس به‌جای polling دائمی،
+  // فقط به همین رویدادها گوش می‌دیم و موقعیت رو یک‌بار در هر رویداد (نه هر فریم) آپدیت می‌کنیم.
+  function updatePosition(){
+    rafId = null;
     const el = currentTarget;
     if (el && document.body.contains(el)){
       const r = el.getBoundingClientRect();
@@ -5657,11 +6727,56 @@ const TourEngine = (() => {
       s.style.height = (r.height + pad*2) + 'px';
       positionCard(r);
     }
-    rafId = requestAnimationFrame(trackLoop);
+  }
+  // چند رویداد پشت‌سرهم (مثلاً اسکرول تندتند) همه رو تو یک فریم جمع می‌کنیم؛ اگه فریمی
+  // از قبل رزرو شده، دیگه یکی‌ی جدید رزرو نمی‌کنیم
+  function scheduleUpdate(){
+    if (rafId) return;
+    rafId = requestAnimationFrame(updatePosition);
+  }
+  function getScrollableAncestors(el){
+    const result = [];
+    let node = el && el.parentElement;
+    while (node && node !== document.body && node !== document.documentElement){
+      const cs = getComputedStyle(node);
+      if (/(auto|scroll)/.test(cs.overflowY) || /(auto|scroll)/.test(cs.overflowX)) result.push(node);
+      node = node.parentElement;
+    }
+    return result;
+  }
+  function startTracking(el){
+    stopTracking();
+    trackedScrollEls = getScrollableAncestors(el);
+    trackedScrollEls.forEach(n => n.addEventListener('scroll', scheduleUpdate, { passive: true }));
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('orientationchange', scheduleUpdate);
+    if (window.ResizeObserver){
+      resizeObs = new ResizeObserver(scheduleUpdate);
+      resizeObs.observe(el);
+    }
+    scheduleUpdate(); // موقعیت اولیه رو همون‌جا محاسبه کن
+  }
+  function stopTracking(){
+    trackedScrollEls.forEach(n => n.removeEventListener('scroll', scheduleUpdate));
+    trackedScrollEls = [];
+    window.removeEventListener('scroll', scheduleUpdate);
+    window.removeEventListener('resize', scheduleUpdate);
+    window.removeEventListener('orientationchange', scheduleUpdate);
+    if (resizeObs){ resizeObs.disconnect(); resizeObs = null; }
+    if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
   }
 
   function positionCard(r){
     const c = card();
+    // روی صفحه‌های خیلی کوچیک/کوتاه، به‌جای محاسبه‌ی موقعیت نسبت به هدف (که ممکنه از دید خارج بشه)
+    // کارت رو با CSS پایین صفحه ثابت می‌کنیم — مطمئن‌ترین حالت برای گوشی‌های کوچیک.
+    if (isTinyViewport()){
+      c.classList.add('tour-card-bottom-pin');
+      c.style.top = ''; c.style.left = '';
+      return;
+    }
+    c.classList.remove('tour-card-bottom-pin');
     const cw = c.offsetWidth || 280, ch = c.offsetHeight || 120;
     const vw = window.innerWidth, vh = window.innerHeight;
     let top = r.bottom + 16;
@@ -5682,20 +6797,40 @@ const TourEngine = (() => {
     document.getElementById('tour-card-desc').textContent = step.desc;
     document.getElementById('tour-card-progress').textContent = `${idx+1} / ${steps.length}`;
     document.getElementById('tour-next-btn').textContent = (idx === steps.length-1) ? 'پایان' : 'بعدی';
-    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el.scrollIntoView({ block: 'center', behavior: reduceMotion() ? 'auto' : 'smooth' });
     // صبر تا اسکرول/ترنزیشن‌های احتمالی ته بکشن، بعد ردیابی زنده شروع بشه
     setTimeout(() => {
       if (!active) return;
-      if (!rafId) rafId = requestAnimationFrame(trackLoop);
-    }, 350);
+      startTracking(el);
+      // فوکوس رو روی کارت راهنما می‌بریم تا صفحه‌خون‌ها هر قدم جدید رو اعلام کنن
+      // و کاربرهای کیبورد بتونن مستقیم با Tab/Enter تور رو جلو ببرن
+      card().focus({ preventScroll: true });
+    }, reduceMotion() ? 0 : 350);
+  }
+
+  function onKeydown(e){
+    if (!active) return;
+    if (e.key === 'Escape'){ e.preventDefault(); skip(); return; }
+    if (e.key === 'ArrowLeft' || e.key === 'Enter'){ e.preventDefault(); next(); return; }
+    if (e.key === 'ArrowRight'){ e.preventDefault(); return; } // در RTL جهت بعدی/قبلی برعکسه، فعلا فقط جلو رو فعال نگه می‌داریم
+    if (e.key === 'Tab'){
+      // فوکوس رو داخل کارت تور حبس کن (focus trap) که Tab به پشتِ overlay درز نکنه
+      const focusables = card().querySelectorAll('button');
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
   }
 
   function start(tourName){
     steps = TOURS[tourName];
     if (!steps || !steps.length) return;
     idx = 0; active = true;
+    opener = document.activeElement;
     document.body.classList.add('tour-active');
     overlay().classList.add('show');
+    document.addEventListener('keydown', onKeydown);
     renderStep();
   }
 
@@ -5709,10 +6844,15 @@ const TourEngine = (() => {
 
   function finish(){
     active = false;
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = null; currentTarget = null;
+    stopTracking();
+    currentTarget = null;
     document.body.classList.remove('tour-active');
     overlay().classList.remove('show');
+    card().classList.remove('tour-card-bottom-pin');
+    document.removeEventListener('keydown', onKeydown);
+    // فوکوس رو به همون دکمه‌ای که تور رو باز کرده بود برگردون (مهم برای کاربرهای کیبورد/صفحه‌خون)
+    if (opener && document.body.contains(opener) && typeof opener.focus === 'function') opener.focus();
+    opener = null;
     if (typeof maybeOfferSampleRemoval === 'function') maybeOfferSampleRemoval();
   }
 
@@ -6012,6 +7152,11 @@ function safeId(id) {
   const s = String(id||'');
   return /^[A-Za-z0-9_-]+$/.test(s) ? s : '';
 }
+/** آیا کاربر از تنظیمات سیستم "کاهش انیمیشن" رو خواسته؟ برای انیمیشن‌های JS (کانفتی، شمارش عدد)
+ *  که با CSS media query قابل کنترل نیستن، همه‌جا از همین تابع استفاده می‌کنیم */
+function prefersReducedMotion() {
+  return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+}
 /** escape برای قرارگیری داخل '...'' در onclick */
 function escAttr(str) {
   return String(str||'')
@@ -6042,6 +7187,7 @@ const ICON_SVG = {
   dumbbell:    '<path d="M6.5 6.5l11 11M4.5 9.5l-1 1a1.5 1.5 0 002 2M20.5 12.5l1 1a1.5 1.5 0 01-2 2M8.5 4.5l-1-1a1.5 1.5 0 00-2 2M16.5 19.5l1 1a1.5 1.5 0 002-2M6.5 6.5l-2.5 2.5M17.5 17.5l2.5-2.5"/>',
   thumbsUp:    '<path d="M7 11v9H4a1 1 0 01-1-1v-7a1 1 0 011-1h3zm0 0l4.5-8a2 2 0 013.6 1.2L14 9h5a2 2 0 012 2l-1.6 7.2a2 2 0 01-2 1.8H10a3 3 0 01-3-3v-6z"/>',
   thumbsDown:  '<path d="M17 13V4h3a1 1 0 011 1v7a1 1 0 01-1 1h-3zm0 0l-4.5 8a2 2 0 01-3.6-1.2L10 15H5a2 2 0 01-2-2l1.6-7.2A2 2 0 016.6 4H14a3 3 0 013 3v6z"/>',
+  sparkles:    '<path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z"/>',
 };
 function icon(name, size) {
   size = size || 18;
@@ -6077,6 +7223,12 @@ document.addEventListener('keydown', e => {
     ['summary-modal', () => closeSummaryModal()],
     ['story-modal', () => closeModal('story-modal')],
     ['feedback-modal', () => closeModal('feedback-modal')],
+    // این چندتا قبلاً با Escape بسته نمی‌شدن (فقط با کلیک روی دکمه)
+    ['coach-snooze-modal', () => closeModal('coach-snooze-modal')],
+    ['coach-categories-modal', () => closeModal('coach-categories-modal')],
+    ['quick-ask-modal', () => closeQuickAsk()],
+    ['whatsnew-modal', () => closeWhatsNewModal()],
+    ['help-modal', () => closeHelpModal()],
   ];
   for (const [id, fn] of escMap) {
     const el = document.getElementById(id);
@@ -6093,7 +7245,66 @@ document.getElementById('add-exercise-modal').addEventListener('click',function(
 document.getElementById('readiness-modal').addEventListener('click',function(e){if(e.target===this)skipReadinessCheckin();});
 document.getElementById('story-modal').addEventListener('click',function(e){if(e.target===this)closeModal('story-modal');});
 document.getElementById('feedback-modal').addEventListener('click',function(e){if(e.target===this)closeModal('feedback-modal');});
+document.getElementById('quick-ask-modal').addEventListener('click',function(e){if(e.target===this)closeQuickAsk();});
+document.getElementById('coach-snooze-modal').addEventListener('click',function(e){if(e.target===this)closeModal('coach-snooze-modal');});
+document.getElementById('coach-categories-modal').addEventListener('click',function(e){if(e.target===this)closeModal('coach-categories-modal');});
+document.getElementById('whatsnew-modal').addEventListener('click',function(e){if(e.target===this)closeWhatsNewModal();});
+document.getElementById('help-modal').addEventListener('click',function(e){if(e.target===this)closeHelpModal();});
 document.getElementById('confirm-dialog').addEventListener('click',function(e){if(e.target===this)closeConfirm(false);});
+
+// ═══════════════════════════════════════════════════
+//  دسترس‌پذیری کیبورد برای همه‌ی مودال‌های اپ (نه فقط تور):
+//  ۱) وقتی مودالی باز می‌شه، فوکوس میره روی اولین المان قابل‌فوکوس داخلش
+//  ۲) کلید Tab فوکوس رو داخل همون مودال حبس می‌کنه (focus trap) و به پشت صفحه درز نمی‌کنه
+//  ۳) وقتی مودال بسته می‌شه، فوکوس به همون دکمه‌ای که بازش کرده بود برمی‌گرده
+//  همه‌ی مودال‌ها (کلاس modal-overlay) و دیالوگ تأیید (confirm-dialog) با باز/بسته
+//  شدنشون کلاس «open» می‌گیرن/از دست می‌دن؛ پس کافیه همین تغییر کلاس رو زیر نظر بگیریم —
+//  نیازی نیست هر تابع openModal/showConfirm دیگه‌ای رو تک‌تک دستکاری کنیم.
+// ═══════════════════════════════════════════════════
+const modalOpenerMap = new WeakMap();
+function getFocusableIn(container){
+  return Array.from(container.querySelectorAll(
+    'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(el => el.offsetParent !== null);
+}
+function getOpenModalEl(){
+  const openModals = document.querySelectorAll('.modal-overlay.open, .confirm-dialog.open');
+  return openModals.length ? openModals[openModals.length - 1] : null;
+}
+function onModalFocusTrap(e){
+  if (e.key !== 'Tab') return;
+  const modal = getOpenModalEl();
+  if (!modal) return;
+  const focusables = getFocusableIn(modal);
+  if (!focusables.length) return;
+  const first = focusables[0], last = focusables[focusables.length - 1];
+  if (!modal.contains(document.activeElement)){ e.preventDefault(); first.focus(); return; }
+  if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+}
+document.addEventListener('keydown', onModalFocusTrap);
+
+document.querySelectorAll('.modal-overlay, .confirm-dialog').forEach(modalEl => {
+  new MutationObserver(muts => {
+    for (const m of muts){
+      if (m.attributeName !== 'class') continue;
+      const isOpen = modalEl.classList.contains('open');
+      if (isOpen){
+        if (!modalOpenerMap.has(modalEl)) modalOpenerMap.set(modalEl, document.activeElement);
+        // یه تیک صبر می‌کنیم چون بعضی مودال‌ها همزمان با باز شدن innerHTML‌شون رو پر می‌کنن
+        setTimeout(() => {
+          if (!modalEl.classList.contains('open')) return;
+          const focusables = getFocusableIn(modalEl);
+          if (focusables.length) focusables[0].focus();
+        }, 30);
+      } else {
+        const opener = modalOpenerMap.get(modalEl);
+        if (opener && document.body.contains(opener) && typeof opener.focus === 'function') opener.focus();
+        modalOpenerMap.delete(modalEl);
+      }
+    }
+  }).observe(modalEl, { attributes: true, attributeFilter: ['class'] });
+});
 document.getElementById('input-modal-field').addEventListener('keydown',e=>{if(e.key==='Enter')confirmInputModal();});
 // پشتیبانی Enter در مودال افزودن/ویرایش حرکت
 ['aem-name','aem-sets','aem-reps','aem-superset-name'].forEach(id=>{
@@ -6176,6 +7387,41 @@ function toLocalDateStr(dateInput) {
   const m = String(d.getMonth()+1).padStart(2,'0');
   const day = String(d.getDate()).padStart(2,'0');
   return `${y}-${m}-${day}`;
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۴ / قسمت ۸ — پیام خوش‌آمد صفحه‌ی چت (بر اساس وضعیت اخیر تمرین)
+// ═══════════════════════════════════════════════════
+function buildCoachChatWelcomeMessage() {
+  const name = getCoachUserName();
+  const greet = name ? `سلام ${name}! ` : 'سلام! ';
+  const totalSessions = appData.history.length;
+
+  if (!totalSessions) {
+    return greet + 'هنوز جلسه‌ای ثبت نکردی. هر سؤالی درباره‌ی برنامه یا نحوه‌ی کار با اپ داشتی، همینجا بپرس.';
+  }
+
+  const now = new Date();
+  const todayKey = now.toDateString();
+  const hasWorkoutToday = appData.history.some(s => new Date(s.date).toDateString() === todayKey);
+  const last = appData.history[appData.history.length - 1];
+  const daysSinceLast = last ? Math.floor((now - new Date(last.date)) / 86400000) : null;
+  const streak = calcStreak();
+
+  let statusLine;
+  if (hasWorkoutToday) {
+    statusLine = streak > 1
+      ? `امروز رو هم زدی، رگه‌ت الان ${toFarsiNum(streak)} روزه. بگو چطور می‌تونم کمکت کنم.`
+      : 'امروز تمرین زدی — بگو چی تو ذهنته.';
+  } else if (daysSinceLast === 1) {
+    statusLine = 'دیروز تمرین داشتی. سؤالی درباره‌ی امروز یا هر چیز دیگه‌ای داری؟';
+  } else if (daysSinceLast != null && daysSinceLast >= 4) {
+    statusLine = `${toFarsiNum(daysSinceLast)} روزه جلسه‌ای ثبت نکردی. اگه دلیلی داره (خستگی، درد، بی‌انگیزگی) بگو تا کمکت کنم.`;
+  } else {
+    statusLine = 'بگو چی تو ذهنته، هر سؤالی درباره‌ی تمرین یا اپ داری بپرس.';
+  }
+
+  return greet + statusLine;
 }
 
 function calcStreak() {
@@ -6347,6 +7593,68 @@ function getRecentSessions(exId, count) {
   return result;
 }
 
+// ═══════════════════════════════════════════════════
+//  فاز ۵ (نقشه‌راه هوش مصنوعی) — پیشنهاد اصلاح برنامه (افزایش وزنه / دیلود)
+// ═══════════════════════════════════════════════════
+// این بخش منطق تشخیص رو از analyzePerformance موجود (suggestions/fatigues) می‌گیره،
+// هیچ تشخیص جدیدی نمی‌سازه — فقط تصمیم رو قابل‌قبول/رد و AI-phrased می‌کنه.
+
+const ADJUSTMENT_DISMISS_COOLDOWN_MS = 4 * 24 * 3600 * 1000; // بعد از رد کردن، ۴ روز دوباره پیشنهاد نده
+
+function getExDefById(exId) {
+  return appData.days.flatMap(d => d.exercises).find(e => e.id === exId) || null;
+}
+
+// نمایش بج «هدف پذیرفته‌شده» زیر نام حرکت — تا وقتی که یه جلسه‌ی جدید برای همین
+// حرکت واقعاً ثبت بشه (بعدش دیگه موضوعیت نداره و در startSession پاک می‌شه).
+function renderAcceptedAdjustmentBadge(adj) {
+  if (adj.type === 'deload') {
+    return `<div class="exercise-suggestion" style="color:var(--text2);background:rgba(255,255,255,0.06);"><span style="width:11px;height:11px;display:inline-flex;vertical-align:-2px;">${ICONS.snowflake||ICONS.bulb}</span> این جلسه رو سبک‌تر بزن</div>`;
+  }
+  return `<div class="exercise-suggestion"><span style="width:11px;height:11px;display:inline-flex;vertical-align:-2px;">${ICONS.bulb}</span> هدف این جلسه: ${adj.weight}kg</div>`;
+}
+
+function isAdjustmentDismissedRecently(ex) {
+  if (!ex._adjustmentDismissedAt) return false;
+  return (Date.now() - ex._adjustmentDismissedAt) < ADJUSTMENT_DISMISS_COOLDOWN_MS;
+}
+
+// کاربر پیشنهاد رو قبول می‌کنه — فقط به‌عنوان یک یادآوری/برچسب برای جلسه‌ی بعدی ذخیره می‌شه
+// (appData.days[].exercises[].acceptedAdjustment)، هرگز خودکار روی وزن ثبت‌شده اعمال نمی‌شه.
+function acceptProgramAdjustment(exId, type, weight) {
+  const ex = getExDefById(exId);
+  if (!ex) return;
+  ex.acceptedAdjustment = { type, weight, acceptedAt: Date.now() };
+  delete ex._adjustmentDismissedAt;
+  saveData();
+  showToast(type === 'deload' ? 'دیلود برای جلسه‌ی بعدی یادداشت شد' : 'هدف وزنه‌ی جدید برای جلسه‌ی بعدی یادداشت شد', 'success');
+  renderSmartSuggestions();
+  if (typeof renderExercises === 'function' && currentDayId) renderExercises();
+}
+
+function rejectProgramAdjustment(exId) {
+  const ex = getExDefById(exId);
+  if (!ex) return;
+  ex._adjustmentDismissedAt = Date.now();
+  saveData();
+  renderSmartSuggestions();
+}
+
+// از callCoachAI (فاز ۰، promptType='program_adjustment') یک عبارت طبیعی برای پیشنهاد می‌خواهد.
+// اگه AI جواب نداد، همون متن rule-based موجود (که همیشه اول نشون داده می‌شه) می‌مونه.
+async function upgradeAdjustmentTextWithAI(elId, type, exName, weight) {
+  if (getCoachMode() !== 'ai') return;
+  const contextData = {
+    'نام حرکت': exName,
+    'نوع پیشنهاد': type === 'deload' ? 'کاهش وزنه (دیلود)' : 'افزایش وزنه',
+    'وزنه‌ی پیشنهادی جدید': `${weight}kg`,
+  };
+  const text = await callCoachAI('program_adjustment', contextData);
+  if (!text) return;
+  const el = document.getElementById(elId);
+  if (el) el.textContent = text;
+}
+
 function renderSmartSuggestions() {
   const wrap = document.getElementById('smart-suggestions-wrap');
   if (!wrap) return;
@@ -6365,25 +7673,91 @@ function renderSmartSuggestions() {
   const {suggestions, fatigues} = analyzePerformance();
   checkCoachFeatureUnlock('smartsuggest', true, '🎉 پیشنهادهای هوشمند فعال شد!\nاز این به بعد پیشنهاد وزن و هشدار خستگی رو همینجا می‌بینی.');
   let html = '';
-  if (suggestions.length) {
+
+  // ─── پیشنهاد افزایش وزنه — قابل قبول/رد ───
+  const activeSuggestions = suggestions.filter(s => {
+    const ex = appData.days.flatMap(d=>d.exercises).find(e=>e.name===s.ex);
+    return ex && !isAdjustmentDismissedRecently(ex);
+  });
+  if (activeSuggestions.length) {
     html += `<div class="smart-card">
       <div class="smart-card-title"><span style="width:14px;height:14px;display:inline-flex;">${ICONS.bulb}</span>پیشنهاد هوشمند</div>
-      ${suggestions.map(s=>`<div class="smart-item">
-        <div class="smart-item-icon">${ICONS.trendUp}</div>
-        <div class="smart-item-text"><strong>${escHtml(s.ex)}</strong> وقتشه وزن رو از ${s.w}kg به ${s.newW}kg ببری</div>
-      </div>`).join('')}
+      ${activeSuggestions.map(s=>{
+        const ex = appData.days.flatMap(d=>d.exercises).find(e=>e.name===s.ex);
+        const elId = 'adj-text-' + safeId(ex.id);
+        upgradeAdjustmentTextWithAI(elId, 'increase', s.ex, s.newW);
+        return `<div class="smart-item actionable">
+          <div class="smart-item-top">
+            <div class="smart-item-icon">${ICONS.trendUp}</div>
+            <div class="smart-item-text" id="${elId}"><strong>${escHtml(s.ex)}</strong> وقتشه وزن رو از ${s.w}kg به ${s.newW}kg ببری</div>
+          </div>
+          <div class="adj-card-actions">
+            <button class="adj-btn accept" onclick="acceptProgramAdjustment('${ex.id}','increase',${s.newW})">قبول می‌کنم</button>
+            <button class="adj-btn reject" onclick="rejectProgramAdjustment('${ex.id}')">فعلاً نه</button>
+          </div>
+        </div>`;
+      }).join('')}
     </div>`;
   }
-  if (fatigues.length) {
+
+  // ─── هشدار خستگی تکی (بدون اقدام، صرفاً اطلاع‌رسانی — مثل قبل) ───
+  const activeFatigues = fatigues.filter(f => {
+    const ex = appData.days.flatMap(d=>d.exercises).find(e=>e.name===f.ex);
+    return ex && !isAdjustmentDismissedRecently(ex);
+  });
+  if (activeFatigues.length) {
     html += `<div class="fatigue-card">
       <div class="fatigue-card-title"><span style="width:14px;height:14px;display:inline-flex;">${ICONS.alert}</span>هشدار خستگی</div>
-      ${fatigues.map(f=>`<div class="smart-item">
+      ${activeFatigues.map(f=>`<div class="smart-item">
         <div class="smart-item-icon">${ICONS.trendDown}</div>
         <div class="smart-item-text"><strong>${escHtml(f.ex)}</strong> عملکرد ${f.drop}٪ افت داشته — استراحت بیشتر بده</div>
       </div>`).join('')}
     </div>`;
   }
+
+  // ─── پیشنهاد دیلود — وقتی حداقل ۲ حرکت هم‌زمان نشونه‌ی خستگی تجمعی دارن (سیگنال deload موجود) ───
+  // این جدی‌تر از هشدار تکی بالاست، برای همین قابل قبول/رد است (دیلود = تصمیم برنامه‌ای، نه فقط اطلاع).
+  if (fatigues.length >= 2) {
+    const deloadKey = 'global-deload';
+    const dismissedKey = '_deloadDismissedAt';
+    const dismissedAt = appData.settings?.[dismissedKey] || 0;
+    const stillCooling = dismissedAt && (Date.now() - dismissedAt) < ADJUSTMENT_DISMISS_COOLDOWN_MS;
+    if (!stillCooling) {
+      const elId = 'adj-text-deload';
+      const exNames = fatigues.map(f=>f.ex).join('، ');
+      upgradeAdjustmentTextWithAI(elId, 'deload', exNames, '');
+      html += `<div class="fatigue-card">
+        <div class="fatigue-card-title"><span style="width:14px;height:14px;display:inline-flex;">${ICONS.snowflake||ICONS.alert}</span>پیشنهاد دیلود</div>
+        <div class="smart-item actionable">
+          <div class="smart-item-top">
+            <div class="smart-item-icon">${ICONS.snowflake||ICONS.trendDown}</div>
+            <div class="smart-item-text" id="${elId}">چند حرکت (${escHtml(exNames)}) هم‌زمان نشونه‌ی خستگی دارن — این هفته رو با حدود ۱۰-۱۵٪ وزنه‌ی کمتر ببند تا ریکاوری کنی.</div>
+          </div>
+          <div class="adj-card-actions">
+            <button class="adj-btn accept" onclick="acceptGlobalDeload()">باشه، این هفته سبک‌تر می‌زنم</button>
+            <button class="adj-btn reject" onclick="rejectGlobalDeload()">فعلاً نه</button>
+          </div>
+        </div>
+      </div>`;
+    }
+  }
+
   wrap.innerHTML = html;
+}
+
+function acceptGlobalDeload() {
+  if (!appData.settings) appData.settings = {};
+  appData.settings._deloadDismissedAt = Date.now(); // پذیرفتن هم یعنی فعلاً دیگه لازم نیست دوباره پیشنهاد بشه
+  appData.settings._deloadAcceptedAt = Date.now();
+  saveData();
+  showToast('باشه — این هفته رو آسون‌تر بگیر، بدنت بهش نیاز داره', 'success');
+  renderSmartSuggestions();
+}
+function rejectGlobalDeload() {
+  if (!appData.settings) appData.settings = {};
+  appData.settings._deloadDismissedAt = Date.now();
+  saveData();
+  renderSmartSuggestions();
 }
 
 // ═══════════════════════════════════════════════════
@@ -8557,6 +9931,25 @@ const COACH = {
     'ادامه بده همین‌طور.',
     'خوب تمام شد این ست.'
   ],
+  // فاز ۲ (نقشه‌راه هوش مصنوعی) — استراحت بین ست‌ها از میانگین معمول بیشتر شده؛
+  // fallback آفلاین فوری وقتی AI در دسترس نیست یا هنوز جواب نداده.
+  restReminder: [
+    'هروقت آماده بودی، ست بعدی رو بزن.',
+    'استراحت خوبه، ولی حواست به ریتم باشه.',
+    'یکم بیشتر از حد معمول استراحت کردی، مشکلی نیست.',
+    'آماده که شدی ادامه بده.',
+    'نفس تازه کن و برگرد.',
+    'یه‌کم طول کشید، ولی مهم اینه که برگردی.',
+    'استراحت کافیه، بزن ادامه.',
+    'هر وقت حس کردی آماده‌ای، شروع کن.',
+    'ریتم رو از دست نده، ادامه بده.',
+    'کمی بیشتر استراحت کردی، اشکالی نداره — برگرد سر کار.',
+    'وقتشه ست بعدی رو بزنی.',
+    'یه نفس عمیق و برگرد به کار.',
+    'استراحتت طولانی‌تر از معموله، آماده‌ای؟',
+    'زمان استراحتت تموم شد، برگرد.',
+    'هر وقت حاضر بودی، بریم سراغ ست بعد.'
+  ],
   setDown: {
     chill: [
       'کمی سبک‌تر زدی، اشکالی نداره.',
@@ -9395,6 +10788,19 @@ function renderCoachBanner() {
   const whyBtn = msg.why
     ? `<button class="coach-feedback-btn" style="width:auto;padding:0 10px;border-radius:12px;" onclick="toggleCoachWhy(this)" title="چرا این رو گفتی؟">چرا؟</button>`
     : '';
+  // فاز ۳: پرسش آزاد فقط تو حالت AI معنی داره (COACH آفلاین قابلیت پاسخ به سؤال دلخواه رو نداره)
+  const askAIBtn = getCoachMode() === 'ai'
+    ? `<button class="coach-feedback-btn" style="width:auto;padding:0 10px;border-radius:12px;" onclick="toggleCoachAIBox()" title="از مربی بپرس">از مربی بپرس</button>`
+    : `<button class="coach-feedback-btn" style="width:auto;padding:0 10px;border-radius:12px;" onclick="openAICoachSettings()" title="فعال‌سازی مربی AI">فعال‌سازی مربی AI</button>`;
+  const aiBoxHtml = getCoachMode() === 'ai' ? `
+      <div class="coach-ai-box" id="coach-ai-box" style="display:none;">
+        <div class="coach-ai-row">
+          <input type="text" id="coach-ai-input" class="coach-ai-input" placeholder="سؤالت رو بپرس…" onkeydown="if(event.key==='Enter')submitCoachAIQuestion()">
+          <button class="coach-ai-send-btn" id="coach-ai-send-btn" onclick="submitCoachAIQuestion()">${icon('flame',15)}</button>
+        </div>
+        <div class="coach-ai-answer" id="coach-ai-answer"></div>
+        <div class="ai-remaining-note" id="coach-ai-remaining"></div>
+      </div>` : '';
   wrap.innerHTML = `
     <div class="coach-banner ${msg.tier}" id="coach-banner-el" data-tier="${msg.tier}" data-key="${escHtml(msg.key||'')}" data-shown="${Date.now()}">
       <button class="coach-dismiss" onclick="dismissCoach()" title="بستن">×</button>
@@ -9411,16 +10817,23 @@ function renderCoachBanner() {
         <button class="coach-feedback-btn" onclick="giveCoachFeedback(true)" title="مفید بود">${icon('thumbsUp',14)}</button>
         <button class="coach-feedback-btn" onclick="giveCoachFeedback(false)" title="مفید نبود">${icon('thumbsDown',14)}</button>
         ${whyBtn}
-        <button class="coach-feedback-btn" style="width:auto;padding:0 10px;border-radius:12px;" onclick="toggleCoachAIBox()" title="از مربی بپرس">از مربی بپرس</button>
-      </div>
-      <div class="coach-ai-box" id="coach-ai-box" style="display:none;">
-        <div class="coach-ai-row">
-          <input type="text" id="coach-ai-input" class="coach-ai-input" placeholder="سؤالت رو بپرس…" onkeydown="if(event.key==='Enter')submitCoachAIQuestion()">
-          <button class="coach-ai-send-btn" id="coach-ai-send-btn" onclick="submitCoachAIQuestion()">${icon('flame',15)}</button>
-        </div>
-        <div class="coach-ai-answer" id="coach-ai-answer"></div>
-      </div>
+        ${askAIBtn}
+      </div>${aiBoxHtml}
     </div>`;
+}
+
+// فاز ۳: از بنر مربی مستقیم به بخش «پروفایل مربی AI» تو تنظیمات می‌ره تا کاربر خودآگاهانه فعالش کنه
+function openAICoachSettings() {
+  switchPage('settings');
+  setTimeout(() => {
+    const acc = document.querySelector('.settings-acc[data-acc="ai-profile"]');
+    if (!acc) return;
+    if (!acc.classList.contains('open')) {
+      const head = acc.querySelector('.settings-acc-head');
+      if (head) toggleSettingsAcc(head);
+    }
+    acc.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 300);
 }
 
 function toggleCoachAIBox() {
@@ -9430,6 +10843,7 @@ function toggleCoachAIBox() {
   if (box.style.display === 'block') {
     const input = document.getElementById('coach-ai-input');
     if (input) input.focus();
+    updateAIRemainingNote('coach-ai-remaining');
   }
 }
 
@@ -9472,40 +10886,285 @@ function giveCoachFeedback(helpful) {
   if (fb) fb.innerHTML = helpful ? 'ممنون از فیدبکت 🙂' : 'باشه، لحن رو تنظیم می‌کنم';
 }
 
-// ─── مربی هوشمند واقعی (Gemini) — پرسش آزاد از مربی ───
+// ─── مربی هوشمند واقعی (GapGPT — سازگار با OpenAI) — پرسش آزاد از مربی ───
 // ⚠️ کلید مستقیم اینجاست چون این نسخه فقط برای تست با چند کاربر آشناست، نه انتشار عمومی.
-const GEMINI_API_KEY = 'AQ.Ab8RN6LxFEQRW-Kmo6MqaZGFJheH_qg5I56UNCOUNPJJQAw_xQ';
-const GEMINI_MODEL = 'gemini-2.0-flash';
+// ⚠️ هشدار امنیتی: این کلید توی سورس کد قابل مشاهده‌ست. هرگز این فایل رو با کلید واقعی
+// روی یه ریپازیتوری عمومی گیت‌هاب push نکن، وگرنه دوباره لو می‌ره و باطل می‌شه.
+const GAPGPT_API_KEY = 'sk-LTDRGYdi1HwUc6HtSwxcv1s1WC353A9NRUr6aa6CiRNEGjIW';
+const GAPGPT_MODEL = 'gpt-4o-mini';
 
-async function askCoachAI(userText) {
+// ═══════════════════════════════════════════════════
+//  فاز ۷ — مدیریت هزینه و Rate Limiting روزانه‌ی AI
+// ═══════════════════════════════════════════════════
+// شمارنده‌ی روزانه داخل appData نگه داشته می‌شه (نه یه localStorage جدا) تا با ذخیره/بکاپ/import هماهنگ بمونه.
+// ریست بر اساس تاریخ محلی (همون الگوی toDateString که همه‌جای اپ برای «امروز» استفاده می‌شه)، نه UTC خام.
+
+// اگه روز عوض شده باشه، شمارنده رو صفر و تاریخ رو آپدیت می‌کنه. قبل از هر خوندن/نوشتن شمارنده صدا زده می‌شه.
+function ensureAIRequestCounter() {
+  const todayKey = new Date().toDateString();
+  if (appData.aiRequestsResetDate !== todayKey) {
+    appData.aiRequestsResetDate = todayKey;
+    appData.aiRequestsToday = 0;
+  }
+  if (typeof appData.aiRequestsToday !== 'number' || appData.aiRequestsToday < 0 || !isFinite(appData.aiRequestsToday)) {
+    appData.aiRequestsToday = 0;
+  }
+}
+
+// سقف روزانه‌ی قابل‌تنظیم کاربر (پیش‌فرض ۲۰) — از تنظیمات خونده می‌شه با محافظت در برابر مقدار نامعتبر.
+function getAIDailyLimit() {
+  const lim = parseInt(appData.settings.aiDailyLimit, 10);
+  return (Number.isFinite(lim) && lim > 0) ? lim : 20;
+}
+
+// تعداد درخواست‌های باقی‌مونده‌ی امروز (برای نمایش احتمالی در UI).
+function getAIRequestsRemaining() {
+  ensureAIRequestCounter();
+  return Math.max(0, getAIDailyLimit() - appData.aiRequestsToday);
+}
+
+// نمایش تعداد باقی‌مونده در UI — فقط یه خط ریز و کم‌رنگ، وقتی نزدیک سقف بشه زرد می‌شه.
+function updateAIRemainingNote(elId) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const remaining = getAIRequestsRemaining();
+  const limit = getAIDailyLimit();
+  el.textContent = remaining > 0 ? `${remaining} از ${limit} سؤال امروز مونده` : '';
+  el.classList.toggle('warn', remaining > 0 && remaining <= 3);
+}
+
+// ─── چک مرکزی — باید قبل از هر فراخوانی AI (در همه‌ی نقاط ورودی) صدا زده بشه ───
+function canMakeAIRequest() {
+  ensureAIRequestCounter();
+  return appData.aiRequestsToday < getAIDailyLimit();
+}
+
+// ─── باید بعد از هر فراخوانی *موفق* AI صدا زده بشه — شمارنده رو افزایش و ذخیره می‌کنه ───
+function recordAIRequestUsed() {
+  ensureAIRequestCounter();
+  appData.aiRequestsToday += 1;
+  saveData();
+}
+
+// پیام یکسان برای نقاط تعاملی (چت آزاد مربی، پرسش سریع حین ست) وقتی سقف روزانه رد شده.
+const AI_LIMIT_REACHED_MSG = 'به سقف روزانه‌ی درخواست‌های هوشمند رسیدی — فردا دوباره فعال می‌شه. می‌تونی سقف رو از تنظیمات تغییر بدی.';
+
+// ─── تابع پایه‌ی خام برای صدا زدن AI — هیچ UI ای رو لمس نمی‌کنه، فقط متن جواب رو برمی‌گردونه یا throw می‌کنه ───
+// این تابع هم توسط چت آزاد کاربر (askCoachAI) و هم توسط تولید خودکار خلاصه‌ی پروفایل استفاده می‌شه.
+async function callAIRaw(userText, systemPrompt, maxTokens, history) {
+  const url = 'https://api.gapgpt.app/v1/chat/completions';
+  const msgs = [{ role: 'system', content: systemPrompt }];
+  // فاز ۴ / قسمت ۶ — حافظه‌ی کوتاه‌مدت مکالمه: اگه چند پیام آخر چت اختصاصی پاس داده شده باشه،
+  // قبل از سؤال فعلی به AI می‌دیم تا context مکالمه رو داشته باشه، نه اینکه هر سؤال کاملاً مستقل حساب بشه.
+  if (Array.isArray(history) && history.length) {
+    history.forEach(m => msgs.push({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text }));
+  }
+  msgs.push({ role: 'user', content: userText });
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${GAPGPT_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: GAPGPT_MODEL,
+      messages: msgs,
+      max_tokens: maxTokens || 300,
+      temperature: 0.8,
+    }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data?.error?.message || data?.message || 'خطا از سمت GapGPT');
+  return data?.choices?.[0]?.message?.content || '';
+}
+
+// کش سبک برای سؤالات تکراری چت آزاد مربی — فقط برای همین حالت، چون بیشترین تکرار سؤال اینجاست
+// (چیزی مثل «درد دارم ادامه بدم؟» رو آدم‌ها گاهی چندبار پشت‌سرهم می‌پرسن). TTL کوتاهه که جواب بیات نشه.
+const _coachAIAnswerCache = new Map();
+const COACH_AI_CACHE_TTL_MS = 10 * 60 * 1000; // ۱۰ دقیقه
+function _hashCoachQuestion(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۰ (نقشه‌راه هوش مصنوعی) — لایه‌ی مرکزی callCoachAI
+// ═══════════════════════════════════════════════════
+// این ماژول جایگزین callAIRaw/buildFullSystemPrompt/canMakeAIRequest نمی‌شه،
+// فقط یک لایه‌ی نازک روشونه که به فازهای بعدی (یادداشت هوشمند، پیام حین ست،
+// کپشن استوری و...) یک نقطه‌ی ورود ساده و یکسان می‌ده:
+//
+//   const text = await callCoachAI('promptType', { ...contextData });
+//   if (text) { /* از AI استفاده کن */ } else { /* fallback آفلاین خودت رو نشون بده */ }
+//
+// یعنی callCoachAI هیچ‌وقت throw نمی‌کنه و هیچ‌وقت خطای خام برنمی‌گردونه؛
+// یا یه متن معتبر می‌ده یا null — تصمیم فallback همیشه با خود فراخوان‌کننده‌ست
+// (چون هر promptType یه fallback متفاوت و مناسب خودش داره، نه یک fallback عمومی).
+
+// ─── تعریف پرامپت‌های اختصاصی هر نوع درخواست ───
+// فازهای بعدی کلید جدید به همین آبجکت اضافه می‌کنن؛ خود تابع callCoachAI رو
+// دست نمی‌زنن. هر ورودی یا رشته‌ست یا تابعی که contextData رو می‌گیره و
+// رشته برمی‌گردونه (برای وقتی که پرامپت باید بر اساس context شکل بگیره).
+const COACH_AI_PROMPTS = {
+  // فاز ۱ — یادداشت هوشمند زیر هر حرکت: مربی به یادداشت تازه‌ی کاربر
+  // درباره‌ی همون حرکت (درد، حس خستگی، تغییر فرم و...) یه واکنش کوتاه می‌ده.
+  exercise_note:
+    'تو مربی هوشمند اپ IronLog هستی. کاربر زیر یک حرکت مشخص یادداشت نوشته. ' +
+    'با لحن صمیمی و کوتاه (۱-۲ جمله، حداکثر ۳) به همون یادداشت واکنش نشون بده — ' +
+    'مثل کامنتی که یه مربی واقعی زیر یادداشت شاگردش می‌نویسه. ' +
+    'اگه یادداشت به درد/آسیب اشاره داره، صریح و کوتاه توصیه به احتیاط یا توقف بده. ' +
+    'از تکرار عین جمله‌ی کاربر خودداری کن؛ کلیشه‌ای یا جنریک ننویس.',
+
+  // فاز ۲ — پیام لحظه‌ای بین ست‌ها: واکنش به ست فعلی نسبت به ست قبلی همون حرکت.
+  mid_workout:
+    'تو مربی هوشمند اپ IronLog هستی. کاربر همین الان وسط تمرینه و یک ست تازه ثبت کرده. ' +
+    'فقط یک جمله‌ی خیلی کوتاه (حداکثر ۱۲ کلمه) و مرتبط با همون ست بنویس، بدون توضیح اضافه — ' +
+    'نه یک پیام جنریک تشویقی. اگه رکورد جدیده هیجانش رو نشون بده؛ اگه افت داشته، ' +
+    'حمایتی و بدون سرزنش باش؛ اگه معمولیه، به روند اشاره‌ی کوتاه کن. ایموجی یا علامت تعجب زیاد نذار.',
+
+  // فاز ۲ — استراحت بین ست‌ها از حد معمول کاربر بیشتر شده: یک یادآوری ملایم، نه فشار.
+  rest_reminder:
+    'تو مربی هوشمند اپ IronLog هستی. کاربر بین دو ست همین حرکت، بیشتر از حد معمول خودش ' +
+    'استراحت کرده. با لحن حمایتی و بدون فشار یا سرزنش، فقط یک جمله‌ی خیلی کوتاه (حداکثر ۱۰ کلمه) ' +
+    'بنویس که ملایم یادآوری کنه ادامه بده — نه دستوری، نه نگران‌کننده.',
+
+  // فاز ۳ — کپشن استوری: تولید کپشن کوتاه برای اشتراک‌گذاری استوری تمرین.
+  // فاز ۴ — خلاصه‌ی هفتگی روایتی: تبدیل آمار خام هفته به یک پاراگراف طبیعی و مربی‌گونه.
+  progress_summary:
+    'تو مربی هوشمند اپ IronLog هستی. بر اساس آمار زیر مربوط به هفته‌ی اخیر کاربر، ' +
+    'یک پاراگراف کوتاه (حداکثر ۳-۴ جمله‌ی فارسی) با لحن مربی واقعی و صمیمی بنویس — ' +
+    'روایت‌گونه، نه فقط تکرار اعداد. به مهم‌ترین نکته (پیشرفت، وقفه، یا رکورد) اشاره کن. ' +
+    'اگه سیگنال خستگی یا عدم‌تعادل داده شده، با لحن آرام و غیرترسناک توضیحش رو بگو. ' +
+    'اگه پیش‌بینی رکورد بعدی داده شده، در پایان یک جمله‌ی کوتاه و تشویقی درباره‌ش بگو. ' +
+    'ایموجی یا علامت تعجب زیاد نذار.',
+
+  // فاز ۵ — پیشنهاد اصلاح برنامه: افزایش وزنه یا دیلود، بر اساس تشخیص rule-based موجود.
+  program_adjustment:
+    'تو مربی هوشمند اپ IronLog هستی. بر اساس تحلیل عملکرد زیر یک پیشنهاد کوتاه (حداکثر ۲ جمله‌ی فارسی) ' +
+    'برای جلسه‌ی بعدی همین حرکت بنویس. اگه نوع پیشنهاد افزایش وزنه است، با لحن مثبت و مطمئن بگو؛ ' +
+    'اگه دیلود/کاهش است، با لحن حمایتی و بدون نگران‌کننده بگو که این بخش طبیعی پیشرفته، نه شکست. ' +
+    'عدد وزنه‌ی دقیق رو از داده‌ی داده‌شده استفاده کن، خودت عدد جدید نساز. ایموجی زیاد نذار.',
+
+  caption:
+    'تو مربی هوشمند اپ IronLog هستی. برای یک استوری ورزشی که کاربر می‌خواد به‌اشتراک ' +
+    'بذاره، یک کپشن کوتاه (حداکثر یک یا دو جمله‌ی فارسی) بر اساس داده‌ی حرکت بنویس. ' +
+    'لحن رو تصادفی از بین این سه انتخاب کن و در پاسخ فقط با همون یک لحن بنویس: ' +
+    'جدی/تحسین‌آمیز، یا شوخ‌طبع دوستانه، یا حماسی/انگیزشی. کلیشه‌ای یا تکراری ننویس.',
+};
+
+// ─── کش سبک session-based برای callCoachAI ───
+// جدا از کش چت آزاد (_coachAIAnswerCache)، چون کلید و شکل context اینجا فرق داره.
+// فقط در حافظه (نه localStorage) — با رفرش صفحه پاک می‌شه، که برای این نوع
+// درخواست‌های کوتاه‌عمر (یادداشت یه حرکت خاص، ست الان) مشکلی نیست.
+const _coachAICallCache = new Map();
+const COACH_AI_CALL_CACHE_TTL_MS = 10 * 60 * 1000; // ۱۰ دقیقه
+
+function _stableCoachAIContextKey(promptType, contextData) {
+  // JSON.stringify با کلیدهای مرتب تا ترتیب فیلدها در contextData باعث میس‌شدن کش نشه
+  const sortedKeys = Object.keys(contextData || {}).sort();
+  const normalized = {};
+  sortedKeys.forEach(k => { normalized[k] = contextData[k]; });
+  return promptType + '::' + JSON.stringify(normalized);
+}
+
+// contextData رو از یه آبجکت به متن خوانا (نه JSON خام) تبدیل می‌کنه تا مدل
+// راحت‌تر و طبیعی‌تر بتونه ازش استفاده کنه.
+function _formatCoachAIContext(contextData) {
+  if (!contextData || typeof contextData !== 'object') return '';
+  const lines = Object.entries(contextData)
+    .filter(([, v]) => v !== undefined && v !== null && v !== '')
+    .map(([k, v]) => `- ${k}: ${v}`);
+  if (!lines.length) return '';
+  return 'داده‌های مرتبط با این درخواست:\n' + lines.join('\n');
+}
+
+/**
+ * لایه‌ی مرکزی فراخوانی AI برای همه‌ی نقاط تماس جدید (یادداشت هوشمند، پیام
+ * حین ست، کپشن استوری، و فازهای بعدی).
+ *
+ * @param {string} promptType یکی از کلیدهای COACH_AI_PROMPTS
+ * @param {object} contextData داده‌ی خاص این درخواست (مثلاً نام حرکت، وزنه، رکورد قبلی)
+ * @returns {Promise<string|null>} متن پاسخ AI، یا null اگه AI در دسترس نبود/سقف
+ *   رد شده بود/خطا داد/promptType نامعتبر بود. null هرگز throw نمی‌شه —
+ *   فراخوان‌کننده مسئول نمایش fallback مناسب خودشه.
+ */
+async function callCoachAI(promptType, contextData) {
+  const promptDef = COACH_AI_PROMPTS[promptType];
+  if (!promptDef) {
+    console.warn('callCoachAI: promptType ناشناخته →', promptType);
+    return null;
+  }
+
+  const cacheKey = _stableCoachAIContextKey(promptType, contextData);
+  const cached = _coachAICallCache.get(cacheKey);
+  if (cached && (Date.now() - cached.ts) < COACH_AI_CALL_CACHE_TTL_MS) {
+    return cached.text;
+  }
+
+  if (!canMakeAIRequest()) return null;
+
+  try {
+    const basePrompt = typeof promptDef === 'function' ? promptDef(contextData) : promptDef;
+    let systemPrompt = buildFullSystemPrompt(basePrompt);
+    const contextText = _formatCoachAIContext(contextData);
+    if (contextText) systemPrompt += '\n\n' + contextText;
+
+    // خود promptType به‌عنوان "پیام کاربر" به مدل داده می‌شه چون این درخواست‌ها
+    // معمولاً یه فراخوانی مستقل هستن نه بخشی از یه چت آزاد؛ محتوای واقعی از
+    // طریق system prompt + contextText منتقل شده.
+    const userText = 'بر اساس اطلاعات بالا، طبق دستور، پاسخ را تولید کن.';
+    const text = await callAIRaw(userText, systemPrompt, 200, null);
+    const trimmed = (text || '').trim();
+    if (!trimmed) return null;
+
+    recordAIRequestUsed();
+    _coachAICallCache.set(cacheKey, { text: trimmed, ts: Date.now() });
+    return trimmed;
+  } catch (e) {
+    console.error('callCoachAI error:', promptType, e);
+    return null;
+  }
+}
+
+async function askCoachAI(userText, extraContext) {
   const box = document.getElementById('coach-ai-answer');
   const btn = document.getElementById('coach-ai-send-btn');
   if (!userText || !userText.trim()) return;
+
+  const cacheKey = _hashCoachQuestion(userText.trim().toLowerCase());
+  const cached = _coachAIAnswerCache.get(cacheKey);
+  if (cached && (Date.now() - cached.ts) < COACH_AI_CACHE_TTL_MS) {
+    if (box) box.textContent = cached.text;
+    return; // جواب از کش اومد، به سقف روزانه نمی‌خوره
+  }
+
+  if (!canMakeAIRequest()) {
+    if (box) box.innerHTML = '<span style="color:#eab308;">' + escHtml(AI_LIMIT_REACHED_MSG) + '</span>';
+    return;
+  }
   if (box) box.innerHTML = '<span style="opacity:0.6;">در حال فکر کردن…</span>';
   if (btn) btn.disabled = true;
   try {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
-    const systemPrompt =
+    const baseSystemPrompt =
       'تو مربی هوشمند اپ IronLog هستی. با لحن دوستانه، مختصر و به فارسی جواب بده. ' +
-      'جواب‌هات نباید بیشتر از ۳-۴ جمله باشه مگر واقعاً لازم باشه.';
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: userText }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        generationConfig: { maxOutputTokens: 300, temperature: 0.8 },
-      }),
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.error?.message || 'خطا از سمت Gemini');
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'جوابی دریافت نشد.';
-    if (box) box.textContent = text;
+      'جواب‌هات نباید بیشتر از ۳-۴ جمله باشه مگر واقعاً لازم باشه. ' +
+      'اگه کاربر درباره‌ی درد یا آسیب سؤال کرد، هرگز تشخیص پزشکی نده؛ در صورت درد شدید یا غیرعادی ' +
+      'صریحاً توصیه کن تمرین رو متوقف کنه و به پزشک یا فیزیوتراپ مراجعه کنه.';
+    // فاز ۱ (پروفایل بلندمدت) + فاز ۲ (وضعیت لحظه‌ای تمرین) با هم ترکیب می‌شن
+    let systemPrompt = buildFullSystemPrompt(baseSystemPrompt);
+    if (extraContext) systemPrompt += '\n\n' + extraContext;
+
+    const text = await callAIRaw(userText, systemPrompt);
+    recordAIRequestUsed();
+    _coachAIAnswerCache.set(cacheKey, {text: text || 'جوابی دریافت نشد.', ts: Date.now()});
+    if (box) box.textContent = text || 'جوابی دریافت نشد.';
   } catch (e) {
-    console.error('Gemini API error:', e);
-    if (box) box.innerHTML = '<span style="color:#f87171;">مشکلی پیش اومد — دوباره امتحان کن.</span>';
+    console.error('GapGPT API error:', e);
+    if (box) box.innerHTML = '<span style="color:#f87171;">خطا: ' + (e.message || 'مشکلی پیش اومد') + '</span>';
   } finally {
     if (btn) btn.disabled = false;
+    updateAIRemainingNote('coach-ai-remaining');
   }
 }
 
@@ -9515,6 +11174,443 @@ function submitCoachAIQuestion() {
   const text = input.value;
   askCoachAI(text);
   input.value = '';
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۱ — پروفایل هوشمند کاربر (حافظه‌ی بلندمدت مربی AI)
+// ═══════════════════════════════════════════════════
+// این بخش یک «شخصیت تمرینی» برای کاربر می‌سازه که در طول زمان دقیق‌تر می‌شه.
+// دو نوع داده داره:
+//  ۱) چیزهایی که خود کاربر مستقیم می‌گه (goals, injuryNotes, preferredTone) — AI نباید این‌ها رو حدس بزنه.
+//  ۲) خلاصه‌ای که خود AI از روی آمار رفتاری واقعی (نه حدس) می‌سازه (aiGeneratedSummary).
+
+const AI_PROFILE_UPDATE_MIN_SESSIONS = 5; // حداقل چند جلسه‌ی جدید بین دو آپدیت خلاصه
+const AI_PROFILE_UPDATE_MIN_DAYS     = 7; // یا حداقل چند روز گذشته باشه (هر کدوم زودتر برسه)
+const AI_PROFILE_MIN_HISTORY_FOR_SUMMARY = 3; // با کمتر از این تعداد جلسه، خلاصه معنی‌دار نیست
+
+function getDefaultUserProfile() {
+  return {
+    goals: [],
+    injuryNotes: [],
+    preferredTone: 'دوستانه و انگیزشی',
+    aiGeneratedSummary: '',
+    lastSummaryUpdate: null,
+    sessionsAtLastUpdate: 0,
+    behaviorStats: {
+      bestDayOfWeek: null,
+      avgSessionDuration: null,
+      consistencyTrend: null,
+      totalSessionsAnalyzed: 0
+    }
+  };
+}
+
+// همیشه قبل از خوندن/نوشتن پروفایل این تابع رو صدا بزن —
+// هم برای کاربرهای قدیمی که اصلاً userProfile ندارن، هم برای merge کردن فیلدهای جدیدی که بعداً اضافه می‌شن.
+function ensureUserProfile() {
+  const def = getDefaultUserProfile();
+  if (!appData.userProfile || typeof appData.userProfile !== 'object') {
+    appData.userProfile = def;
+  } else {
+    appData.userProfile = Object.assign({}, def, appData.userProfile);
+    appData.userProfile.behaviorStats = Object.assign({}, def.behaviorStats, appData.userProfile.behaviorStats || {});
+    if (!Array.isArray(appData.userProfile.goals)) appData.userProfile.goals = [];
+    if (!Array.isArray(appData.userProfile.injuryNotes)) appData.userProfile.injuryNotes = [];
+  }
+  return appData.userProfile;
+}
+
+// ─── محاسبه‌ی آمار رفتاری خام از تاریخچه‌ی واقعی — فقط ریاضی، بدون AI ───
+function computeBehaviorStats() {
+  const history = appData.history || [];
+  const stats = getDefaultUserProfile().behaviorStats;
+  if (history.length === 0) return stats;
+
+  // بهترین روز هفته بر اساس تعداد جلسات ثبت‌شده در اون روز (بر مبنای getDay میلادی)
+  const dayNames = ['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'];
+  const dayCounts = new Array(7).fill(0);
+  let totalDuration = 0, durationCount = 0;
+  history.forEach(s => {
+    const d = new Date(s.date);
+    if (!isNaN(d)) dayCounts[d.getDay()]++;
+    if (typeof s.duration === 'number' && s.duration > 0) { totalDuration += s.duration; durationCount++; }
+  });
+  const maxCount = Math.max(...dayCounts);
+  const bestDayIdx = maxCount > 0 ? dayCounts.indexOf(maxCount) : -1;
+  stats.bestDayOfWeek = bestDayIdx >= 0 ? dayNames[bestDayIdx] : null;
+  stats.avgSessionDuration = durationCount > 0 ? Math.round(totalDuration / durationCount / 60) : null; // به دقیقه
+
+  // روند پیوستگی: مقایسه‌ی تعداد جلسات ۴ هفته‌ی اخیر با ۴ هفته‌ی قبل‌تر
+  const now = Date.now();
+  const WEEK = 7 * 24 * 60 * 60 * 1000;
+  const recentWindow = history.filter(s => {
+    const t = new Date(s.date).getTime();
+    return !isNaN(t) && (now - t) <= 4 * WEEK;
+  }).length;
+  const priorWindow = history.filter(s => {
+    const t = new Date(s.date).getTime();
+    if (isNaN(t)) return false;
+    const diff = now - t;
+    return diff > 4 * WEEK && diff <= 8 * WEEK;
+  }).length;
+  if (priorWindow === 0 && recentWindow === 0) {
+    stats.consistencyTrend = null;
+  } else if (recentWindow > priorWindow) {
+    stats.consistencyTrend = 'صعودی';
+  } else if (recentWindow < priorWindow) {
+    stats.consistencyTrend = 'نزولی';
+  } else {
+    stats.consistencyTrend = 'ثابت';
+  }
+
+  stats.totalSessionsAnalyzed = history.length;
+  return stats;
+}
+
+// ─── آیا وقتشه که خلاصه‌ی AI دوباره آپدیت بشه؟ ───
+function shouldUpdateUserProfile() {
+  const profile = ensureUserProfile();
+  const totalSessions = (appData.history || []).length;
+  if (totalSessions < AI_PROFILE_MIN_HISTORY_FOR_SUMMARY) return false;
+  const sessionsSinceUpdate = totalSessions - (profile.sessionsAtLastUpdate || 0);
+  if (sessionsSinceUpdate <= 0) return false;
+  if (sessionsSinceUpdate >= AI_PROFILE_UPDATE_MIN_SESSIONS) return true;
+  if (!profile.lastSummaryUpdate) return true; // هیچ‌وقت آپدیت نشده و حداقل ۱ جلسه‌ی جدید داریم
+  const daysSince = (Date.now() - new Date(profile.lastSummaryUpdate).getTime()) / (24 * 60 * 60 * 1000);
+  return daysSince >= AI_PROFILE_UPDATE_MIN_DAYS;
+}
+
+// ─── ساخت خلاصه‌ی هوشمند با AI — فقط آمار خلاصه‌شده رو می‌فرسته، نه دیتای خام/شخصی کاربر ───
+async function updateUserProfileSummary() {
+  const profile = ensureUserProfile();
+  const stats = computeBehaviorStats();
+  profile.behaviorStats = stats;
+
+  // اگه آمار برای تحلیل معنی‌دار کافی نیست، فقط آمار خام رو ذخیره کن و به AI زحمت نده
+  if (stats.totalSessionsAnalyzed < AI_PROFILE_MIN_HISTORY_FOR_SUMMARY) {
+    profile.sessionsAtLastUpdate = (appData.history || []).length;
+    saveData();
+    return;
+  }
+
+  const statsText =
+    `بهترین روز تمرین: ${stats.bestDayOfWeek || 'نامشخص'}. ` +
+    `میانگین مدت هر جلسه: ${stats.avgSessionDuration ? stats.avgSessionDuration + ' دقیقه' : 'نامشخص'}. ` +
+    `روند پیوستگی اخیر نسبت به ماه قبل: ${stats.consistencyTrend || 'نامشخص'}. ` +
+    `تعداد کل جلسات ثبت‌شده: ${stats.totalSessionsAnalyzed}.`;
+
+  const userMsg =
+    `این آمار خام تمرینی یک کاربر اپ IronLog است:\n${statsText}\n` +
+    `فقط در یک یا دو جمله‌ی کوتاه فارسی، یک خلاصه‌ی مفید و مشخص از الگوی رفتاری این کاربر بنویس. ` +
+    `این خلاصه یک یادداشت داخلی برای خودِ مربیه، نه پیامی خطاب به کاربر. چیزی غیر از همون خلاصه ننویس.`;
+  const sysPrompt = 'تو دستیار داخلی مربی هستی. فقط و فقط یک خلاصه‌ی کوتاه تحلیلی و بی‌طرفانه می‌نویسی، بدون سلام و مقدمه.';
+
+  // این یه به‌روزرسانی پس‌زمینه‌ست، نه یه درخواست مستقیم کاربر — اگه به سقف رسیده باشیم،
+  // بی‌صدا رد می‌شیم و آمار خام رو ذخیره می‌کنیم؛ نوبت بعدی که شرایط برقرار شد دوباره تلاش می‌شه.
+  if (!canMakeAIRequest()) {
+    profile.sessionsAtLastUpdate = (appData.history || []).length;
+    saveData();
+    return;
+  }
+
+  try {
+    const summary = await callAIRaw(userMsg, sysPrompt, 120);
+    recordAIRequestUsed();
+    if (summary && summary.trim()) {
+      profile.aiGeneratedSummary = summary.trim();
+      profile.lastSummaryUpdate = new Date().toISOString();
+    }
+  } catch (e) {
+    // اگه AI شکست خورد (قطعی اینترنت، اتمام اعتبار و...) آمار خام همچنان ذخیره می‌مونه؛
+    // فقط خلاصه‌ی متنی آپدیت نمی‌شه — این نباید هیچ‌وقت باعث کرش یا مزاحمت کاربر بشه.
+    console.error('User profile AI summary error:', e);
+  } finally {
+    profile.sessionsAtLastUpdate = (appData.history || []).length;
+    saveData();
+  }
+}
+
+// ─── نقطه‌ی ورودی امن: بعد از پایان هر تمرین صدا زده می‌شه، خودش تصمیم می‌گیره کاری بکنه یا نه ───
+// کاملاً async و در پس‌زمینه — هیچ UI ای رو بلاک نمی‌کنه و خطاش کاربر رو مزاحم نمی‌شه.
+function maybeUpdateUserProfile() {
+  try {
+    if (!shouldUpdateUserProfile()) return;
+    updateUserProfileSummary().catch(e => console.error('maybeUpdateUserProfile error:', e));
+  } catch (e) {
+    console.error('maybeUpdateUserProfile sync error:', e);
+  }
+}
+
+// ─── نسخه‌ی فشرده و متنی پروفایل، آماده برای تزریق به system prompt مربی AI ───
+function getUserProfileForPrompt() {
+  const profile = ensureUserProfile();
+  const parts = [];
+  if (profile.goals && profile.goals.length) {
+    parts.push(`اهداف کاربر: ${profile.goals.join('، ')}.`);
+  }
+  if (profile.injuryNotes && profile.injuryNotes.length) {
+    parts.push(`نکات ایمنی/مصدومیت مهم: ${profile.injuryNotes.join('، ')}.`);
+  }
+  if (profile.preferredTone) {
+    parts.push(`لحن ترجیحی کاربر: ${profile.preferredTone}.`);
+  }
+  if (profile.aiGeneratedSummary) {
+    parts.push(`یادداشت داخلی درباره‌ی الگوی رفتاری این کاربر: ${profile.aiGeneratedSummary}`);
+  }
+  if (!parts.length) return '';
+  return 'اطلاعات زمینه‌ای درباره‌ی این کاربر خاص (فقط برای شخصی‌سازی جواب استفاده کن، مستقیم نقلش نکن):\n' + parts.join('\n');
+}
+
+// ─── ویرایش دستی فیلدهای کاربر-محور پروفایل (از صفحه‌ی تنظیمات صدا زده می‌شه) ───
+function editUserProfileGoals() {
+  const profile = ensureUserProfile();
+  showInputModal('اهداف تمرینی (با ویرگول جدا کن)', profile.goals.join('، '), val => {
+    profile.goals = (val || '').split(/[،,]/).map(s => s.trim()).filter(Boolean);
+    saveData();
+    renderAIProfileSettings();
+    showToast('اهداف ذخیره شد', 'success');
+  });
+}
+
+function editUserProfileInjuries() {
+  const profile = ensureUserProfile();
+  showInputModal('نکات ایمنی / مصدومیت (با ویرگول جدا کن)', profile.injuryNotes.join('، '), val => {
+    profile.injuryNotes = (val || '').split(/[،,]/).map(s => s.trim()).filter(Boolean);
+    saveData();
+    renderAIProfileSettings();
+    showToast('نکات ایمنی ذخیره شد', 'success');
+  });
+}
+
+function editUserProfileTone() {
+  const profile = ensureUserProfile();
+  showInputModal('لحن ترجیحی مربی AI', profile.preferredTone, val => {
+    profile.preferredTone = (val || '').trim() || getDefaultUserProfile().preferredTone;
+    saveData();
+    renderAIProfileSettings();
+    showToast('لحن ذخیره شد', 'success');
+  });
+}
+
+// ─── رندر بخش «پروفایل مربی AI» در صفحه‌ی تنظیمات ───
+function renderAIProfileSettings() {
+  const profile = ensureUserProfile();
+  const goalsEl = document.getElementById('ai-profile-goals-sub');
+  const injuriesEl = document.getElementById('ai-profile-injuries-sub');
+  const toneEl = document.getElementById('ai-profile-tone-sub');
+  const summaryEl = document.getElementById('ai-profile-summary-box');
+
+  if (goalsEl) goalsEl.textContent = profile.goals.length ? profile.goals.join('، ') : 'هنوز چیزی ثبت نشده';
+  if (injuriesEl) injuriesEl.textContent = profile.injuryNotes.length ? profile.injuryNotes.join('، ') : 'هنوز چیزی ثبت نشده';
+  if (toneEl) toneEl.textContent = profile.preferredTone || 'پیش‌فرض';
+
+  if (summaryEl) {
+    if (profile.aiGeneratedSummary) {
+      const updated = profile.lastSummaryUpdate ? new Date(profile.lastSummaryUpdate).toLocaleDateString('fa-IR') : '';
+      summaryEl.innerHTML =
+        `<div style="opacity:0.85;">${profile.aiGeneratedSummary}</div>` +
+        (updated ? `<div style="margin-top:6px;font-size:10.5px;opacity:0.5;">آخرین آپدیت: ${updated}</div>` : '');
+    } else {
+      const remaining = Math.max(0, AI_PROFILE_MIN_HISTORY_FOR_SUMMARY - (appData.history || []).length);
+      summaryEl.innerHTML = remaining > 0
+        ? `<div style="opacity:0.5;">بعد از ${remaining} جلسه‌ی دیگه، مربی AI اولین تحلیلش رو از الگوی تمرینت می‌سازه.</div>`
+        : `<div style="opacity:0.5;">هنوز تحلیلی ساخته نشده — بعد از پایان تمرین بعدی ساخته می‌شه.</div>`;
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۲ — Context Builder (تزریق داده‌ی زنده‌ی تمرین لحظه‌ای)
+// ═══════════════════════════════════════════════════
+// هدف: قبل از هر درخواست به مربی AI، یه خلاصه‌ی متنیِ کوتاه از «همین الانِ» کاربر بسازیم —
+// چه تمرینی، کدوم حرکت، چند ست، مقایسه با جلسه قبل، استریک، پیشرفت هدف ماهانه.
+// این جدا از پروفایل بلندمدت (فاز ۱) هست: پروفایل «کیستیِ» کاربره، این‌جا «همین الانِ» کاربره.
+
+// ─── پیشرفت هدف ماهانه به شکل عدد خام (بدون هیچ HTML) — قابل استفاده هم در UI هم در AI context ───
+function getMonthlyGoalProgress() {
+  const goal = appData.monthlyGoal || 12;
+  const nowG = new Date();
+  const nowJ = toJalali(nowG.getFullYear(), nowG.getMonth() + 1, nowG.getDate());
+  const count = (appData.history || []).filter(s => {
+    const d = new Date(s.date);
+    if (isNaN(d)) return false;
+    const j = toJalali(d.getFullYear(), d.getMonth() + 1, d.getDate());
+    return j.y === nowJ.y && j.m === nowJ.m;
+  }).length;
+  const pct = goal > 0 ? Math.min(100, Math.round((count / goal) * 100)) : 0;
+  return { count, goal, pct };
+}
+
+// ─── اطلاعات آخرین حرکت/ستی که کاربر همین الان (وسط یک تمرین فعال) ثبت کرده ───
+// اگه کاربر اصلاً وسط تمرین نیست، null برمی‌گردونه.
+// اگه وسط تمرینه ولی هنوز هیچ ستی نزده، hasLoggedSet:false برمی‌گردونه.
+function getCurrentExerciseLiveInfo() {
+  if (!currentDayId) return null;
+  const day = appData.days.find(d => d.id === currentDayId);
+  if (!day) return null;
+
+  // آخرین حرکتی که رویش ستِ done ثبت شده را پیدا می‌کنیم (فرض: ترتیب طبیعی تمرین)
+  let latestExId = null, latestSet = null, latestSetIdx = -1;
+  day.exercises.forEach(ex => {
+    const sess = currentSession[ex.id];
+    if (!sess || !Array.isArray(sess.sets)) return;
+    sess.sets.forEach((s, idx) => {
+      if (s && s.done) { latestExId = ex.id; latestSet = s; latestSetIdx = idx; }
+    });
+  });
+
+  if (!latestExId) return { day, hasLoggedSet: false };
+
+  const ex = day.exercises.find(e => e.id === latestExId);
+  const sess = currentSession[latestExId];
+  const totalSets = sess.sets.length;
+  const doneSets = sess.sets.filter(s => s && s.done).length;
+
+  // مقایسه‌ی همین ست با ستِ هم‌شماره‌ی جلسه‌ی قبل (اگه موجود بود)
+  const prevSets = prevSessionSetsCache[latestExId] || [];
+  const prevAtSameIdx = prevSets[latestSetIdx];
+  let comparisonText = '';
+  if (prevAtSameIdx && prevAtSameIdx.weight && prevAtSameIdx.reps) {
+    const curW = parseFloat(latestSet.weight) || 0, curR = parseInt(latestSet.reps) || 0;
+    const prevW = parseFloat(prevAtSameIdx.weight) || 0, prevR = parseInt(prevAtSameIdx.reps) || 0;
+    if (curW > prevW || (curW === prevW && curR > prevR)) comparisonText = 'نسبت به جلسه‌ی قبل، پیشرفت داشته';
+    else if (curW < prevW || (curW === prevW && curR < prevR)) comparisonText = 'نسبت به جلسه‌ی قبل، افت داشته';
+    else comparisonText = 'دقیقاً مثل جلسه‌ی قبل';
+  }
+
+  return {
+    day,
+    hasLoggedSet: true,
+    exerciseName: ex ? ex.name : '',
+    setProgress: `ست ${doneSets} از ${totalSets}`,
+    lastSetWeight: latestSet.weight,
+    lastSetReps: latestSet.reps,
+    comparisonText
+  };
+}
+
+// ─── ساخت متن نهایی «وضعیت لحظه‌ای» برای تزریق به system prompt ───
+function buildLiveContext() {
+  const parts = [];
+
+  const streak = calcStreak();
+  if (streak > 0) parts.push(`استریک فعلی: ${streak} روز متوالی.`);
+
+  const goalProg = getMonthlyGoalProgress();
+  parts.push(`پیشرفت هدف ماهانه: ${goalProg.count} از ${goalProg.goal} جلسه (${goalProg.pct}٪).`);
+
+  if (currentDayId) {
+    const info = getCurrentExerciseLiveInfo();
+    if (info && info.hasLoggedSet) {
+      let line = `کاربر همین الان وسط تمرین «${info.day.name}» است، روی حرکت «${info.exerciseName}»، ${info.setProgress}، ` +
+        `آخرین ست ثبت‌شده: ${info.lastSetWeight || '؟'} کیلو در ${info.lastSetReps || '؟'} تکرار.`;
+      if (info.comparisonText) line += ' ' + info.comparisonText + '.';
+      parts.push(line);
+    } else if (info) {
+      parts.push(`کاربر تمرین «${info.day.name}» را تازه شروع کرده و هنوز هیچ ستی ثبت نکرده.`);
+    }
+  } else {
+    parts.push('کاربر همین الان وسط تمرین نیست — از بیرون جلسه سؤال می‌پرسد.');
+  }
+
+  // روند پیوستگی که در فاز ۱ محاسبه شده (اگه موجود بود)
+  const profile = ensureUserProfile();
+  if (profile.behaviorStats && profile.behaviorStats.consistencyTrend) {
+    parts.push(`روند پیوستگی تمرین در ماه اخیر: ${profile.behaviorStats.consistencyTrend}.`);
+  }
+
+  if (!parts.length) return '';
+  return 'وضعیت لحظه‌ای کاربر (همین الان):\n' + parts.join('\n');
+}
+
+// ─── ترکیب نهایی: system prompt پایه + پروفایل بلندمدت (فاز۱) + وضعیت لحظه‌ای (فاز۲) ───
+// این تابع نقطه‌ی مرکزی همه‌ی نقاط تماس آینده با AI خواهد بود (چت آزاد، دکمه‌ی حین ست، خلاصه پایان تمرین، و ...)
+function buildFullSystemPrompt(basePrompt) {
+  let sp = basePrompt;
+  const appCtx = buildAppKnowledgePrompt();
+  if (appCtx) sp += '\n\n' + appCtx;
+  const profileCtx = getUserProfileForPrompt();
+  if (profileCtx) sp += '\n\n' + profileCtx;
+  const liveCtx = buildLiveContext();
+  if (liveCtx) sp += '\n\n' + liveCtx;
+  return sp;
+}
+
+// ─── دانش محصول: راهنمای واقعیِ داخل اپ (مودال «راهنما») رو در لحظه از DOM می‌خونیم و به مربی AI
+// می‌دیم تا درباره‌ی قابلیت‌های خود اپ (مثل «چطور سوپرست ثبت کنم») دقیق و واقعی جواب بده،
+// نه حدسی و اختراعی. این یعنی اگه بعداً محتوای راهنما عوض بشه، دانش مربی هم خودکار به‌روز می‌مونه.
+let _appKnowledgePromptCache = null;
+function buildAppKnowledgePrompt() {
+  if (_appKnowledgePromptCache) return _appKnowledgePromptCache;
+  const helpModal = document.getElementById('help-modal');
+  if (!helpModal) return '';
+  const sections = helpModal.querySelectorAll('[data-help-acc]');
+  if (!sections.length) return '';
+  let text = 'دانش محصول IronLog — این توضیحات دقیق و رسمیِ خود اپ درباره‌ی بخش‌ها و قابلیت‌هاشه. ' +
+    'وقتی کاربر درباره‌ی «چطور فلان کار رو توی اپ انجام بدم» یا هر بخشی از خود برنامه سؤال کرد، ' +
+    'جوابت رو فقط بر پایه‌ی همین اطلاعات واقعی بده؛ چیزی که اینجا نیومده رو حدس نزن یا اختراع نکن ' +
+    'و در اون صورت صادقانه بگو مطمئن نیستی یا از بخش راهنمای تنظیمات کمک بگیره.\n';
+  sections.forEach(sec => {
+    const title = sec.querySelector('.help-acc-title')?.textContent?.trim();
+    const body = sec.querySelector('.help-acc-body-inner')?.textContent?.trim().replace(/\s+/g, ' ');
+    if (title && body) text += `\n### ${title}\n${body}\n`;
+  });
+  _appKnowledgePromptCache = text;
+  return text;
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۳ — معماری دو-حالته (سوییچ آفلاین / AI)
+// ═══════════════════════════════════════════════════
+// هدف: یک نقطه‌ی مرکزی تصمیم‌گیری که بگه واکنش مربی از کجا بیاد —
+// از قالب‌های آماده (COACH، سریع و همیشه در دسترس) یا از AI واقعی (شخصی‌سازی‌شده ولی نیازمند اینترنت).
+// قانون مهم: تو نقاط لحظه‌ای (مثل تگ زیر ست) کاربر منتظر AI نیست، پس اول همیشه نسخه‌ی آفلاین فوری نشون داده می‌شه
+// و اگه AI فعال بود و جواب به‌موقع رسید، بی‌سروصدا جایگزین می‌شه. اگه AI خطا داد یا دیر کرد، همون آفلاین می‌مونه —
+// کاربر هیچ‌وقت خطای خام نمی‌بینه، چون اینجا صرفاً یه ری‌اکشن سریع بعد از ست‌زدنه نه یه چت آزاد.
+
+function getCoachMode() {
+  return appData.settings.coachMode === 'ai' ? 'ai' : 'offline';
+}
+
+// نسخه‌ی همیشه‌آماده و فوری — همون منطق آفلاینی که از قبل بود، صرف‌نظر از حالت انتخابی کاربر.
+// نقاط تماس آینده (دکمه‌ی حین ست در فاز ۴، خلاصه‌ی پایان تمرین در فاز ۵) هم از همین به‌عنوان fallback استفاده می‌کنن.
+function getCoachReaction(exId, weight, reps, isPR) {
+  const offline = getSetReaction(exId, weight, reps, isPR);
+  return { text: offline.text, cls: offline.cls, source: 'offline' };
+}
+
+// نسخه‌ی هوشمند async — فقط وقتی coachMode==='ai' صدا زده می‌شه.
+// هیچ‌وقت throw نمی‌کنه بیرون؛ در صورت هر خطایی (قطعی اینترنت، ری‌ت‌لیمیت، کلید نامعتبر) فقط null برمی‌گردونه
+// تا صدا زننده بی‌صدا به نسخه‌ی آفلاین که از قبل نشون داده رضایت بده.
+// فاز ۲ (نقشه‌راه هوش مصنوعی): از callCoachAI مرکزی (promptType='mid_workout') استفاده می‌کنه،
+// نه یک فراخوانی مستقیم جدا؛ و به یک شمارنده‌ی فرکانس محدود می‌شه تا سقف روزانه سریع ته نکشه
+// و تجربه هم اسپم نشه (هر ۲-۳ ست یک‌بار، نه هر ست).
+async function getCoachReactionAI(exId, weight, reps, isPR) {
+  _midWorkoutAICallCount++;
+  if (!isPR && (_midWorkoutAICallCount % MID_WORKOUT_AI_EVERY_N_SETS !== 0)) return null;
+  if (!canMakeAIRequest()) return null; // به سقف رسیده — بی‌صدا به آفلاین که از قبل نشون داده شده رضایت بده
+
+  const day = appData.days.find(d => d.id === currentDayId);
+  const ex = day ? day.exercises.find(e => e.id === exId) : null;
+  const exName = ex ? ex.name : 'این حرکت';
+
+  // مقایسه با ست قبل از همین ست (نه جلسه‌ی قبل) — تا پیام واقعاً به روند لحظه‌ای مرتبط باشه
+  const sets = currentSession[exId]?.sets || [];
+  const curIdx = sets.reduce((last, s, i) => (s.done && parseFloat(s.weight||0)===weight && parseInt(s.reps||0)===reps) ? i : last, -1);
+  const prevSetInSession = curIdx > 0 ? sets[curIdx-1] : null;
+
+  const contextData = {
+    'نام حرکت': exName,
+    'وزنه/تکرار ست فعلی': `${weight}kg × ${reps}`,
+    'ست قبلی همین حرکت (در همین جلسه)': (prevSetInSession && prevSetInSession.weight && prevSetInSession.reps)
+      ? `${prevSetInSession.weight}kg × ${prevSetInSession.reps}` : 'اولین ست این حرکت در این جلسه',
+    'آیا رکورد جدید است': isPR ? 'بله' : 'خیر',
+  };
+
+  const text = await callCoachAI('mid_workout', contextData);
+  if (!text) return null;
+  const offlineCls = getSetReaction(exId, weight, reps, isPR).cls;
+  return { text, cls: offlineCls, source: 'ai' };
 }
 
 // پیام‌های کوتاه بعد از تکمیل ست (ری‌اکشن مربی)
@@ -9539,21 +11635,407 @@ function getSetReaction(exId, weight, reps, isPR) {
   }
   return {text:pick(COACH.setNeutral), cls:''};
 }
+// ─── تشخیص استراحت طولانی‌تر از حد معمول کاربر بین دو ست همین حرکت ───
+// میانگین از فاصله‌ی زمانی ست‌های تکمیل‌شده‌ی همین حرکت در همین جلسه محاسبه می‌شه
+// (چون sets[i].t موقع تیک‌خوردن ثبت می‌شه) — نیازی به داده‌ی جلسه‌ی قبل نیست.
+function checkLongRestBeforeThisSet(exId, idxAboutToComplete) {
+  if (appData.settings.coachEnabled === false) return;
+  const sets = currentSession[exId]?.sets;
+  if (!sets) return;
+  const doneTimes = sets.filter((s,i) => i < idxAboutToComplete && s.done && s.t).map(s => s.t);
+  if (doneTimes.length < 2) return; // برای میانگین معنادار حداقل ۲ فاصله لازمه
+
+  const gaps = [];
+  for (let i=1;i<doneTimes.length;i++) gaps.push(doneTimes[i]-doneTimes[i-1]);
+  const avgGap = gaps.reduce((a,b)=>a+b,0) / gaps.length;
+  const lastDoneT = doneTimes[doneTimes.length-1];
+  const currentGap = Date.now() - lastDoneT;
+
+  // فقط وقتی واقعاً و به‌طور محسوس (حداقل ۶۰٪ بیشتر و حداقل ۹۰ ثانیه) از میانگین بیشتر شده باشه
+  if (currentGap > avgGap * 1.6 && currentGap > 90*1000) {
+    showRestReminderTip(exId);
+  }
+}
+
+function showRestReminderTip(exId) {
+  const container = document.getElementById('sets-'+exId);
+  if (!container) return;
+  // آفلاین اول، فوری — همون الگوی معماری دو-حالته‌ی بقیه‌ی اپ
+  const offlineText = pick(COACH.restReminder || ['استراحت خوبه، ولی حواست به ریتم تمرین هم باشه.']);
+  const tip = document.createElement('div');
+  tip.className = 'set-coach-tip';
+  tip.innerHTML = `<span class="set-coach-tip-icon" style="width:13px;height:13px;display:inline-flex;">${ICONS.clock||ICONS.bulb}</span><span class="set-coach-tip-text">${escHtml(offlineText)}</span>`;
+  container.appendChild(tip);
+
+  let dismissed = false;
+  const aiMode = getCoachMode() === 'ai';
+  setTimeout(()=>{
+    dismissed = true;
+    tip.style.transition='opacity 0.35s ease';
+    tip.style.opacity='0';
+    setTimeout(()=>tip.remove(), 400);
+  }, aiMode ? 4200 : 2800);
+
+  if (aiMode && canMakeAIRequest()) {
+    const day = appData.days.find(d => d.id === currentDayId);
+    const ex = day ? day.exercises.find(e => e.id === exId) : null;
+    callCoachAI('rest_reminder', { 'نام حرکت': ex ? ex.name : 'این حرکت' }).then(text => {
+      if (!text || dismissed || !tip.isConnected) return;
+      const textEl = tip.querySelector('.set-coach-tip-text');
+      const iconEl = tip.querySelector('.set-coach-tip-icon');
+      if (textEl) {
+        textEl.style.transition = 'opacity 0.2s ease';
+        textEl.style.opacity = '0';
+        setTimeout(()=>{ textEl.textContent = text; textEl.style.opacity = '1'; }, 200);
+      }
+      if (iconEl) iconEl.innerHTML = ICONS.gem;
+    });
+  }
+}
+
 // نمایش پیام کوتاه مربی زیر هر ست بعد از تکمیل (موقت)
+// فاز ۳: همیشه نسخه‌ی آفلاین رو فوری نشون می‌ده (بدون تأخیر شبکه)؛ اگه حالت AI فعال باشه،
+// به‌محض رسیدن جواب هوشمند، متن رو بی‌سروصدا و با یه فید کوتاه جایگزین می‌کنه.
 function showSetTip(exId, weight, reps, isPR) {
   if (appData.settings.coachEnabled === false) return;
   const container = document.getElementById('sets-'+exId);
   if (!container) return;
-  const reaction = getSetReaction(exId, weight, reps, isPR);
+  const aiMode = getCoachMode() === 'ai';
+  const reaction = getCoachReaction(exId, weight, reps, isPR);
   const tip = document.createElement('div');
   tip.className = 'set-coach-tip '+(reaction.cls||'');
-  tip.innerHTML = `<span style="width:13px;height:13px;display:inline-flex;">${reaction.cls==='warn'?ICONS.alert:ICONS.bulb}</span>${escHtml(reaction.text)}`;
+  tip.innerHTML = `<span class="set-coach-tip-icon" style="width:13px;height:13px;display:inline-flex;">${reaction.cls==='warn'?ICONS.alert:ICONS.bulb}</span><span class="set-coach-tip-text">${escHtml(reaction.text)}</span>`;
   container.appendChild(tip);
+
+  let dismissed = false;
+  const visibleMs = aiMode ? 4200 : 2800; // تو حالت AI کمی بیشتر می‌مونه تا جواب هوشمند فرصت رسیدن داشته باشه
   setTimeout(()=>{
+    dismissed = true;
     tip.style.transition='opacity 0.35s ease';
     tip.style.opacity='0';
     setTimeout(()=>tip.remove(), 400);
-  }, 2800);
+  }, visibleMs);
+
+  if (aiMode) {
+    getCoachReactionAI(exId, weight, reps, isPR).then(aiReaction => {
+      if (!aiReaction || dismissed || !tip.isConnected) return; // دیر رسید یا تگ قبلاً بسته شد — بی‌خیال، آفلاین همون‌جوری می‌مونه
+      const textEl = tip.querySelector('.set-coach-tip-text');
+      const iconEl = tip.querySelector('.set-coach-tip-icon');
+      if (textEl) {
+        textEl.style.transition = 'opacity 0.2s ease';
+        textEl.style.opacity = '0';
+        setTimeout(()=>{
+          textEl.textContent = aiReaction.text;
+          textEl.style.opacity = '1';
+        }, 200);
+      }
+      if (iconEl) iconEl.innerHTML = ICONS.gem; // نشونه‌ی ظریف که این یکی رو مربی AI ساخته
+    });
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۴ — حضور AI حین ست‌زدن (دکمه‌ی کمکی لحظه‌ای)
+// ═══════════════════════════════════════════════════
+// یک دکمه‌ی کوچک کنار هر ست که بدون خروج از فلوی تمرین، امکان سؤال سریع از مربی رو می‌ده.
+// این جدا از askCoachAI (چت آزاد صفحه‌ی مربی) هست، ولی از همون callAIRaw + همون context-builderهای
+// فاز ۱/۲ استفاده می‌کنه؛ فقط یک context اختصاصی (نام حرکت + وزن/تکرار همین ست) بهش اضافه می‌شه.
+// نکته‌ی ایمنی: این مودال دقیقاً همون قانون «چت آزاد» رو داره (کاربر عمداً منتظره)، پس خطای واقعی
+// نشون داده می‌شه، نه fallback بی‌صدا — چون این یه اقدام real-time خودکار نیست، یه درخواست آگاهانه‌ست.
+
+let _quickAskCtx = null; // { exId, idx (یا null برای کل حرکت), exName, ctxLabel, ctxPrompt }
+
+// ─── باز کردن مودال، با پر کردن خط context (نام حرکت + وزن/تکرار همین ست) ───
+function openQuickAsk(exId, idx) {
+  const day = appData.days.find(d => d.id === currentDayId);
+  const ex = day ? day.exercises.find(e => e.id === exId) : null;
+  const sets = currentSession[exId]?.sets || [];
+  const hasIdx = (idx !== undefined && idx !== null);
+  const set = hasIdx ? sets[idx] : null;
+
+  // وقتی سؤال از داخل خودِ ست باز میشه (idx مشخصه)، context همون یه ست فعلیه.
+  // وقتی از دکمه‌ی کنار یادداشت باز میشه (idx نداریم)، context کل حرکت و همه‌ی ست‌های ثبت‌شده‌شه.
+  let ctxLabel = '';
+  let ctxPrompt = '';
+  if (hasIdx && set && set.weight && set.reps) {
+    ctxLabel = `— ست فعلی: ${set.weight} کیلو در ${set.reps} تکرار`;
+    ctxPrompt = `، همین الان ${set.weight} کیلو در ${set.reps} تکرار ثبت کرده`;
+  } else if (!hasIdx) {
+    const done = sets.filter(s => s.weight && s.reps);
+    if (done.length) {
+      const summary = done.map(s => `${s.weight}×${s.reps}`).join('، ');
+      ctxLabel = `— ست‌های ثبت‌شده: ${summary}`;
+      ctxPrompt = `، تا الان این ست‌ها رو تو این حرکت ثبت کرده: ${summary}`;
+    }
+  }
+
+  _quickAskCtx = {
+    exId,
+    idx: hasIdx ? idx : null,
+    exName: ex ? ex.name : 'این حرکت',
+    ctxLabel,
+    ctxPrompt
+  };
+
+  const ctxEl = document.getElementById('quick-ask-context');
+  if (ctxEl) {
+    ctxEl.textContent = `درباره‌ی «${_quickAskCtx.exName}» ${ctxLabel}`;
+  }
+  const answerEl = document.getElementById('quick-ask-answer');
+  if (answerEl) answerEl.innerHTML = '';
+  const inputEl = document.getElementById('quick-ask-input');
+  if (inputEl) inputEl.value = '';
+  updateAIRemainingNote('quick-ask-remaining');
+
+  openModal('quick-ask-modal');
+}
+
+function closeQuickAsk() {
+  closeModal('quick-ask-modal');
+}
+
+// ─── کلیک روی یکی از چیپ‌های پیش‌فرض: مستقیم همون سؤال رو می‌فرسته ───
+function sendQuickAskChip(text) {
+  const inputEl = document.getElementById('quick-ask-input');
+  if (inputEl) inputEl.value = text;
+  submitQuickAsk(text);
+}
+
+// ─── ارسال سؤال (چه از چیپ، چه تایپ آزاد) ───
+async function submitQuickAsk(chipText) {
+  const inputEl = document.getElementById('quick-ask-input');
+  const answerEl = document.getElementById('quick-ask-answer');
+  const btn = document.getElementById('quick-ask-send-btn');
+  const text = (chipText || inputEl?.value || '').trim();
+  if (!text || !_quickAskCtx) return;
+
+  if (!canMakeAIRequest()) {
+    if (answerEl) answerEl.innerHTML = '<span style="color:#eab308;">' + escHtml(AI_LIMIT_REACHED_MSG) + '</span>';
+    updateAIRemainingNote('quick-ask-remaining');
+    return;
+  }
+
+  if (answerEl) answerEl.innerHTML = '<span style="opacity:0.6;">در حال فکر کردن…</span>';
+  if (btn) btn.disabled = true;
+
+  try {
+    const basePrompt =
+      'تو مربی هوشمند اپ IronLog هستی. کاربر همین الان وسط تمرینه و از یه باکس سریع کنار ست سؤال پرسیده، ' +
+      'پس جواب باید کوتاه (حداکثر ۳-۴ جمله)، مستقیم و عملی باشه، بدون مقدمه‌چینی. به فارسی جواب بده. ' +
+      'اگه سؤال درباره‌ی درد یا آسیب بود، هرگز تشخیص پزشکی نده؛ اگه درد شدید یا غیرعادیه صریحاً بگو ' +
+      'همین ست/حرکت رو متوقف کنه و به پزشک یا فیزیوتراپ مراجعه کنه — این توصیه رو حذف نکن حتی اگه سؤال چیز دیگه‌ای هم داشت.';
+    let systemPrompt = buildFullSystemPrompt(basePrompt);
+    systemPrompt += `\n\nسؤال کاربر مربوط به همین لحظه‌ی تمرینه: روی حرکت «${_quickAskCtx.exName}» است${_quickAskCtx.ctxPrompt || ''}.`;
+
+    const reply = await callAIRaw(text, systemPrompt, 220);
+    recordAIRequestUsed();
+    if (answerEl) answerEl.textContent = reply || 'جوابی دریافت نشد.';
+  } catch (e) {
+    console.error('quick-ask error:', e);
+    if (answerEl) answerEl.innerHTML = '<span style="color:#f87171;">خطا: ' + escHtml(e.message || 'مشکلی پیش اومد') + '</span>';
+  } finally {
+    if (btn) btn.disabled = false;
+    updateAIRemainingNote('quick-ask-remaining');
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۵ — تحلیل هوشمند پایان تمرین
+// ═══════════════════════════════════════════════════
+// هدف: بعد از پایان جلسه، اگه coachMode==='ai' هست، بدون نیاز به کلیک کاربر، یه تحلیل واقعی
+// از کل جلسه (همه‌ی حرکات، وزن‌ها، مقایسه با جلسه‌ی قبل) از AI بگیریم و تو خودِ کارت خلاصه نشون بدیم.
+// نکات مهم طبق مستر پرامپت:
+//  - غیر-بلاک‌کننده: مودال خلاصه فوری (بدون تأخیر شبکه) باز می‌شه، تحلیل AI با یه لودینگ ملایم بعداً می‌رسه.
+//  - این یه نقطه‌ی لحظه‌ای/غیرمنتظره‌ست (نه چت آزاد که کاربر عمداً منتظره)، پس طبق قانون فاز ۳:
+//    اگه AI خطا داد یا دیر کرد، خطای خام نشون داده نمی‌شه — کارت به‌سادگی مخفی می‌مونه.
+//  - خروجی هم در کارت نمایش داده می‌شه، هم در همون رکورد appData.history ذخیره می‌شه برای مرور بعدی.
+
+// ─── ساخت خلاصه‌ی متنی از کل جلسه (لیست حرکات + بهترین ست هر کدوم) برای فرستادن به AI ───
+function buildSessionSummaryForAI(sessionSnap, totalSets, totalVol, duration, prevVol, prCount) {
+  const lines = [];
+  lines.push(`مدت تمرین: ${Math.round(duration/60)} دقیقه — مجموع ${totalSets} ست — حجم کل ${Math.round(totalVol)} کیلوگرم.`);
+  if (prevVol > 0) {
+    const ratio = Math.round(((totalVol/prevVol)-1)*100);
+    lines.push(`نسبت به جلسه‌ی قبل همین روز: ${ratio > 0 ? '+' : ''}${ratio}٪ در حجم کل.`);
+  }
+  if (prCount > 0) lines.push(`${prCount} رکورد شخصی جدید در این جلسه ثبت شد.`);
+
+  const exLines = [];
+  Object.values(sessionSnap || {}).forEach(ex => {
+    const doneSets = (ex.sets || []).filter(s => s.done);
+    if (!doneSets.length) return;
+    let best = doneSets[0];
+    doneSets.forEach(s => {
+      if ((parseFloat(s.weight)||0) >= (parseFloat(best.weight)||0)) best = s;
+    });
+    exLines.push(`«${ex._name || 'حرکت'}»: ${doneSets.length} ست، بهترین ست ${best.weight||'؟'} کیلو در ${best.reps||'؟'} تکرار.`);
+  });
+  if (exLines.length) lines.push('حرکات:\n' + exLines.join('\n'));
+
+  return lines.join('\n');
+}
+
+// ═══════════════════════════════════════════════════
+//  فاز ۶ — تشخیص افت معنادار (کد-محور، نه AI) + مداخله‌ی خودکار AI
+//  اصل طراحی: تشخیصِ «افت واقعی» صرفاً با ریاضی ساده انجام می‌شه، نه با درخواست به AI.
+//  فقط وقتی آستانه‌ی مشخص رد شد (نه هر ست/هر جلسه)، یک درخواست AI برای توضیح دلایل محتمل فرستاده می‌شه.
+// ═══════════════════════════════════════════════════
+
+const DROP_INTERVENTION_THRESHOLD = 0.15;   // افت ≥ ۱۵٪ نسبت به خط‌مبنا
+const DROP_INTERVENTION_COOLDOWN_DAYS = 5;  // حداقل فاصله بین دو مداخله، تا مزاحم نشه
+
+// خط‌مبنا: میانگین ۲ تا ۳ جلسه‌ی «قبل از» ۲ جلسه‌ی اخیر (نه شامل خودشون)
+// نکته: هر دو جلسه‌ی اخیر باید هم‌زمان از خط‌مبنا افت داشته باشن — یعنی الگو، نه یه نوسان تک‌جلسه‌ای.
+function _dropBaselineCheck(pointsSortedAsc) {
+  if (pointsSortedAsc.length < 4) return null;
+  const last2 = pointsSortedAsc.slice(-2);
+  const baseline = pointsSortedAsc.slice(0, -2).slice(-3);
+  if (baseline.length < 2) return null;
+  const baseMean = baseline.reduce((a, p) => a + p.v, 0) / baseline.length;
+  if (baseMean <= 0) return null;
+  const drops = last2.map(p => (baseMean - p.v) / baseMean);
+  const bothDropped = drops.every(d => d >= DROP_INTERVENTION_THRESHOLD);
+  if (!bothDropped) return null;
+  const avgDropPct = Math.round(((drops[0] + drops[1]) / 2) * 100);
+  return avgDropPct;
+}
+
+// تشخیص افت معنادار: هم در سطح یک حرکت خاص (e1RM)، هم در سطح کل جلسه (حجم)
+function detectSignificantDrop() {
+  // ۱) سطح حرکت
+  const exMap = {};
+  appData.history.forEach(sess => {
+    if (!sess.exercises) return;
+    Object.values(sess.exercises).forEach(exData => {
+      const name = exData._name; if (!name) return;
+      const e1 = bestE1RMInSession(exData);
+      if (e1 > 0) (exMap[name] = exMap[name] || []).push({ date: new Date(sess.date), v: e1 });
+    });
+  });
+  let exerciseDrop = null;
+  Object.entries(exMap).forEach(([name, arr]) => {
+    arr.sort((a, b) => a.date - b.date);
+    const pct = _dropBaselineCheck(arr);
+    if (pct != null && (!exerciseDrop || pct > exerciseDrop.pct)) exerciseDrop = { name, pct };
+  });
+
+  // ۲) سطح کل جلسه (حجم کل)
+  let sessionDrop = null;
+  if (appData.history.length >= 5) {
+    const vols = appData.history
+      .map(s => ({ date: new Date(s.date), v: sessionVolume(s) }))
+      .sort((a, b) => a.date - b.date);
+    const pct = _dropBaselineCheck(vols);
+    if (pct != null) sessionDrop = { pct };
+  }
+
+  if (!exerciseDrop && !sessionDrop) return null;
+  if (exerciseDrop && (!sessionDrop || exerciseDrop.pct >= sessionDrop.pct)) {
+    return { type: 'exercise', name: exerciseDrop.name, pct: exerciseDrop.pct };
+  }
+  return { type: 'session', pct: sessionDrop.pct };
+}
+
+function canRunDropIntervention() {
+  const last = appData.dropInterventionLastDate;
+  if (!last) return true;
+  const diffDays = (Date.now() - new Date(last).getTime()) / (24 * 3600 * 1000);
+  return diffDays >= DROP_INTERVENTION_COOLDOWN_DAYS;
+}
+
+// ─── مداخله‌ی خودکار: فقط اگه detectSignificantDrop چیزی پیدا کرد و cooldown تموم شده، به AI درخواست می‌ده ───
+async function checkDropInterventionAI(historyEntryId) {
+  if (getCoachMode() !== 'ai') return;
+  if (!canRunDropIntervention()) return;
+  if (!canMakeAIRequest()) return; // به سقف رسیده — بی‌صدا و بدون نمایش کارت
+
+  const drop = detectSignificantDrop();
+  if (!drop) return;
+
+  const container = document.getElementById('ai-drop-intervention');
+  if (!container) return;
+  container.style.display = '';
+  container.innerHTML = `
+    <div class="session-ai-card drop-intervention-card">
+      <div class="session-ai-card-title" style="color:#eab308;">${icon('alertTriangle',13)} افت عملکرد شناسایی شد</div>
+      <div class="session-ai-loading"><span class="session-ai-dot"></span><span class="session-ai-dot"></span><span class="session-ai-dot"></span>&nbsp;در حال بررسی دلیل احتمالی…</div>
+    </div>`;
+
+  try {
+    const desc = drop.type === 'exercise'
+      ? `در حرکت «${drop.name}» طی ۲ جلسه‌ی متوالی اخیر حدود ${drop.pct}٪ افت عملکرد (بر اساس e1RM) نسبت به میانگین جلسات قبل‌تر ثبت شده — این یک الگوی مداوم است، نه نوسان یک‌باره.`
+      : `حجم کل ۲ جلسه‌ی متوالی اخیر حدود ${drop.pct}٪ نسبت به میانگین جلسات قبل‌تر افت داشته — این یک الگوی مداوم است، نه نوسان یک‌باره.`;
+    const basePrompt =
+      'تو مربی هوشمند اپ IronLog هستی. یک سیستم کد-محور (نه تو) یک افت عملکرد معنادار و مداوم رو تشخیص داده، نه یه نوسان معمولی. ' +
+      'با توجه به داده‌های کاربر (در پرامپت سیستم)، ۲ تا ۳ دلیل محتمل (مثل خستگی تجمعی، کمبود خواب، استرس، تغذیه ناکافی، بیماری خفیف) رو خیلی کوتاه مطرح کن ' +
+      'و در پایان یک پیشنهاد عملی و مشخص برای جلسه‌ی بعد بده (مثلاً کاهش حجم/شدت، یک روز استراحت اضافه، یا دیلود کوتاه). ' +
+      'حداکثر ۴-۵ جمله، فارسی، لحن آروم و حمایتگر نه نگران‌کننده. هیچ تشخیص پزشکی نده؛ اگه احتمال دلیل پزشکی/درد مداوم هست، به مراجعه به پزشک اشاره کن.';
+    const systemPrompt = buildFullSystemPrompt(basePrompt);
+    const text = await callAIRaw(desc, systemPrompt, 260);
+    recordAIRequestUsed();
+    if (!text || !text.trim()) { container.style.display = 'none'; return; }
+
+    container.innerHTML = `
+      <div class="session-ai-card drop-intervention-card">
+        <div class="session-ai-card-title" style="color:#eab308;">${icon('alertTriangle',13)} افت عملکرد شناسایی شد</div>
+        <div class="session-ai-card-body">${escHtml(text.trim())}</div>
+      </div>`;
+
+    appData.dropInterventionLastDate = new Date().toISOString();
+    const entry = appData.history.find(h => h.id === historyEntryId);
+    if (entry) entry.dropIntervention = { text: text.trim(), drop, date: appData.dropInterventionLastDate };
+    saveData();
+  } catch (e) {
+    console.warn('مداخله‌ی افت عملکرد شکست خورد، بی‌صدا مخفی می‌شه:', e.message);
+    container.style.display = 'none';
+  }
+}
+
+// ─── درخواست تحلیل هوشمند از AI و نمایش/ذخیره‌ی نتیجه ───
+async function generateSessionAnalysisAI(historyEntryId, sessionSnap, totalSets, totalVol, duration, prevVol, prCount) {
+  if (getCoachMode() !== 'ai') return;
+  if (!totalSets || totalSets < 1) return; // جلسه‌ی خالی، چیزی برای تحلیل نیست
+  if (!canMakeAIRequest()) return; // به سقف رسیده — بی‌صدا و بدون نمایش کارت
+
+  const container = document.getElementById('ai-session-analysis');
+  if (!container) return;
+  container.style.display = '';
+  container.innerHTML = `
+    <div class="session-ai-card">
+      <div class="session-ai-card-title">${icon('flame',13)} تحلیل مربی AI</div>
+      <div class="session-ai-loading"><span class="session-ai-dot"></span><span class="session-ai-dot"></span><span class="session-ai-dot"></span>&nbsp;در حال بررسی جلسه…</div>
+    </div>`;
+
+  try {
+    const sessionText = buildSessionSummaryForAI(sessionSnap, totalSets, totalVol, duration, prevVol, prCount);
+    const basePrompt =
+      'تو مربی هوشمند اپ IronLog هستی. یک جلسه‌ی تمرینی تازه تموم شده. بر اساس داده‌های زیر، ' +
+      'یک تحلیل کوتاه (حداکثر ۳-۴ جمله) و مشخص به فارسی بنویس: نقاط قوت این جلسه چی بود، ' +
+      'الگوی قابل توجهی (پیشرفت/افت/ثبات) هست یا نه، و در پایان یک پیشنهاد عملی و کوتاه برای جلسه‌ی بعدی بده. ' +
+      'لحن دوستانه و مستقیم، بدون شماره‌گذاری و بدون ایموجی زیاد. اگه داده‌ی جلسه خیلی کم بود (مثلاً فقط یک ست)، ' +
+      'همین رو در نظر بگیر و تحلیل رو متناسب با همون مقدار کم داده بساز، حدس اضافه نزن.';
+    const systemPrompt = buildFullSystemPrompt(basePrompt);
+    const text = await callAIRaw(sessionText, systemPrompt, 260);
+    recordAIRequestUsed();
+    if (!text || !text.trim()) { container.style.display = 'none'; return; }
+
+    container.innerHTML = `
+      <div class="session-ai-card">
+        <div class="session-ai-card-title">${icon('flame',13)} تحلیل مربی AI</div>
+        <div class="session-ai-card-body">${escHtml(text.trim())}</div>
+      </div>`;
+
+    // ذخیره برای مرور بعدی در تاریخچه
+    const entry = appData.history.find(h => h.id === historyEntryId);
+    if (entry) {
+      entry.aiAnalysis = text.trim();
+      entry.aiAnalysisDate = new Date().toISOString();
+      saveData();
+    }
+  } catch (e) {
+    console.warn('تحلیل AI پایان تمرین شکست خورد، بی‌صدا مخفی می‌شه:', e.message);
+    container.style.display = 'none';
+  }
 }
 
 // ═══════════════════════════════════════════════════
@@ -9785,6 +12267,90 @@ function generateStoryImage(data) {
 }
 
 // ساخت داده‌های جلسه برای استوری
+// ═══════════════════════════════════════════════════
+//  فاز ۳ (نقشه‌راه هوش مصنوعی) — کپشن استوری هوشمند
+// ═══════════════════════════════════════════════════
+// استخر کپشن‌های آفلاین (fallback) — یکجا و مشترک بین همه‌ی مسیرهایی که استوری می‌سازن
+// (قبلاً این آرایه در دو جای مختلف کدنویسی شده بود، الان یکی شد تا از هم جدا نشن).
+const STORY_CAPTION_FALLBACK_POOL = [
+  'درد امروز، قدرت فردا است.',
+  'هیچ ست راحتی هیچ‌وقت کسی رو آهنین نکرد.',
+  'بدن می‌تونه خیلی بیشتر از اونچه ذهن باور داره تحمل کنه.',
+  'قهرمانان دقیقاً وقتی دیگران تسلیم می‌شن، یه ست دیگه می‌زنن.',
+  'نظم برنده است؛ نه انگیزه، نه احساس.',
+  'آنچه امروز تو را به زانو در می‌آورد، فردا زیر پایت خواهد بود.',
+  'آب‌دیده آبدیده می‌شود.',
+  'یک جلسه سنگین، بهتر از صد سال آرزو.',
+  'وقتی دردی به سراغت نیاید، یعنی تمرین نکردی.',
+  'تعطیلی ندارد. تسلیم ندارد. آهن صبور است.',
+  'هر تکرار یه ضربه‌ی دیگر بر کوهِ ضعف.',
+  'نه سخت‌تر از بقیه — سخت‌تر از خودتِ دیروز.',
+  'امروز رو زدی، فرداتو ساختی.',
+  'وزنه دروغ نمی‌گه، تو هم به خودت دروغ نگو.',
+  'یه ست دیگه، یه قدم نزدیک‌تر.',
+];
+function pickStoryCaption() { return pick(STORY_CAPTION_FALLBACK_POOL); }
+
+// روند اخیر یک حرکت خاص (رشد/افت/ثابت) بر اساس ۲-۳ رکورد آخرش در appData.history —
+// برای دادن context بهتر به AI هنگام ساخت کپشن.
+function getExerciseRecentTrend(exId) {
+  const records = [];
+  for (let i = appData.history.length - 1; i >= 0 && records.length < 3; i--) {
+    const exData = appData.history[i].exercises?.[exId];
+    const doneSets = exData?.sets?.filter(s => s.done && s.weight);
+    if (!doneSets?.length) continue;
+    records.push(Math.max(...doneSets.map(s => parseFloat(s.weight) || 0)));
+  }
+  if (records.length < 2) return 'داده‌ی کافی نیست';
+  if (records[0] > records[1]) return 'رو به رشد';
+  if (records[0] < records[1]) return 'کمی افت نسبت به قبل';
+  return 'ثابت';
+}
+
+// بهترین حرکت جلسه (بیشترین وزنه) را برای دادن context کپشن به AI پیدا می‌کند.
+function pickHeroExerciseForCaption(data) {
+  if (!data?.exercises?.length) return null;
+  return data.exercises.reduce((best, ex) => (ex.bestWeight > (best?.bestWeight || 0) ? ex : best), null);
+}
+
+// از callCoachAI (فاز ۰، promptType='caption') یک کپشن تازه می‌خواهد.
+// هیچ‌وقت throw نمی‌کنه؛ اگه AI جواب نداد یا سقف رد شده بود null برمی‌گردونه
+// و صدازننده باید همون fallback آفلاین (pickStoryCaption) رو نگه دارد.
+async function requestAICaption(data) {
+  if (getCoachMode() !== 'ai') return null;
+  const hero = pickHeroExerciseForCaption(data);
+  const contextData = {
+    'نام روز تمرین': data.dayName,
+    'تعداد ست': data.sets,
+    'حرکت اصلی جلسه': hero ? hero.name : 'نامشخص',
+    'بهترین وزنه‌ی همان حرکت در این جلسه': hero ? `${hero.bestWeight}kg` : undefined,
+    'روند اخیر همان حرکت': hero?.id ? getExerciseRecentTrend(hero.id) : undefined,
+  };
+  return await callCoachAI('caption', contextData);
+}
+
+// دکمه‌ی «یه جمله دیگه»: یک کپشن جدید (AI یا در نبودش از استخر آفلاین، ولی
+// هیچ‌وقت تکراری با کپشن فعلی در همون چند بار پشت‌سرهم) بگیر و روی canvas بازسازی کن.
+async function regenerateStoryCaption() {
+  if (!_lastStoryData) return;
+  const btn = document.getElementById('story-caption-regen-btn');
+  if (btn) { btn.disabled = true; btn.classList.add('loading'); }
+
+  let next = await requestAICaption(_lastStoryData);
+  let source = 'ai';
+  if (!next) {
+    source = 'offline';
+    do { next = pickStoryCaption(); } while (next === _lastStoryData.quote && STORY_CAPTION_FALLBACK_POOL.length > 1);
+  }
+
+  if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
+  _lastStoryData.quote = next;
+  document.getElementById('story-coach-quote').innerHTML =
+    `<span style="display:inline-flex;width:13px;height:13px;vertical-align:-2px;color:var(--accent);">${icon('dumbbell',13)}</span> «${escHtml(next)}»` +
+    (source === 'ai' ? ` <span style="opacity:.55">${ICONS.gem||''}</span>` : '');
+  generateStoryImage(_lastStoryData);
+}
+
 function buildStorySessionData(sessionOverride) {
   // اولویت: sessionOverride > جلسه در حال انجام > آخرین جلسه در history
   let dayName, totalSets, totalVol, duration, exercises;
@@ -9796,6 +12362,7 @@ function buildStorySessionData(sessionOverride) {
     totalVol = sessionOverride.vol;
     duration = sessionOverride.duration;
     exercises = sessionOverride.exercises.map(ex=>({
+      id: ex.id,
       name: ex._name || ex.name || 'حرکت',
       sets: ex.sets?.filter(s=>s.done).length || 0,
       bestWeight: (()=>{
@@ -9828,7 +12395,7 @@ function buildStorySessionData(sessionOverride) {
         const exDef = source.day?.exercises?.find(e=>e.id===exId);
         const exName = exDef?.name || s._name || exId;
         const bestW = Math.max(...doneSets.map(x=>parseFloat(x.weight)||0), 0);
-        exercises.push({name:exName, sets:doneSets.length, bestWeight:bestW});
+        exercises.push({id: exId, name:exName, sets:doneSets.length, bestWeight:bestW});
       });
       duration = source.dur || 0;
     } else {
@@ -9836,22 +12403,9 @@ function buildStorySessionData(sessionOverride) {
     }
   }
 
-  // نقل‌قول مربی بر اساس حجم در مقابل جلسات قبلی
-  const quotes = [
-    'درد امروز، قدرت فردا است.',
-    'هیچ ست راحتی هیچ‌وقت کسی رو آهنین نکرد.',
-    'بدن می‌تونه خیلی بیشتر از اونچه ذهن باور داره تحمل کنه.',
-    'قهرمانان دقیقاً وقتی دیگران تسلیم می‌شن، یه ست دیگه می‌زنن.',
-    'نظم برنده است؛ نه انگیزه، نه احساس.',
-    'آنچه امروز تو را به زانو در می‌آورد، فردا زیر پایت خواهد بود.',
-    'آب‌دیده آبدیده می‌شود.',
-    'یک جلسه سنگین، بهتر از صد سال آرزو.',
-    'وقتی دردی به سراغت نیاید، یعنی تمرین نکردی.',
-    'تعطیلی ندارد. تسلیم ندارد. آهن صبور است.',
-    'هر تکرار یه ضربه‌ی دیگر بر کوهِ ضعف.',
-    'نه سخت‌تر از بقیه — سخت‌تر از خودتِ دیروز.',
-  ];
-  const quote = pick(quotes);
+  // نقل‌قول مربی — فعلاً از استخر آفلاین (fallback)؛ اگه حالت AI فعال باشه،
+  // openStoryWithData بعد از نمایش این نسخه، یه کپشن هوشمند رو بی‌صدا جایگزینش می‌کنه.
+  const quote = pickStoryCaption();
 
   let dateStr;
   try { dateStr = new Date(dateSource).toLocaleDateString('fa-IR',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
@@ -9886,6 +12440,7 @@ function openStoryForSession(sessionId) {
       const doneSets = ex.sets?.filter(s=>s.done) || [];
       const bestW = doneSets.length ? Math.max(...doneSets.map(s=>parseFloat(s.weight)||0)) : 0;
       return {
+        id: exId,
         _name: ex._name || def?.name || exId,
         name: ex._name || def?.name || exId,
         sets: doneSets.length,
@@ -9893,16 +12448,8 @@ function openStoryForSession(sessionId) {
       };
     }).filter(e=>e.sets>0),
   };
-  // نقل‌قول
-  const quotes = [
-    'درد امروز، قدرت فردا است.','هیچ ست راحتی هیچ‌وقت کسی رو آهنین نکرد.',
-    'بدن می‌تونه خیلی بیشتر از اونچه ذهن باور داره تحمل کنه.',
-    'قهرمانان دقیقاً وقتی دیگران تسلیم می‌شن، یه ست دیگه می‌زنن.',
-    'نظم برنده است؛ نه انگیزه، نه احساس.','یک جلسه سنگین، بهتر از صد سال آرزو.',
-    'تعطیلی ندارد. تسلیم ندارد. آهن صبور است.',
-    'نه سخت‌تر از بقیه — سخت‌تر از خودتِ دیروز.','آب‌دیده آبدیده می‌شود.',
-  ];
-  data.quote = quotes[Math.floor(Math.random()*quotes.length)];
+  // نقل‌قول — از استخر آفلاین مشترک (فاز ۳)
+  data.quote = pickStoryCaption();
   openStoryWithData(data);
 }
 
@@ -9914,6 +12461,16 @@ function openStoryWithData(data) {
   _lastStoryData = data;
   // بعد از باز شدن مودال، رسم کن
   setTimeout(()=>generateStoryImage(data), 300);
+
+  // فاز ۳: کپشن آفلاین بالا همین الان و فوری نشون داده شد؛ اگه حالت AI فعال باشه،
+  // به‌محض رسیدن جواب هوشمند، بی‌صدا جایگزینش می‌کنیم (بدون منتظر گذاشتن کاربر).
+  requestAICaption(data).then(aiQuote => {
+    if (!aiQuote || _lastStoryData !== data) return; // یا AI جواب نداد، یا کاربر قبلش کپشن رو دستی عوض کرده
+    data.quote = aiQuote;
+    document.getElementById('story-coach-quote').innerHTML =
+      `<span style="display:inline-flex;width:13px;height:13px;vertical-align:-2px;color:var(--accent);">${icon('dumbbell',13)}</span> «${escHtml(aiQuote)}» <span style="opacity:.55">${ICONS.gem||''}</span>`;
+    generateStoryImage(data);
+  });
 }
 
 function downloadStoryImage() {
@@ -10038,10 +12595,16 @@ function formatTimeFa(s) {
 // ─── شمارش پویا برای هر عدد در صفحه (قابل استفاده عمومی) ───
 function animateCountUp(el, target, opts={}) {
   if (!el) return;
-  const dur = opts.duration || 700;
   const decimals = opts.decimals || 0;
   const suffix = opts.suffix || '';
   const isFarsi = opts.farsiDigits !== false;
+  if (prefersReducedMotion()) {
+    // به‌جای شمارش تدریجی، مستقیم عدد نهایی رو نشون بده
+    const finalText = (decimals>0 ? target.toFixed(decimals) : String(target)) + suffix;
+    el.textContent = isFarsi ? toFarsiNum(finalText) : finalText;
+    return;
+  }
+  const dur = opts.duration || 700;
   const start = performance.now();
   const from = 0;
   const tick = (now)=>{
@@ -10056,10 +12619,15 @@ function animateCountUp(el, target, opts={}) {
   requestAnimationFrame(tick);
 }
 function animateSummaryCounts() {
+  const reduceMo = prefersReducedMotion();
   document.querySelectorAll('.summary-stat-v').forEach(el=>{
     const isSec = el.dataset.seconds !== undefined;
     const target = parseFloat((isSec ? el.dataset.seconds : el.dataset.count) || '0');
     const suffix = el.dataset.suffix || '';
+    if (reduceMo) {
+      el.textContent = isSec ? formatTime(target) : (toFarsiNum(String(target)) + suffix);
+      return;
+    }
     const dur = 800;
     const start = performance.now();
     const tick = (now)=>{
@@ -10081,6 +12649,11 @@ function animateSummaryCounts() {
 // ─── Celebration (نسخه‌ی شیک، جایگزین کنفتی قدیمی) ───
 function celebrate() {
   if (appData.settings.logOnlyMode) return;
+  if (prefersReducedMotion()) {
+    // بدون پالس نوری/کانفتی؛ فقط یه لرزش لمسی کوتاه به‌عنوان بازخورد جشن
+    haptic([20,30,20]);
+    return;
+  }
   // حلقه‌ی نوری پالسی از مرکز صفحه
   const pulse = document.createElement('div');
   pulse.className = 'celebration-pulse';
@@ -10173,6 +12746,10 @@ function launchConfetti(){ celebrate(); }
 // ═══ v3.1 — جشن اختصاصی رکورد جدید (PR): طلایی‌تر، چگال‌تر، با ستاره و فلاش صفحه ═══
 function celebratePR() {
   if (appData.settings.logOnlyMode) return;
+  if (prefersReducedMotion()) {
+    haptic([20,30,20,30,20,50,80]);
+    return;
+  }
   // فلاش نوری طلایی کوتاه روی کل صفحه
   const flash = document.createElement('div');
   flash.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9998;background:radial-gradient(circle at 50% 28%,rgba(234,179,8,0.16),transparent 62%);opacity:0;transition:opacity 0.35s ease;';
@@ -11067,6 +13644,8 @@ function applyCoachPageIcons() {
     'cfi-strength':ICONS.award,'cfi-voltarget':ICONS.scale,
   };
   Object.keys(map).forEach(id=>{ const el=document.getElementById(id); if(el && !el.innerHTML) el.innerHTML=map[id]; });
+  const scrollBtn = document.getElementById('coach-chat-scroll-btn');
+  if (scrollBtn && !scrollBtn.innerHTML) scrollBtn.innerHTML = ICONS.arrowRight;
 }
 
 function setCoachIntensity(lvl, btn){
@@ -11372,10 +13951,11 @@ function applyStaticIcons() {
     'si-rpe':ICONS.barchart,'si-volume':ICONS.volume,'si-rest-heavy':ICONS.dumbbell,
     'si-rest-medium':ICONS.barchart,'si-rest-light':ICONS.flame,'si-goal':ICONS.target,'si-freq':ICONS.clock,
     'si-export':ICONS.upload,'si-import':ICONS.download,'si-clear':ICONS.trash,
-    'si-coach':ICONS.flame,'si-username':ICONS.user,'si-logonly':ICONS.target,'si-coach-snooze':ICONS.clock,'si-coach-categories':ICONS.barchart,'si-coach-push':ICONS.volume,
+    'si-coach':ICONS.flame,'si-username':ICONS.user,'si-logonly':ICONS.target,'si-coach-snooze':ICONS.clock,'si-coach-categories':ICONS.barchart,'si-coach-push':ICONS.volume,'si-coach-ailimit':ICONS.barchart,
     'si-reset-all':ICONS.alert,
     'si-report-bug':ICONS.alert,'si-suggest':ICONS.bulb,'si-share-app':ICONS.share,
     'acc-ico-support':ICONS.share,
+    'acc-ico-ai-profile':ICONS.bulb,'si-ai-goals':ICONS.target,'si-ai-injuries':ICONS.alert,'si-ai-tone':ICONS.user,
   };
   Object.keys(map).forEach(id=>{ const el=document.getElementById(id); if(el) el.innerHTML=map[id]; });
   const qi=document.getElementById('log-only-quick-icon');
